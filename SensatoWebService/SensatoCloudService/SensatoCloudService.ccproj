@@ -43,12 +43,13 @@
     <DiagnosticsConfiguration Include="SensatoWCFServiceContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SensatoDBService\SensatoWCFService.csproj">
+    <ProjectReference Include="..\SensatoWCFService\SensatoWCFService.csproj">
       <Name>SensatoWCFService</Name>
       <Project>{4d366860-9740-43f6-be4d-720acbb50af7}</Project>
       <Private>True</Private>
       <RoleType>Web</RoleType>
       <RoleName>SensatoWCFService</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
   <!-- Import the target files for this project template -->
