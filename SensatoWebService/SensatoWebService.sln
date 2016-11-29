@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "SensatoCloudService", "SensatoWCFService\SensatoCloudService.ccproj", "{8904C35B-7863-453D-BE0A-913359FDD476}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensatoWCFService", "SensatoDBService\SensatoWCFService.csproj", "{4D366860-9740-43F6-BE4D-720ACBB50AF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensatoWebService.Models", "SensatoWebService.Models\SensatoWebService.Models.csproj", "{739FBEB2-71F9-4536-8C08-08D41DA6EC85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensatoWebService.Data", "SensatoWebService.Data\SensatoWebService.Data.csproj", "{274F09B4-E332-4E7F-85A6-A24AF432C479}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8904C35B-7863-453D-BE0A-913359FDD476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8904C35B-7863-453D-BE0A-913359FDD476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8904C35B-7863-453D-BE0A-913359FDD476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8904C35B-7863-453D-BE0A-913359FDD476}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D366860-9740-43F6-BE4D-720ACBB50AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D366860-9740-43F6-BE4D-720ACBB50AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D366860-9740-43F6-BE4D-720ACBB50AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D366860-9740-43F6-BE4D-720ACBB50AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{739FBEB2-71F9-4536-8C08-08D41DA6EC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{739FBEB2-71F9-4536-8C08-08D41DA6EC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{739FBEB2-71F9-4536-8C08-08D41DA6EC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{739FBEB2-71F9-4536-8C08-08D41DA6EC85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{274F09B4-E332-4E7F-85A6-A24AF432C479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{274F09B4-E332-4E7F-85A6-A24AF432C479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{274F09B4-E332-4E7F-85A6-A24AF432C479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{274F09B4-E332-4E7F-85A6-A24AF432C479}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
