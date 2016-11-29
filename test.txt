@@ -3,5 +3,17 @@ initial2
 initial3
 initial4
 initial5
+<<<<<<< HEAD
+
+marioBranch1
+marioBranch2
+marioBranch3
+marioBranch4
+marioBranch5
+=======
 zdravko1
+<<<<<<< HEAD
 Deletebranch
+=======
+>>>>>>> f1fcbce05a0096c8874ee4cc467e21ca56e3ad32
+>>>>>>> a0e3602548461b8ca62c6196985490131768107d
