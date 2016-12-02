@@ -1,5 +1,6 @@
 ﻿namespace SensatoWebService.Models
 {
+    using Enumerations;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -22,8 +23,12 @@
 
         [Required]
         public bool IsLogged { get; set; } 
-
+        
+        [Required]
         public bool IsDeleted { get; set; }
+
+        [Required]
+        public RoleType Role { get; set; }
 
         public virtual ICollection<Hive> Hives
         {

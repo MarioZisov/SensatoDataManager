@@ -1,12 +1,15 @@
 namespace SensatoWebService.Data
 {
+    using System;
     using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
     using Models;
 
-    public partial class SensatoDBContext : DbContext
+    public partial class SensatoDbContext : DbContext
     {
-        public SensatoDBContext()
-            : base("name=SensatoContext")
+        public SensatoDbContext()
+            : base("SensatoDbContext")
         {
         }
 

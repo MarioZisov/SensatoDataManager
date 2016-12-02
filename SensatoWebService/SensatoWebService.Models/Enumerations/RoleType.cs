@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SensatoWebService.Models.Enumerations
 {
-    class Roles
+    public enum RoleType
     {
+        User,
+        Administrator
     }
 }
