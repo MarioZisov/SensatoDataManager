@@ -1,6 +1,7 @@
 ﻿namespace SensatoWebService.Models
 {
     using Enumerations;
+    using Attributes;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -15,7 +16,7 @@
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required, Username, MinLength(4)]
         public string Username { get; set; }
 
         [Required]

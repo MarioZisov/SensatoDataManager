@@ -16,11 +16,14 @@
         [Key]
         public int Id { get; set; }
 
-        [Required,Column("UserId")]
-        public virtual User User { get; set; }
+        [Required]
+        public string Name { get; set; }
 
         [Required]
         public bool IsDeleted { get; set; }
+
+        [Required, Column("UserId")]
+        public virtual User User { get; set; }
 
         public virtual ICollection<Frame> Frames
         {
@@ -29,4 +32,3 @@
         }
     }
 }
-
