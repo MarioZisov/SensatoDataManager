@@ -13,16 +13,24 @@ namespace SensatoClient.View
 {
     public partial class MainView : MetroForm
     {
+        public event EventHandler Login;
+
         public MainView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+
+            this.buttonLogin.Click += delegate
+            {
+                this.Login?.Invoke(this, EventArgs.Empty);
+            };
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-            HiveView uc = new HiveView();
-            this.Controls.Add(uc);
-            uc.BringToFront();
-        }
+
+        //private void buttonLogin_Click(object sender, EventArgs e)
+        //{
+        //    HiveView uc = new HiveView();
+        //    this.Controls.Add(uc);
+        //    uc.BringToFront();
+        //}
     }
 }

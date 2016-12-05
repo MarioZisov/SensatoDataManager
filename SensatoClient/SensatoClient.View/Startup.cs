@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace SensatoClient.View
 {
+    using Presenter;
+
     static class Startup
     {
         [STAThread]
@@ -13,7 +15,9 @@ namespace SensatoClient.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainView());
+            MainView view = new MainView();
+            MainPresenter presenter = new MainPresenter(view);
+            Application.Run(view);
         }
     }
 }
