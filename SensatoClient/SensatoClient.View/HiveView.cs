@@ -16,13 +16,7 @@ namespace SensatoClient.View
         public HiveView()
         {
             InitializeComponent();
-
-        }
-
-        private Point MouseDownLocation;
-        bool isMove;
-
-        Dictionary<TableLayoutPanelCellPosition, Rectangle> dict = new Dictionary<TableLayoutPanelCellPosition, Rectangle>();
+        }        
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
@@ -43,67 +37,9 @@ namespace SensatoClient.View
             tableLayoutPanel2.Controls.Add(control, 1, 3);
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        private void metroTile8_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void metroTile3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroTile3_MouseDown(object sender, MouseEventArgs e)
-        {
-            Control button = sender as Control;
-            metroTile3.Parent = this;
-            metroTile3.BringToFront();            
-            MouseDownLocation = e.Location;
-        }
-
-        private void metroTile3_MouseMove(object sender, MouseEventArgs e)
-        {
-            Control button = sender as Control;
-            if (e.Button == MouseButtons.Left)
-            {
-                metroTile3.Left += e.X - MouseDownLocation.X;
-                metroTile3.Top += e.Y - MouseDownLocation.Y;
-                isMove = true;
-                tableLayoutPanel2.Invalidate();
-            }
-        }
-
-        private void Buttons_MouseUp(object sender, MouseEventArgs e)
-        {
-            Control button = sender as Control;
-            if (isMove)
-            {
-                SetControl(button, e.Location);
-                button.Parent = tableLayoutPanel1;
-                isMove = false;
-            }
-        }
-
-        private void SetControl(Control c, Point position)
-        {
-            Point localPoint = tableLayoutPanel2.PointToClient(c.PointToScreen(position));
-            var keyValue = dict.FirstOrDefault(e => e.Value.Contains(localPoint));
-            if (!keyValue.Equals(default(KeyValuePair<TableLayoutPanelCellPosition, Rectangle>)))
-            {
-                tableLayoutPanel2.SetCellPosition(c, keyValue.Key);
-            }
-        }
-
-        private void tableLayoutPanel2_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
-        {
-            dict[new TableLayoutPanelCellPosition(e.Column, e.Row)] = e.CellBounds;
-            if (isMove)
-            {
-                if (e.CellBounds.Contains(tableLayoutPanel1.PointToClient(MousePosition)))
-                {
-                    e.Graphics.FillRectangle(Brushes.Yellow, e.CellBounds);
-                }
-            }
         }
     }
 }
