@@ -4,6 +4,7 @@
     using Attributes;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class User
     {
@@ -15,8 +16,8 @@
 
         [Key]
         public int Id { get; set; }
-
-        [Required, Username, MinLength(4)]
+        
+        [Required, Username, MinLength(4), MaxLength(30), Index(IsUnique = true)]
         public string Username { get; set; }
 
         [Required]

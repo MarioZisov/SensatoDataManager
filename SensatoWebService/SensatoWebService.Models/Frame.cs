@@ -22,7 +22,7 @@
         public virtual Hive Hive { get; set; }
         
         [Required]
-        public bool IsDeleted { get; set; }
+        public bool IsRemoved { get; set; }
 
         public virtual ICollection<Measurment> Measurments
         {

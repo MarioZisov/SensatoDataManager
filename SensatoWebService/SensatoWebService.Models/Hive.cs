@@ -16,11 +16,11 @@
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required, MinLength(1), MaxLength(100), Index(IsUnique = true)]
         public string Name { get; set; }
 
         [Required]
-        public bool IsDeleted { get; set; }
+        public bool IsRemoved { get; set; }
 
         [Required, Column("UserId")]
         public virtual User User { get; set; }
