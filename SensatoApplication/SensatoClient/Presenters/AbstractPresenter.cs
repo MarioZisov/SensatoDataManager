@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SensatoClient.Contracts
+namespace SensatoClient.Presenters
 {
-    public interface IView
+    class AbstractPresenter
     {
-        void Show();
-
-        void Hide();
-
-        void BringToFront();
     }
 }

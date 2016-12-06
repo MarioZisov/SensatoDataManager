@@ -1,6 +1,8 @@
-﻿using SensatoClient.Contracts;
+﻿using MetroFramework;
+using SensatoClient.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,8 @@ namespace SensatoClient.Presenters
         private IHiveView hiveView;
         private ILoginView loginView;
 
-        public HivePresenter(IHiveView hiveView, ILoginView loginView)
+        //Hive presenters must hold Previous, Current and Next view.
+        public HivePresenter(ILoginView loginView, IHiveView hiveView)
         {
             this.hiveView = hiveView;
             this.loginView = loginView;
@@ -21,7 +24,7 @@ namespace SensatoClient.Presenters
 
         private void OnLoginClick(object sender, EventArgs e)
         {
-            this.hiveView.Show();
+            
         }
     }
 }

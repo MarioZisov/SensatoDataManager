@@ -12,8 +12,8 @@ namespace SensatoClient.Contracts
     {
         event EventHandler LoginClick;
 
-        string Username { get; set; }
+        string Username { get; }
 
-        string Password { get; set; }
+        string Password { get; }
     }
 }

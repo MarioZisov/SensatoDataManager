@@ -16,9 +16,9 @@ namespace SensatoClient
 {
     public partial class MainForm : MetroForm
     {
-        private UserControl[] views;
+        private IView[] views;
 
-        public MainForm(params UserControl[] views)
+        public MainForm(params IView[] views)
         {
             InitializeComponent();
             this.views = views;
@@ -29,11 +29,11 @@ namespace SensatoClient
         {
             foreach (var view in this.views)
             {
-                this.Controls.Add(view);
+                this.Controls.Add((UserControl)view);
             }
 
-            UserControl loginView = this.views[0];
-            loginView.Show();
+            IView loginView = this.views[0];
+            loginView.BringToFront();
         }
     }
 }

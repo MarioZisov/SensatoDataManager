@@ -19,23 +19,19 @@ namespace SensatoClient.Views
 
         public LoginView()
         {
-            InitializeComponent();
-            this.buttonLogin.Click += delegate
-            {
-                this.LoginClick?.Invoke(this, EventArgs.Empty);
-            };
+            this.InitializeComponent();
+            this.SubscribeEvents();
         }
 
         public string Password
         {
             get
             {
-                throw new NotImplementedException();
+                return this.textBoxPassword.Text;
             }
-
-            set
+            private set
             {
-                throw new NotImplementedException();
+                this.textBoxPassword.Text = value;
             }
         }
 
@@ -43,13 +39,20 @@ namespace SensatoClient.Views
         {
             get
             {
-                throw new NotImplementedException();
+                return this.tetBoxUsername.Text;
             }
-
-            set
+            private set
             {
-                throw new NotImplementedException();
+                this.tetBoxUsername.Text = value;
             }
-        }        
+        }
+
+        private void SubscribeEvents()
+        {
+            this.buttonLogin.Click += delegate
+            {
+                this.LoginClick?.Invoke(this, EventArgs.Empty);
+            };
+        }
     }
 }

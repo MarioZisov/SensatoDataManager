@@ -20,7 +20,12 @@ namespace SensatoClient.Views
 
         public HiveView()
         {
-            InitializeComponent();
-        }        
+            this.InitializeComponent();
+            this.SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {            
+        }
     }
 }

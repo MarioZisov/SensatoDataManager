@@ -18,10 +18,13 @@ namespace SensatoClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            UserControl loginView = new LoginView();
-            UserControl hiveView = new HiveView();
-            LoginPresenter loginPres = new LoginPresenter((ILoginView)loginView);
-            HivePresenter hivePres = new HivePresenter((IHiveView)hiveView, (ILoginView)loginView);
+
+            ILoginView loginView = new LoginView();
+            IHiveView hiveView = new HiveView();
+
+            LoginPresenter loginPres = new LoginPresenter(loginView, hiveView);
+            HivePresenter hivePres = new HivePresenter(loginView, hiveView);
+
             MainForm mainForm = new MainForm(loginView, hiveView);
             Application.Run(mainForm);
         }
