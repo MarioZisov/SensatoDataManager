@@ -27,7 +27,7 @@
         public bool IsLogged { get; set; } 
         
         [Required]
-        public bool IsDeleted { get; set; }
+        public bool IsDisabled { get; set; }
 
         [Required]
         public RoleType Role { get; set; }

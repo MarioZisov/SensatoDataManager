@@ -8,14 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Controls;
+using SensatoClient.Contracts;
 
-namespace SensatoClient.View
+namespace SensatoClient.Views
 {
-    public partial class TestMenuView : MetroUserControl
+    public partial class HiveView : MetroUserControl, IHiveView
     {
-        public TestMenuView()
+        public event EventHandler BackClick;
+
+        public event EventHandler ForwardClick;
+
+        public HiveView()
         {
             InitializeComponent();
-        }
+        }        
     }
 }

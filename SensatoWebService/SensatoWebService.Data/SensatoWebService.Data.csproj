@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201612052209062_Aditional Attributes.Designer.cs">
       <DependentUpon>201612052209062_Aditional Attributes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612060812159_ChangeUserModel.cs" />
+    <Compile Include="Migrations\201612060812159_ChangeUserModel.Designer.cs">
+      <DependentUpon>201612060812159_ChangeUserModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SensatoDbContext.cs" />
@@ -95,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612052209062_Aditional Attributes.resx">
       <DependentUpon>201612052209062_Aditional Attributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612060812159_ChangeUserModel.resx">
+      <DependentUpon>201612060812159_ChangeUserModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

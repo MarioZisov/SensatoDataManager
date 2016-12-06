@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SensatoClient.View.Properties
+namespace SensatoClient.Properties
 {
 
 

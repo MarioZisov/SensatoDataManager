@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SensatoClient.Model")]
+[assembly: AssemblyTitle("SensatoClient")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SensatoClient.Model")]
+[assembly: AssemblyProduct("SensatoClient")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5a246ffd-1ebc-415c-acf9-cf8117009807")]
+[assembly: Guid("6ab037e1-005f-4374-be6c-0c181ef6cda2")]
 
 // Version information for an assembly consists of the following four values:
 //
