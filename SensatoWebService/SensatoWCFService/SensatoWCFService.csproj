@@ -41,6 +41,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
@@ -72,6 +80,7 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -98,6 +107,10 @@
     <Content Include="SensatoService.svc" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTransferObjects\FrameDTO.cs" />
+    <Compile Include="DataTransferObjects\HiveDTO.cs" />
+    <Compile Include="DataTransferObjects\MeasurmentDTO.cs" />
+    <Compile Include="DataTransferObjects\UserDTO.cs" />
     <Compile Include="SensatoService.svc.cs">
       <DependentUpon>SensatoService.svc</DependentUpon>
     </Compile>
@@ -119,6 +132,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SensatoWebService.Data\SensatoWebService.Data.csproj">
+      <Project>{274F09B4-E332-4E7F-85A6-A24AF432C479}</Project>
+      <Name>SensatoWebService.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SensatoWebService.Models\SensatoWebService.Models.csproj">
+      <Project>{739FBEB2-71F9-4536-8C08-08D41DA6EC85}</Project>
+      <Name>SensatoWebService.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
