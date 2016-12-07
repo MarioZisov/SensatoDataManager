@@ -5,7 +5,10 @@ namespace SensatoDBService
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.ServiceModel;
     using DataTransferObjects;
+    using Faults;
+    using SensatoWebService.Models;
 
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
@@ -23,7 +26,7 @@ namespace SensatoDBService
             var user = this.context.Users.FirstOrDefault(u => u.Username == username);
             if (user == null)
             {
-                return false;
+                throw new FaultException<ValidationFault>(new UsernameValidationFault("Invalid Username"));
             }
 
             return true;
@@ -34,7 +37,7 @@ namespace SensatoDBService
             var pass = this.context.Users.FirstOrDefault(n => n.Username == username).Password;
             if (pass != passwordHash)
             {
-                return false;
+                throw new FaultException<ValidationFault>(new PasswordValidationFault("Wrong Password"));
             }
 
             return true;
