@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SensatoClient.Presenters
 {
-    public class HivePresenter
+    public class HivePresenter : AbstractPresenter
     {
         private IHiveView hiveView;
         private ILoginView loginView;
@@ -19,12 +19,11 @@ namespace SensatoClient.Presenters
         {
             this.hiveView = hiveView;
             this.loginView = loginView;
-            this.loginView.LoginClick += OnLoginClick;
-        }
+        }       
 
-        private void OnLoginClick(object sender, EventArgs e)
+        protected override void SubscribeEvents()
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

@@ -8,10 +8,6 @@ namespace SensatoClient.Contracts
 {
     public interface IView
     {
-        void Show();
-
-        void Hide();
-
         void BringToFront();
     }
 }

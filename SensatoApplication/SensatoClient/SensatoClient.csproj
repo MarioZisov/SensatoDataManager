@@ -67,6 +67,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\AbstractPresenter.cs" />
     <Compile Include="Presenters\HivePresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Startup.cs" />

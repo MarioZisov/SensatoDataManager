@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SensatoClient.Presenters
 {
-    class AbstractPresenter
+    public abstract class AbstractPresenter
     {
+        protected abstract void SubscribeEvents();
     }
 }

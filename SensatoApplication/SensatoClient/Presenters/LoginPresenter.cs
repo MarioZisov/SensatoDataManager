@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SensatoClient.Presenters
 {
-    public class LoginPresenter
+    public class LoginPresenter : AbstractPresenter
     {
         private ILoginView loginView;
         private IHiveView hiveView;
@@ -17,7 +17,7 @@ namespace SensatoClient.Presenters
         {
             this.loginView = loginView;
             this.hiveView = hiveView;
-            this.loginView.LoginClick += OnLoginClick;
+            this.SubscribeEvents();          
         }
 
         private void OnLoginClick(object sender, EventArgs e)
@@ -26,6 +26,11 @@ namespace SensatoClient.Presenters
             ///...
             //If success the Hive View have to be brought to front.
             this.hiveView.BringToFront();
+        }
+
+        protected override void SubscribeEvents()
+        {
+            this.loginView.LoginClick += OnLoginClick;
         }
     }
 }
