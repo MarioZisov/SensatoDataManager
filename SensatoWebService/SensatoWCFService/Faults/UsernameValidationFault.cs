@@ -8,10 +8,14 @@ namespace SensatoDBService.Faults
     using System.Runtime.Serialization;
 
     [DataContract]
-    public class UsernameValidationFault :ValidationFault
+    public class UsernameValidationFault
     {
-        public UsernameValidationFault(string message) : base(message)
+        public UsernameValidationFault(string message)
         {
+            this.Message = message;
         }
+
+        [DataMember]
+        public string Message { get; set; }
     }
 }

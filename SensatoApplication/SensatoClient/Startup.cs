@@ -1,6 +1,7 @@
 ﻿using MetroFramework.Controls;
 using MetroFramework.Forms;
 using SensatoClient.Contracts;
+using SensatoClient.Models;
 using SensatoClient.Presenters;
 using SensatoClient.Views;
 using System;
@@ -22,7 +23,9 @@ namespace SensatoClient
             ILoginView loginView = new LoginView();
             IHiveView hiveView = new HiveView();
 
-            LoginPresenter loginPres = new LoginPresenter(loginView, hiveView);
+            UserModel user = new UserModel();
+
+            LoginPresenter loginPres = new LoginPresenter(loginView, hiveView, user);
             HivePresenter hivePres = new HivePresenter(loginView, hiveView);
 
             MainForm mainForm = new MainForm(loginView, hiveView);

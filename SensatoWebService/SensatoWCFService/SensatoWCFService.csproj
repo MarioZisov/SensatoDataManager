@@ -113,7 +113,6 @@
     <Compile Include="DataTransferObjects\UserDTO.cs" />
     <Compile Include="Faults\PasswordValidationFault.cs" />
     <Compile Include="Faults\UsernameValidationFault.cs" />
-    <Compile Include="Faults\ValidationFault.cs" />
     <Compile Include="SensatoService.svc.cs">
       <DependentUpon>SensatoService.svc</DependentUpon>
     </Compile>

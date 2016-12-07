@@ -14,6 +14,14 @@ namespace SensatoClient.Contracts
 
         string Username { get; }
 
-        string Password { get; }
+        string Password { get; }        
+
+        void ShowUsernameError(string errorMessage);
+
+        void HideUsernameError();
+
+        void ShowPasswordError(string errorMessage);
+                 
+        void HidePasswordError();
     }
 }

@@ -26,7 +26,7 @@ namespace SensatoDBService
             var user = this.context.Users.FirstOrDefault(u => u.Username == username);
             if (user == null)
             {
-                throw new FaultException<ValidationFault>(new UsernameValidationFault("Invalid Username"));
+                throw new FaultException<UsernameValidationFault>(new UsernameValidationFault("Invalid Username"));
             }
 
             return true;
@@ -37,7 +37,7 @@ namespace SensatoDBService
             var pass = this.context.Users.FirstOrDefault(n => n.Username == username).Password;
             if (pass != passwordHash)
             {
-                throw new FaultException<ValidationFault>(new PasswordValidationFault("Wrong Password"));
+                throw new FaultException<PasswordValidationFault>(new PasswordValidationFault("Wrong Password"));
             }
 
             return true;

@@ -47,12 +47,34 @@ namespace SensatoClient.Views
             }
         }
 
+        public void ShowUsernameError(string errorMessage)
+        {
+            this.labelUsernameError.Text = errorMessage;
+            this.labelUsernameError.Show();
+        }
+
+        public void HideUsernameError()
+        {
+            this.labelUsernameError.Hide();
+        }
+
+        public void ShowPasswordError(string errorMessage)
+        {
+            this.labelPasswordError.Text = errorMessage;
+            this.labelPasswordError.Show();
+        }
+
+        public void HidePasswordError()
+        {
+            this.labelPasswordError.Hide();
+        }
+
         private void SubscribeEvents()
         {
             this.buttonLogin.Click += delegate
             {
                 this.LoginClick?.Invoke(this, EventArgs.Empty);
             };
-        }
+        }        
     }
 }

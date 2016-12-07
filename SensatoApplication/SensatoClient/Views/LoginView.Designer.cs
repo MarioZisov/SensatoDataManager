@@ -33,6 +33,8 @@
             this.labelUsername = new MetroFramework.Controls.MetroLabel();
             this.labelPassword = new MetroFramework.Controls.MetroLabel();
             this.buttonLogin = new MetroFramework.Controls.MetroButton();
+            this.labelUsernameError = new MetroFramework.Controls.MetroLabel();
+            this.labelPasswordError = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
             // tetBoxUsername
@@ -80,7 +82,7 @@
             this.textBoxPassword.CustomButton.UseSelectable = true;
             this.textBoxPassword.CustomButton.Visible = false;
             this.textBoxPassword.Lines = new string[0];
-            this.textBoxPassword.Location = new System.Drawing.Point(342, 226);
+            this.textBoxPassword.Location = new System.Drawing.Point(342, 228);
             this.textBoxPassword.MaxLength = 32767;
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '\0';
@@ -115,17 +117,45 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(342, 269);
+            this.buttonLogin.Location = new System.Drawing.Point(342, 280);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(116, 23);
+            this.buttonLogin.Size = new System.Drawing.Size(116, 28);
             this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseSelectable = true;
+            // 
+            // labelUsernameError
+            // 
+            this.labelUsernameError.AutoSize = true;
+            this.labelUsernameError.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.labelUsernameError.ForeColor = System.Drawing.Color.Red;
+            this.labelUsernameError.Location = new System.Drawing.Point(363, 311);
+            this.labelUsernameError.Name = "labelUsernameError";
+            this.labelUsernameError.Size = new System.Drawing.Size(70, 15);
+            this.labelUsernameError.TabIndex = 5;
+            this.labelUsernameError.Text = "metroLabel1";
+            this.labelUsernameError.UseCustomForeColor = true;
+            this.labelUsernameError.Visible = false;
+            // 
+            // labelPasswordError
+            // 
+            this.labelPasswordError.AutoSize = true;
+            this.labelPasswordError.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.labelPasswordError.ForeColor = System.Drawing.Color.Red;
+            this.labelPasswordError.Location = new System.Drawing.Point(363, 326);
+            this.labelPasswordError.Name = "labelPasswordError";
+            this.labelPasswordError.Size = new System.Drawing.Size(70, 15);
+            this.labelPasswordError.TabIndex = 6;
+            this.labelPasswordError.Text = "metroLabel2";
+            this.labelPasswordError.UseCustomForeColor = true;
+            this.labelPasswordError.Visible = false;
             // 
             // LoginView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelPasswordError);
+            this.Controls.Add(this.labelUsernameError);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelUsername);
@@ -146,5 +176,7 @@
         private MetroFramework.Controls.MetroLabel labelUsername;
         private MetroFramework.Controls.MetroLabel labelPassword;
         private MetroFramework.Controls.MetroButton buttonLogin;
+        private MetroFramework.Controls.MetroLabel labelUsernameError;
+        private MetroFramework.Controls.MetroLabel labelPasswordError;
     }
 }
