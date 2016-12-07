@@ -14,9 +14,7 @@ namespace SensatoClient.Views
 {
     public partial class HiveView : MetroUserControl, IHiveView
     {
-        public event EventHandler BackClick;
-
-        public event EventHandler ForwardClick;
+        public event EventHandler LogoutClick;
 
         public HiveView()
         {
@@ -25,7 +23,11 @@ namespace SensatoClient.Views
         }
 
         private void SubscribeEvents()
-        {            
+        {
+            this.buttonLogout.Click += delegate
+            {
+                this.LogoutClick.Invoke(this, EventArgs.Empty);
+            };
         }
     }
 }

@@ -53,9 +53,15 @@ namespace SensatoClient.Presenters
             }
         }
 
+        public void OnLogoutClick(object sender, EventArgs e)
+        {
+            this.loginView.BringToFront();
+        }
+
         protected override void SubscribeEvents()
         {
             this.loginView.LoginClick += OnLoginClick;
+            this.hiveView.LogoutClick += OnLogoutClick;
         }
     }
 }

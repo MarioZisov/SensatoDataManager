@@ -8,8 +8,6 @@ namespace SensatoClient.Contracts
 {
     public interface IHiveView : IView
     {
-        event EventHandler BackClick;
-
-        event EventHandler ForwardClick;
+        event EventHandler LogoutClick;
     }
 }
