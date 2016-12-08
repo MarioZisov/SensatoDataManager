@@ -7,8 +7,8 @@
     [DataContract]
     public class UserDTO
     {
-
         private ICollection<HiveDTO> hives;
+
         public UserDTO()
         {
             this.Hives = new HashSet<HiveDTO>();

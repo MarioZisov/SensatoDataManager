@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SensatoWebService.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SensatoWebService.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SensatoWebService.Models.Enumerations" />
+  <xs:complexType name="Hive">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Frames" nillable="true" type="tns:ArrayOfFrame" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsRemoved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Hive" nillable="true" type="tns:Hive" />
   <xs:complexType name="ArrayOfFrame">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Frame" nillable="true" type="tns:Frame" />
@@ -17,34 +27,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Frame" nillable="true" type="tns:Frame" />
-  <xs:complexType name="Hive">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Frames" nillable="true" type="tns:ArrayOfFrame" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IsRemoved" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Hive" nillable="true" type="tns:Hive" />
-  <xs:complexType name="User">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Hives" nillable="true" type="tns:ArrayOfHive" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IsDisabled" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IsLogged" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SensatoWebService.Models.Enumerations" minOccurs="0" name="Role" type="q1:RoleType" />
-      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="User" nillable="true" type="tns:User" />
-  <xs:complexType name="ArrayOfHive">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Hive" nillable="true" type="tns:Hive" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfHive" nillable="true" type="tns:ArrayOfHive" />
   <xs:complexType name="ArrayOfMeasurment">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Measurment" nillable="true" type="tns:Measurment" />
@@ -63,4 +45,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Measurment" nillable="true" type="tns:Measurment" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Hives" nillable="true" type="tns:ArrayOfHive" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDisabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLogged" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SensatoWebService.Models.Enumerations" minOccurs="0" name="Role" type="q1:RoleType" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfHive">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Hive" nillable="true" type="tns:Hive" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHive" nillable="true" type="tns:ArrayOfHive" />
 </xs:schema>

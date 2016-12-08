@@ -9,6 +9,7 @@
     public class FrameDTO
     {
         private ICollection<MeasurmentDTO> measurments;
+
         public FrameDTO()
         {
             this.Measurments = new HashSet<MeasurmentDTO>();

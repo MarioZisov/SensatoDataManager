@@ -113,7 +113,7 @@ namespace SensatoClient.SensatoServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SensatoClient.SensatoServiceReference.Frame[] FramesField;
+        private SensatoClient.SensatoServiceReference.FrameDTO[] FramesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -138,7 +138,7 @@ namespace SensatoClient.SensatoServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SensatoClient.SensatoServiceReference.Frame[] Frames {
+        public SensatoClient.SensatoServiceReference.FrameDTO[] Frames {
             get {
                 return this.FramesField;
             }
@@ -355,9 +355,9 @@ namespace SensatoClient.SensatoServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Frame", Namespace="http://schemas.datacontract.org/2004/07/SensatoWebService.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FrameDTO", Namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.DataTransferObjects")]
     [System.SerializableAttribute()]
-    public partial class Frame : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class FrameDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -372,7 +372,7 @@ namespace SensatoClient.SensatoServiceReference {
         private bool IsRemovedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SensatoClient.SensatoServiceReference.Measurment[] MeasurmentsField;
+        private SensatoClient.SensatoServiceReference.MeasurmentDTO[] MeasurmentsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PositionField;
@@ -427,7 +427,7 @@ namespace SensatoClient.SensatoServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SensatoClient.SensatoServiceReference.Measurment[] Measurments {
+        public SensatoClient.SensatoServiceReference.MeasurmentDTO[] Measurments {
             get {
                 return this.MeasurmentsField;
             }
@@ -557,6 +557,256 @@ namespace SensatoClient.SensatoServiceReference {
                 if ((object.ReferenceEquals(this.UserField, value) != true)) {
                     this.UserField = value;
                     this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MeasurmentDTO", Namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.DataTransferObjects")]
+    [System.SerializableAttribute()]
+    public partial class MeasurmentDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateTimeOfMeasurmentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float FirstSensorTempField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SensatoClient.SensatoServiceReference.FrameDTO FrameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsDeletedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float SecondSensorTempField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float ThirdSensorTempField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateTimeOfMeasurment {
+            get {
+                return this.DateTimeOfMeasurmentField;
+            }
+            set {
+                if ((this.DateTimeOfMeasurmentField.Equals(value) != true)) {
+                    this.DateTimeOfMeasurmentField = value;
+                    this.RaisePropertyChanged("DateTimeOfMeasurment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float FirstSensorTemp {
+            get {
+                return this.FirstSensorTempField;
+            }
+            set {
+                if ((this.FirstSensorTempField.Equals(value) != true)) {
+                    this.FirstSensorTempField = value;
+                    this.RaisePropertyChanged("FirstSensorTemp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SensatoClient.SensatoServiceReference.FrameDTO Frame {
+            get {
+                return this.FrameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FrameField, value) != true)) {
+                    this.FrameField = value;
+                    this.RaisePropertyChanged("Frame");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float SecondSensorTemp {
+            get {
+                return this.SecondSensorTempField;
+            }
+            set {
+                if ((this.SecondSensorTempField.Equals(value) != true)) {
+                    this.SecondSensorTempField = value;
+                    this.RaisePropertyChanged("SecondSensorTemp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float ThirdSensorTemp {
+            get {
+                return this.ThirdSensorTempField;
+            }
+            set {
+                if ((this.ThirdSensorTempField.Equals(value) != true)) {
+                    this.ThirdSensorTempField = value;
+                    this.RaisePropertyChanged("ThirdSensorTemp");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Frame", Namespace="http://schemas.datacontract.org/2004/07/SensatoWebService.Models")]
+    [System.SerializableAttribute()]
+    public partial class Frame : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SensatoClient.SensatoServiceReference.Hive HiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsRemovedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SensatoClient.SensatoServiceReference.Measurment[] MeasurmentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PositionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SensatoClient.SensatoServiceReference.Hive Hive {
+            get {
+                return this.HiveField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HiveField, value) != true)) {
+                    this.HiveField = value;
+                    this.RaisePropertyChanged("Hive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsRemoved {
+            get {
+                return this.IsRemovedField;
+            }
+            set {
+                if ((this.IsRemovedField.Equals(value) != true)) {
+                    this.IsRemovedField = value;
+                    this.RaisePropertyChanged("IsRemoved");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SensatoClient.SensatoServiceReference.Measurment[] Measurments {
+            get {
+                return this.MeasurmentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MeasurmentsField, value) != true)) {
+                    this.MeasurmentsField = value;
+                    this.RaisePropertyChanged("Measurments");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Position {
+            get {
+                return this.PositionField;
+            }
+            set {
+                if ((this.PositionField.Equals(value) != true)) {
+                    this.PositionField = value;
+                    this.RaisePropertyChanged("Position");
                 }
             }
         }
@@ -742,11 +992,11 @@ namespace SensatoClient.SensatoServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/CheckPassowrdMatch", ReplyAction="http://tempuri.org/ISensatoService/CheckPassowrdMatchResponse")]
         System.Threading.Tasks.Task<bool> CheckPassowrdMatchAsync(string passwordHash, string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetHivesByUser", ReplyAction="http://tempuri.org/ISensatoService/GetHivesByUserResponse")]
-        SensatoClient.SensatoServiceReference.HiveDTO[] GetHivesByUser(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetUserDataByUsername", ReplyAction="http://tempuri.org/ISensatoService/GetUserDataByUsernameResponse")]
+        SensatoClient.SensatoServiceReference.HiveDTO[] GetUserDataByUsername(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetHivesByUser", ReplyAction="http://tempuri.org/ISensatoService/GetHivesByUserResponse")]
-        System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.HiveDTO[]> GetHivesByUserAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetUserDataByUsername", ReplyAction="http://tempuri.org/ISensatoService/GetUserDataByUsernameResponse")]
+        System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.HiveDTO[]> GetUserDataByUsernameAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -792,12 +1042,12 @@ namespace SensatoClient.SensatoServiceReference {
             return base.Channel.CheckPassowrdMatchAsync(passwordHash, username);
         }
         
-        public SensatoClient.SensatoServiceReference.HiveDTO[] GetHivesByUser(string username) {
-            return base.Channel.GetHivesByUser(username);
+        public SensatoClient.SensatoServiceReference.HiveDTO[] GetUserDataByUsername(string username) {
+            return base.Channel.GetUserDataByUsername(username);
         }
         
-        public System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.HiveDTO[]> GetHivesByUserAsync(string username) {
-            return base.Channel.GetHivesByUserAsync(username);
+        public System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.HiveDTO[]> GetUserDataByUsernameAsync(string username) {
+            return base.Channel.GetUserDataByUsernameAsync(username);
         }
     }
 }

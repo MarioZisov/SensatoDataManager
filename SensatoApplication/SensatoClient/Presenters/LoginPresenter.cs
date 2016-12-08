@@ -5,6 +5,7 @@
     using Models;
     using SensatoServiceReference;
     using System.ServiceModel;
+
     public class LoginPresenter : AbstractPresenter
     {
         private ILoginView loginView;
@@ -17,16 +18,23 @@
             this.loginView = loginView;
             this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
+            this.hivePresenter = hivePresenter;
             this.SubscribeEvents();
-        }        
+        }               
+
+        protected override void SubscribeEvents()
+        {
+            this.loginView.LoginClick += OnLoginClick;
+            this.hiveView.LogoutClick += OnLogoutClick;
+        }
 
         private void OnLoginClick(object sender, EventArgs e)
         {
             this.loginView.HideUsernameError();
             this.loginView.HidePasswordError();
 
-            string username = this.loginView.Username;
-            string password = this.loginView.Password;
+            string username = "FirstUser";// this.loginView.Username;
+            string password = "123";// this.loginView.Password;
 
             try
             {
@@ -48,15 +56,10 @@
             }
         }
 
-        public void OnLogoutClick(object sender, EventArgs e)
+        private void OnLogoutClick(object sender, EventArgs e)
         {
             this.loginView.BringToFront();
-        }
-
-        protected override void SubscribeEvents()
-        {
-            this.loginView.LoginClick += OnLoginClick;
-            this.hiveView.LogoutClick += OnLogoutClick;
+            this.hiveView.HivesPanel.Controls.Clear();
         }
     }
 }

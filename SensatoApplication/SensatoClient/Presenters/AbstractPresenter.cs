@@ -4,7 +4,8 @@
 
     public abstract class AbstractPresenter
     {
-        protected abstract void SubscribeEvents();
         public UserModel User { get; set; }
+
+        protected abstract void SubscribeEvents();
     }
 }

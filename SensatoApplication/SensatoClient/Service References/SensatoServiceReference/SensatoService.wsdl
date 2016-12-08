@@ -28,11 +28,11 @@
   <wsdl:message name="ISensatoService_CheckPassowrdMatch_PasswordValidationFaultFault_FaultMessage">
     <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/SensatoDBService.Faults" name="detail" element="q2:PasswordValidationFault" />
   </wsdl:message>
-  <wsdl:message name="ISensatoService_GetHivesByUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetHivesByUser" />
+  <wsdl:message name="ISensatoService_GetUserDataByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDataByUsername" />
   </wsdl:message>
-  <wsdl:message name="ISensatoService_GetHivesByUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetHivesByUserResponse" />
+  <wsdl:message name="ISensatoService_GetUserDataByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDataByUsernameResponse" />
   </wsdl:message>
   <wsdl:portType name="ISensatoService">
     <wsdl:operation name="CheckUserExists">
@@ -45,9 +45,9 @@
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/CheckPassowrdMatchResponse" message="tns:ISensatoService_CheckPassowrdMatch_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ISensatoService/CheckPassowrdMatchPasswordValidationFaultFault" name="PasswordValidationFaultFault" message="tns:ISensatoService_CheckPassowrdMatch_PasswordValidationFaultFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetHivesByUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetHivesByUser" message="tns:ISensatoService_GetHivesByUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetHivesByUserResponse" message="tns:ISensatoService_GetHivesByUser_OutputMessage" />
+    <wsdl:operation name="GetUserDataByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetUserDataByUsername" message="tns:ISensatoService_GetUserDataByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetUserDataByUsernameResponse" message="tns:ISensatoService_GetUserDataByUsername_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISensatoService" type="tns:ISensatoService">
@@ -76,8 +76,8 @@
         <soap:fault use="literal" name="PasswordValidationFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
-    <wsdl:operation name="GetHivesByUser">
-      <soap:operation soapAction="http://tempuri.org/ISensatoService/GetHivesByUser" style="document" />
+    <wsdl:operation name="GetUserDataByUsername">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/GetUserDataByUsername" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
