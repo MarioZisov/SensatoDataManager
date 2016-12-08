@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensatoClient.Contracts
+﻿namespace SensatoClient.Contracts
 {
+    using System;
+
     public interface IHiveView : IView
     {
         event EventHandler LogoutClick;

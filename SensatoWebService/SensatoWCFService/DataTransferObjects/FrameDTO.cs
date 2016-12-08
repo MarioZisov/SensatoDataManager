@@ -8,10 +8,10 @@
     [DataContract]
     public class FrameDTO
     {
-        private ICollection<Measurment> measurments;
+        private ICollection<MeasurmentDTO> measurments;
         public FrameDTO()
         {
-            this.Measurments = new HashSet<Measurment>();
+            this.Measurments = new HashSet<MeasurmentDTO>();
         }
 
         [DataMember]
@@ -27,7 +27,7 @@
         public bool IsRemoved { get; set; }
 
         [DataMember]
-        public ICollection<Measurment> Measurments
+        public ICollection<MeasurmentDTO> Measurments
         {
             get { return this.measurments; }
             set { this.measurments = value; }

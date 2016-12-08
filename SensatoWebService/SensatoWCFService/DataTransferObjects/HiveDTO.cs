@@ -7,11 +7,11 @@
     [DataContract]
     public class HiveDTO
     {
-        private ICollection<Frame> frames;
+        private ICollection<FrameDTO> frames;
 
         public HiveDTO()
         {
-            this.Frames = new HashSet<Frame>();
+            this.Frames = new HashSet<FrameDTO>();
         }
 
         [DataMember]
@@ -27,7 +27,7 @@
         public User User { get; set; }
 
         [DataMember]
-        public ICollection<Frame> Frames
+        public ICollection<FrameDTO> Frames
         {
             get { return this.frames; }
             set { this.frames = value; }

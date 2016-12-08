@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensatoClient.Exceptions
+﻿namespace SensatoClient.Exceptions
 {
+    using System;
+
     public class UsernameValidationException : ArgumentException
     {
         public UsernameValidationException(string message)

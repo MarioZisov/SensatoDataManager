@@ -43,12 +43,18 @@ namespace SensatoDBService
             return true;
         }
 
-        public ICollection<HiveDTO> GetHivesByUser(string username)
+        public ICollection<HiveDTO> GetUserDataByUsername(string username)
         {
             var hives = this.context.Hives.Where(n => n.User.Username == username).Select(x=> new
             {
                 x.Id,
-                x.Name
+                x.Name,
+                x.IsRemoved,
+                Frames = x.Frames.Select(f=>new
+                {
+                    f.Position,
+                    f.IsRemoved
+                })
             });
 
             ICollection<HiveDTO> hiveDtos = new HashSet<HiveDTO>();
@@ -58,6 +64,16 @@ namespace SensatoDBService
                 var hiveDto = new HiveDTO();
                 hiveDto.Id = hive.Id;
                 hiveDto.Name = hive.Name;
+                foreach (var frame in hive.Frames)
+                {
+                    FrameDTO frameDto = new FrameDTO
+                    {
+                        IsRemoved = frame.IsRemoved,
+                        Position = frame.Position
+                    };
+
+                    hiveDto.Frames.Add(frameDto);
+                }
 
                 hiveDtos.Add(hiveDto);
             }

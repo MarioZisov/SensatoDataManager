@@ -19,6 +19,7 @@ namespace SensatoDBService
         bool CheckPassowrdMatch(string passwordHash,string username);
 
         [OperationContract]
-        ICollection<HiveDTO> GetHivesByUser(string username);
+        ICollection<HiveDTO> GetUserDataByUsername(string username);
+
     }
 }

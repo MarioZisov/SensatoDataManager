@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensatoClient.Models
+﻿namespace SensatoClient.Models
 {
+    using System.Collections.Generic;
+
     public class HiveModel
     {
         private ICollection<FrameModel> frames;
@@ -19,7 +15,7 @@ namespace SensatoClient.Models
 
         public string Name { get; set; }
 
-        public ICollection<FrameModel> MyProperty
+        public ICollection<FrameModel> Frames
         {
             get { return this.frames; }
             set { this.frames = value; }

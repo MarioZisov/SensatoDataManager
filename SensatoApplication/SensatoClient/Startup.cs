@@ -1,17 +1,10 @@
-﻿using MetroFramework.Controls;
-using MetroFramework.Forms;
-using SensatoClient.Contracts;
-using SensatoClient.Models;
-using SensatoClient.Presenters;
-using SensatoClient.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace SensatoClient
+﻿namespace SensatoClient
 {
+    using Contracts;
+    using Presenters;
+    using Views;
+    using System;
+    using System.Windows.Forms;
     static class Startup
     {
         [STAThread]
@@ -22,11 +15,9 @@ namespace SensatoClient
 
             ILoginView loginView = new LoginView();
             IHiveView hiveView = new HiveView();
-
-            UserModel user = new UserModel();
-
-            LoginPresenter loginPres = new LoginPresenter(loginView, hiveView, user);
-            HivePresenter hivePres = new HivePresenter(loginView, hiveView);
+            
+            HivePresenter hivePres = new HivePresenter(hiveView);
+            LoginPresenter loginPres = new LoginPresenter(loginView, hiveView,hivePres);
 
             MainForm mainForm = new MainForm(loginView, hiveView);
             Application.Run(mainForm);

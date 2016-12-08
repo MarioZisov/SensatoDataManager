@@ -23,7 +23,7 @@
         public DateTime DateTimeOfMeasurment { get; set; }
 
         [DataMember]
-        public Frame Frame { get; set; }
+        public FrameDTO Frame { get; set; }
 
         [DataMember]
         public bool IsDeleted { get; set; }

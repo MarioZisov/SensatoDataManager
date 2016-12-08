@@ -1,32 +1,24 @@
-﻿using SensatoClient.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using SensatoClient.Exceptions;
-using SensatoClient.Models;
-using SensatoClient.SensatoServiceReference;
-using System.ServiceModel;
-
-namespace SensatoClient.Presenters
+﻿namespace SensatoClient.Presenters
 {
+    using Contracts;
+    using System;
+    using Models;
+    using SensatoServiceReference;
+    using System.ServiceModel;
     public class LoginPresenter : AbstractPresenter
     {
         private ILoginView loginView;
         private IHiveView hiveView;
-        private UserModel user;
+        private HivePresenter hivePresenter;
         private SensatoServiceClient serviceClient;
 
-        public LoginPresenter(ILoginView loginView, IHiveView hiveView, UserModel user)
+        public LoginPresenter(ILoginView loginView, IHiveView hiveView, HivePresenter hivePresenter)
         {
             this.loginView = loginView;
             this.hiveView = hiveView;
-            this.user = user;
             this.serviceClient = new SensatoServiceClient();
             this.SubscribeEvents();
-        }
+        }        
 
         private void OnLoginClick(object sender, EventArgs e)
         {
@@ -40,7 +32,10 @@ namespace SensatoClient.Presenters
             {
                 this.serviceClient.CheckUserExists(username);
                 this.serviceClient.CheckPassowrdMatch(password, username);
+                this.User = new UserModel(username);
+                this.hivePresenter.User = this.User;
 
+                this.hivePresenter.LoadHives();
                 this.hiveView.BringToFront();
             }
             catch (FaultException<UsernameValidationFault> fex)

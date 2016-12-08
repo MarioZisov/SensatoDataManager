@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensatoClient.Models
+﻿namespace SensatoClient.Models
 {
+    using System.Collections.Generic;
+
     public class UserModel
     {
         private ICollection<HiveModel> hives;
 
-        public UserModel()
+        public UserModel(string username)
         {
+            this.Username = username;
             this.hives = new HashSet<HiveModel>();
         }
 

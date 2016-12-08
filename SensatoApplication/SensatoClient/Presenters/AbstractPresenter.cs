@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensatoClient.Presenters
+﻿namespace SensatoClient.Presenters
 {
+    using Models;
+
     public abstract class AbstractPresenter
     {
         protected abstract void SubscribeEvents();
+        public UserModel User { get; set; }
     }
 }
