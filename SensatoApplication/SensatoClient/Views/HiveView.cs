@@ -4,6 +4,7 @@
     using MetroFramework.Controls;
     using Contracts;
     using System.Windows.Forms;
+    using System.Linq;
 
     public partial class HiveView : MetroUserControl, IHiveView
     {
@@ -22,10 +23,25 @@
             {
                 return this.tablePanelHives;
             }
+        }
 
-            set
+        public MetroPanel HiveControls
+        {
+            get
             {
-                this.tablePanelHives = value;
+                return this.panelHiveControls;
+            }
+        }
+
+        public void ResetHiveView()
+        {
+            this.HivesPanel.Height = 380;
+            this.HivesPanel.Controls.Clear();
+
+            var hiveControls = this.HiveControls.Controls.OfType<MetroButton>();
+            foreach (MetroButton button in hiveControls)
+            {
+                button.Enabled = false;
             }
         }
 

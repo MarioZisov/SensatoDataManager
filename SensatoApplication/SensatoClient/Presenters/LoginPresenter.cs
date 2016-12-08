@@ -59,7 +59,7 @@
         private void OnLogoutClick(object sender, EventArgs e)
         {
             this.loginView.BringToFront();
-            this.hiveView.HivesPanel.Controls.Clear();
+            this.hiveView.ResetHiveView();       
         }
     }
 }
