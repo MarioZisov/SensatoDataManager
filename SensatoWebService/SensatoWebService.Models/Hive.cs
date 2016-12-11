@@ -1,5 +1,6 @@
 ﻿namespace SensatoWebService.Models
 {
+    using Attributes;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -16,13 +17,18 @@
         [Key]
         public int Id { get; set; }
 
-        [Required, MinLength(1), MaxLength(100), Index(IsUnique = true)]
+        [Required]
+        [MinLength(1), MaxLength(100)]
+        [HiveName]
+        [Index("HiveNameUserIdUnq", IsUnique = true, Order = 1)]
         public string Name { get; set; }
 
         [Required]
         public bool IsRemoved { get; set; }
 
-        [Required, Column("UserId")]
+        [Index("HiveNameUserIdUnq", IsUnique = true, Order = 2)]
+        public int? UserId { get; set; }
+
         public virtual User User { get; set; }
 
         public virtual ICollection<Frame> Frames

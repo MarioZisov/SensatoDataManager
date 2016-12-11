@@ -15,11 +15,13 @@
 
             ILoginView loginView = new LoginView();
             IHiveView hiveView = new HiveView();
-            
-            HivePresenter hivePres = new HivePresenter(hiveView);
-            LoginPresenter loginPres = new LoginPresenter(loginView, hiveView,hivePres);
+            INameView nameView = new NameView();
 
-            MainForm mainForm = new MainForm(loginView, hiveView);
+            NamePresenter namePres = new NamePresenter(nameView);
+            HivePresenter hivePres = new HivePresenter(hiveView, namePres);
+            LoginPresenter loginPres = new LoginPresenter(loginView, hivePres);
+
+            MainForm mainForm = new MainForm(loginView, hiveView, nameView);
             Application.Run(mainForm);
         }
     }

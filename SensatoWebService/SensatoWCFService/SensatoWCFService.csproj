@@ -111,6 +111,7 @@
     <Compile Include="DataTransferObjects\HiveDTO.cs" />
     <Compile Include="DataTransferObjects\MeasurmentDTO.cs" />
     <Compile Include="DataTransferObjects\UserDTO.cs" />
+    <Compile Include="Faults\AlreadyExistFault.cs" />
     <Compile Include="Faults\PasswordValidationFault.cs" />
     <Compile Include="Faults\UsernameValidationFault.cs" />
     <Compile Include="SensatoService.svc.cs">
@@ -137,7 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SensatoWebService.Data\SensatoWebService.Data.csproj">
-      <Project>{274F09B4-E332-4E7F-85A6-A24AF432C479}</Project>
+      <Project>{bce8c01e-7168-4535-a1ac-fdfc15bea172}</Project>
       <Name>SensatoWebService.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\SensatoWebService.Models\SensatoWebService.Models.csproj">

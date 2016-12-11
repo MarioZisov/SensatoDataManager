@@ -9,14 +9,12 @@
     public class LoginPresenter : AbstractPresenter
     {
         private ILoginView loginView;
-        private IHiveView hiveView;
         private HivePresenter hivePresenter;
         private SensatoServiceClient serviceClient;
 
-        public LoginPresenter(ILoginView loginView, IHiveView hiveView, HivePresenter hivePresenter)
+        public LoginPresenter(ILoginView loginView, HivePresenter hivePresenter)
         {
             this.loginView = loginView;
-            this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
             this.hivePresenter = hivePresenter;
             this.SubscribeEvents();
@@ -25,7 +23,7 @@
         protected override void SubscribeEvents()
         {
             this.loginView.LoginClick += OnLoginClick;
-            this.hiveView.LogoutClick += OnLogoutClick;
+            this.hivePresenter.LogoutClick += OnLogoutClick;
         }
 
         private void OnLoginClick(object sender, EventArgs e)
@@ -43,8 +41,7 @@
                 this.User = new UserModel(username);
                 this.hivePresenter.User = this.User;
 
-                this.hivePresenter.LoadHives();
-                this.hiveView.BringToFront();
+                this.hivePresenter.Initialize();;
             }
             catch (FaultException<UsernameValidationFault> fex)
             {
@@ -59,7 +56,6 @@
         private void OnLogoutClick(object sender, EventArgs e)
         {
             this.loginView.BringToFront();
-            this.hiveView.ResetHiveView();       
         }
     }
 }

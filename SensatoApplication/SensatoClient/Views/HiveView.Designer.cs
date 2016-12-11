@@ -30,21 +30,21 @@
         {
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
-            this.metroButton5 = new MetroFramework.Controls.MetroButton();
+            this.buttonRename = new MetroFramework.Controls.MetroButton();
+            this.buttonRemove = new MetroFramework.Controls.MetroButton();
+            this.buttonAddHive = new MetroFramework.Controls.MetroButton();
             this.buttonLogout = new MetroFramework.Controls.MetroButton();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.tablePanelHives = new System.Windows.Forms.TableLayoutPanel();
             this.panelHiveControls = new MetroFramework.Controls.MetroPanel();
+            this.buttonTest = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.panelHiveControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroButton1
             // 
-            this.metroButton1.Enabled = false;
             this.metroButton1.Location = new System.Drawing.Point(3, 9);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(132, 31);
@@ -54,7 +54,6 @@
             // 
             // metroButton2
             // 
-            this.metroButton2.Enabled = false;
             this.metroButton2.Location = new System.Drawing.Point(3, 48);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(132, 31);
@@ -62,34 +61,32 @@
             this.metroButton2.Text = "Frame";
             this.metroButton2.UseSelectable = true;
             // 
-            // metroButton3
+            // buttonRename
             // 
-            this.metroButton3.Enabled = false;
-            this.metroButton3.Location = new System.Drawing.Point(3, 85);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(132, 31);
-            this.metroButton3.TabIndex = 4;
-            this.metroButton3.Text = "Rename";
-            this.metroButton3.UseSelectable = true;
+            this.buttonRename.Location = new System.Drawing.Point(3, 85);
+            this.buttonRename.Name = "buttonRename";
+            this.buttonRename.Size = new System.Drawing.Size(132, 31);
+            this.buttonRename.TabIndex = 4;
+            this.buttonRename.Text = "Rename";
+            this.buttonRename.UseSelectable = true;
             // 
-            // metroButton4
+            // buttonRemove
             // 
-            this.metroButton4.Enabled = false;
-            this.metroButton4.Location = new System.Drawing.Point(3, 122);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(132, 31);
-            this.metroButton4.TabIndex = 5;
-            this.metroButton4.Text = "Remove";
-            this.metroButton4.UseSelectable = true;
+            this.buttonRemove.Location = new System.Drawing.Point(3, 122);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(132, 31);
+            this.buttonRemove.TabIndex = 5;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseSelectable = true;
             // 
-            // metroButton5
+            // buttonAddHive
             // 
-            this.metroButton5.Location = new System.Drawing.Point(0, 237);
-            this.metroButton5.Name = "metroButton5";
-            this.metroButton5.Size = new System.Drawing.Size(129, 31);
-            this.metroButton5.TabIndex = 6;
-            this.metroButton5.Text = "Add";
-            this.metroButton5.UseSelectable = true;
+            this.buttonAddHive.Location = new System.Drawing.Point(0, 237);
+            this.buttonAddHive.Name = "buttonAddHive";
+            this.buttonAddHive.Size = new System.Drawing.Size(129, 31);
+            this.buttonAddHive.TabIndex = 6;
+            this.buttonAddHive.Text = "Add";
+            this.buttonAddHive.UseSelectable = true;
             // 
             // buttonLogout
             // 
@@ -158,21 +155,18 @@
             this.tablePanelHives.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tablePanelHives.Location = new System.Drawing.Point(3, 3);
             this.tablePanelHives.Name = "tablePanelHives";
-            this.tablePanelHives.RowCount = 5;
+            this.tablePanelHives.RowCount = 1;
             this.tablePanelHives.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tablePanelHives.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tablePanelHives.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tablePanelHives.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tablePanelHives.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tablePanelHives.Size = new System.Drawing.Size(560, 380);
+            this.tablePanelHives.Size = new System.Drawing.Size(560, 0);
             this.tablePanelHives.TabIndex = 2;
             // 
             // panelHiveControls
             // 
             this.panelHiveControls.Controls.Add(this.metroButton1);
             this.panelHiveControls.Controls.Add(this.metroButton2);
-            this.panelHiveControls.Controls.Add(this.metroButton3);
-            this.panelHiveControls.Controls.Add(this.metroButton4);
+            this.panelHiveControls.Controls.Add(this.buttonRename);
+            this.panelHiveControls.Controls.Add(this.buttonRemove);
+            this.panelHiveControls.Enabled = false;
             this.panelHiveControls.HorizontalScrollbarBarColor = true;
             this.panelHiveControls.HorizontalScrollbarHighlightOnWheel = false;
             this.panelHiveControls.HorizontalScrollbarSize = 10;
@@ -184,18 +178,36 @@
             this.panelHiveControls.VerticalScrollbarHighlightOnWheel = false;
             this.panelHiveControls.VerticalScrollbarSize = 10;
             // 
+            // buttonTest
+            // 
+            this.buttonTest.BackColor = System.Drawing.Color.DimGray;
+            this.buttonTest.ForeColor = System.Drawing.Color.White;
+            this.buttonTest.Location = new System.Drawing.Point(-2, 312);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(144, 36);
+            this.buttonTest.Style = MetroFramework.MetroColorStyle.Yellow;
+            this.buttonTest.TabIndex = 0;
+            this.buttonTest.TabStop = false;
+            this.buttonTest.Text = "Test";
+            this.buttonTest.UseCustomBackColor = true;
+            this.buttonTest.UseCustomForeColor = true;
+            this.buttonTest.UseSelectable = true;
+            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
+            // 
             // HiveView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.panelHiveControls);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroTextBox1);
             this.Controls.Add(this.buttonLogout);
-            this.Controls.Add(this.metroButton5);
+            this.Controls.Add(this.buttonAddHive);
             this.Location = new System.Drawing.Point(0, 72);
             this.Name = "HiveView";
             this.Size = new System.Drawing.Size(800, 428);
+            this.UseSelectable = false;
             this.metroPanel1.ResumeLayout(false);
             this.panelHiveControls.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -206,13 +218,14 @@
 
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroButton metroButton3;
-        private MetroFramework.Controls.MetroButton metroButton4;
-        private MetroFramework.Controls.MetroButton metroButton5;
+        private MetroFramework.Controls.MetroButton buttonRename;
+        private MetroFramework.Controls.MetroButton buttonRemove;
+        private MetroFramework.Controls.MetroButton buttonAddHive;
         private MetroFramework.Controls.MetroButton buttonLogout;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private System.Windows.Forms.TableLayoutPanel tablePanelHives;
         private MetroFramework.Controls.MetroPanel panelHiveControls;
+        private MetroFramework.Controls.MetroButton buttonTest;
     }
 }

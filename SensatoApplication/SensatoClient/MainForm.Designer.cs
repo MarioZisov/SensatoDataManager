@@ -54,6 +54,7 @@
             this.Controls.Add(this.metroPanel1);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.TransparencyKey = System.Drawing.Color.WhiteSmoke;
             this.ResumeLayout(false);
 
         }

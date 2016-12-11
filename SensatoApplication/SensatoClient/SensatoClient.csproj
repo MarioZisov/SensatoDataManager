@@ -60,8 +60,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IFrameView.cs" />
     <Compile Include="Contracts\IHiveView.cs" />
     <Compile Include="Contracts\ILoginView.cs" />
+    <Compile Include="Contracts\INameView.cs" />
     <Compile Include="Contracts\IView.cs" />
     <Compile Include="Exceptions\PasswordValidationException.cs" />
     <Compile Include="Exceptions\UsernameValidationException.cs" />
@@ -75,8 +77,10 @@
     <Compile Include="Models\HiveModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Presenters\AbstractPresenter.cs" />
+    <Compile Include="Presenters\FramePresenter.cs" />
     <Compile Include="Presenters\HivePresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\NamePresenter.cs" />
     <Compile Include="Service References\SensatoServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +88,12 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\FrameView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FrameView.Designer.cs">
+      <DependentUpon>FrameView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\HiveView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -95,6 +105,12 @@
     </Compile>
     <Compile Include="Views\LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NameView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\NameView.Designer.cs">
+      <DependentUpon>NameView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -108,11 +124,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\FrameView.resx">
+      <DependentUpon>FrameView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\HiveView.resx">
       <DependentUpon>HiveView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NameView.resx">
+      <DependentUpon>NameView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

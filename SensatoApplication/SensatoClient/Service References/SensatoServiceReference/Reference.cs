@@ -486,6 +486,9 @@ namespace SensatoClient.SensatoServiceReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private SensatoClient.SensatoServiceReference.User UserField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> UserIdField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -557,6 +560,19 @@ namespace SensatoClient.SensatoServiceReference {
                 if ((object.ReferenceEquals(this.UserField, value) != true)) {
                     this.UserField = value;
                     this.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
                 }
             }
         }
@@ -725,6 +741,9 @@ namespace SensatoClient.SensatoServiceReference {
         private SensatoClient.SensatoServiceReference.Hive HiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> HiveIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -755,6 +774,19 @@ namespace SensatoClient.SensatoServiceReference {
                 if ((object.ReferenceEquals(this.HiveField, value) != true)) {
                     this.HiveField = value;
                     this.RaisePropertyChanged("Hive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> HiveId {
+            get {
+                return this.HiveIdField;
+            }
+            set {
+                if ((this.HiveIdField.Equals(value) != true)) {
+                    this.HiveIdField = value;
+                    this.RaisePropertyChanged("HiveId");
                 }
             }
         }
@@ -840,6 +872,9 @@ namespace SensatoClient.SensatoServiceReference {
         private SensatoClient.SensatoServiceReference.Frame FrameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> FrameIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -896,6 +931,19 @@ namespace SensatoClient.SensatoServiceReference {
                 if ((object.ReferenceEquals(this.FrameField, value) != true)) {
                     this.FrameField = value;
                     this.RaisePropertyChanged("Frame");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> FrameId {
+            get {
+                return this.FrameIdField;
+            }
+            set {
+                if ((this.FrameIdField.Equals(value) != true)) {
+                    this.FrameIdField = value;
+                    this.RaisePropertyChanged("FrameId");
                 }
             }
         }
@@ -973,6 +1021,51 @@ namespace SensatoClient.SensatoServiceReference {
         Administrator = 1,
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AlreadyExistFault", Namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.Faults")]
+    [System.SerializableAttribute()]
+    public partial class AlreadyExistFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SensatoServiceReference.ISensatoService")]
     public interface ISensatoService {
@@ -997,6 +1090,26 @@ namespace SensatoClient.SensatoServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetUserDataByUsername", ReplyAction="http://tempuri.org/ISensatoService/GetUserDataByUsernameResponse")]
         System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.HiveDTO[]> GetUserDataByUsernameAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/AddHive", ReplyAction="http://tempuri.org/ISensatoService/AddHiveResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(SensatoClient.SensatoServiceReference.AlreadyExistFault), Action="http://tempuri.org/ISensatoService/AddHiveAlreadyExistFaultFault", Name="AlreadyExistFault", Namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.Faults")]
+        void AddHive(string username, string hiveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/AddHive", ReplyAction="http://tempuri.org/ISensatoService/AddHiveResponse")]
+        System.Threading.Tasks.Task AddHiveAsync(string username, string hiveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/RenameHive", ReplyAction="http://tempuri.org/ISensatoService/RenameHiveResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(SensatoClient.SensatoServiceReference.AlreadyExistFault), Action="http://tempuri.org/ISensatoService/RenameHiveAlreadyExistFaultFault", Name="AlreadyExistFault", Namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.Faults")]
+        bool RenameHive(string username, string newHiveName, string currentHiveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/RenameHive", ReplyAction="http://tempuri.org/ISensatoService/RenameHiveResponse")]
+        System.Threading.Tasks.Task<bool> RenameHiveAsync(string username, string newHiveName, string currentHiveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/RemoveHive", ReplyAction="http://tempuri.org/ISensatoService/RemoveHiveResponse")]
+        bool RemoveHive(string username, string hiveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/RemoveHive", ReplyAction="http://tempuri.org/ISensatoService/RemoveHiveResponse")]
+        System.Threading.Tasks.Task<bool> RemoveHiveAsync(string username, string hiveName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1048,6 +1161,30 @@ namespace SensatoClient.SensatoServiceReference {
         
         public System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.HiveDTO[]> GetUserDataByUsernameAsync(string username) {
             return base.Channel.GetUserDataByUsernameAsync(username);
+        }
+        
+        public void AddHive(string username, string hiveName) {
+            base.Channel.AddHive(username, hiveName);
+        }
+        
+        public System.Threading.Tasks.Task AddHiveAsync(string username, string hiveName) {
+            return base.Channel.AddHiveAsync(username, hiveName);
+        }
+        
+        public bool RenameHive(string username, string newHiveName, string currentHiveName) {
+            return base.Channel.RenameHive(username, newHiveName, currentHiveName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RenameHiveAsync(string username, string newHiveName, string currentHiveName) {
+            return base.Channel.RenameHiveAsync(username, newHiveName, currentHiveName);
+        }
+        
+        public bool RemoveHive(string username, string hiveName) {
+            return base.Channel.RemoveHive(username, hiveName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveHiveAsync(string username, string hiveName) {
+            return base.Channel.RemoveHiveAsync(username, hiveName);
         }
     }
 }

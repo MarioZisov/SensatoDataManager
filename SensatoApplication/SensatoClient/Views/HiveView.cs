@@ -5,11 +5,15 @@
     using Contracts;
     using System.Windows.Forms;
     using System.Linq;
+    using System.Collections.Generic;
 
     public partial class HiveView : MetroUserControl, IHiveView
     {
         public event EventHandler LogoutClick;
         public event EventHandler HiveButtonClick;
+        public event EventHandler AddHiveClick;
+        public event EventHandler RenameHiveClick;
+        public event EventHandler RemoveHiveClick;
 
         public HiveView()
         {
@@ -17,7 +21,7 @@
             this.SubscribeViewButtons();
         }
 
-        public TableLayoutPanel HivesPanel
+        public TableLayoutPanel HivesTable
         {
             get
             {
@@ -33,21 +37,30 @@
             }
         }
 
-        public void ResetHiveView()
+        public bool IsEnabled
         {
-            this.HivesPanel.Height = 380;
-            this.HivesPanel.Controls.Clear();
-
-            var hiveControls = this.HiveControls.Controls.OfType<MetroButton>();
-            foreach (MetroButton button in hiveControls)
+            get
             {
-                button.Enabled = false;
+                return this.Enabled;
+            }
+
+            set
+            {
+                this.Enabled = value;
             }
         }
 
-        public void SubscibeHiveButtons()
+        public void ResetHiveView()
         {
-            foreach (Button button in HivesPanel.Controls)
+            this.HivesTable.Height = 0;
+            this.HivesTable.Controls.Clear();
+
+            this.HiveControls.Enabled = false;
+        }
+
+        public void SubscibeHiveButtons(IEnumerable<Control> buttonsToSubscribe)
+        {
+            foreach (MetroButton button in buttonsToSubscribe)
             {
                 button.Click += delegate
                 {
@@ -62,6 +75,29 @@
             {
                 this.LogoutClick?.Invoke(this, EventArgs.Empty);
             };
+
+            this.buttonAddHive.Click += delegate
+            {
+                this.AddHiveClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.buttonRename.Click += delegate
+            {
+                this.RenameHiveClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.buttonRemove.Click += delegate
+            {
+                this.RemoveHiveClick?.Invoke(this, EventArgs.Empty);
+            };
+        }
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            this.buttonTest.Highlight = true;
+            this.buttonTest.UseCustomForeColor = false;
+            this.buttonTest.UseStyleColors = true;
+            this.buttonTest.Refresh();
         }
     }
 }

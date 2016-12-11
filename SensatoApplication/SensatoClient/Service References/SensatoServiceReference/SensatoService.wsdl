@@ -34,6 +34,30 @@
   <wsdl:message name="ISensatoService_GetUserDataByUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserDataByUsernameResponse" />
   </wsdl:message>
+  <wsdl:message name="ISensatoService_AddHive_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddHive" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_AddHive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddHiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_AddHive_AlreadyExistFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/SensatoDBService.Faults" name="detail" element="q3:AlreadyExistFault" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_RenameHive_InputMessage">
+    <wsdl:part name="parameters" element="tns:RenameHive" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_RenameHive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RenameHiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_RenameHive_AlreadyExistFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/SensatoDBService.Faults" name="detail" element="q4:AlreadyExistFault" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_RemoveHive_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveHive" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_RemoveHive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveHiveResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISensatoService">
     <wsdl:operation name="CheckUserExists">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/CheckUserExists" message="tns:ISensatoService_CheckUserExists_InputMessage" />
@@ -48,6 +72,20 @@
     <wsdl:operation name="GetUserDataByUsername">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetUserDataByUsername" message="tns:ISensatoService_GetUserDataByUsername_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetUserDataByUsernameResponse" message="tns:ISensatoService_GetUserDataByUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddHive">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/AddHive" message="tns:ISensatoService_AddHive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/AddHiveResponse" message="tns:ISensatoService_AddHive_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISensatoService/AddHiveAlreadyExistFaultFault" name="AlreadyExistFaultFault" message="tns:ISensatoService_AddHive_AlreadyExistFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RenameHive">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/RenameHive" message="tns:ISensatoService_RenameHive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/RenameHiveResponse" message="tns:ISensatoService_RenameHive_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ISensatoService/RenameHiveAlreadyExistFaultFault" name="AlreadyExistFaultFault" message="tns:ISensatoService_RenameHive_AlreadyExistFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveHive">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/RemoveHive" message="tns:ISensatoService_RemoveHive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/RemoveHiveResponse" message="tns:ISensatoService_RemoveHive_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISensatoService" type="tns:ISensatoService">
@@ -78,6 +116,39 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserDataByUsername">
       <soap:operation soapAction="http://tempuri.org/ISensatoService/GetUserDataByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddHive">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/AddHive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AlreadyExistFaultFault">
+        <soap:fault use="literal" name="AlreadyExistFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RenameHive">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/RenameHive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AlreadyExistFaultFault">
+        <soap:fault use="literal" name="AlreadyExistFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveHive">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/RemoveHive" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

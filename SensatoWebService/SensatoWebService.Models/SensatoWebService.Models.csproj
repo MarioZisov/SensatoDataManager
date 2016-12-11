@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\HiveNameAttribute.cs" />
     <Compile Include="Attributes\UsernameAttribute.cs" />
     <Compile Include="Enumerations\RoleType.cs" />
     <Compile Include="Frame.cs" />

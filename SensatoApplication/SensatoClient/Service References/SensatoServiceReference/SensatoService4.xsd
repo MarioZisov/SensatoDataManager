@@ -8,6 +8,7 @@
       <xs:element minOccurs="0" name="IsRemoved" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Hive" nillable="true" type="tns:Hive" />
@@ -20,6 +21,7 @@
   <xs:complexType name="Frame">
     <xs:sequence>
       <xs:element minOccurs="0" name="Hive" nillable="true" type="tns:Hive" />
+      <xs:element minOccurs="0" name="HiveId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IsRemoved" type="xs:boolean" />
       <xs:element minOccurs="0" name="Measurments" nillable="true" type="tns:ArrayOfMeasurment" />
@@ -38,6 +40,7 @@
       <xs:element minOccurs="0" name="DateTimeOfMeasurment" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FirstSensorTemp" type="xs:float" />
       <xs:element minOccurs="0" name="Frame" nillable="true" type="tns:Frame" />
+      <xs:element minOccurs="0" name="FrameId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
       <xs:element minOccurs="0" name="SecondSensorTemp" type="xs:float" />

@@ -16,10 +16,20 @@ namespace SensatoDBService
 
         [OperationContract]
         [FaultContract(typeof(PasswordValidationFault))]
-        bool CheckPassowrdMatch(string passwordHash,string username);
+        bool CheckPassowrdMatch(string passwordHash, string username);
 
         [OperationContract]
         ICollection<HiveDTO> GetUserDataByUsername(string username);
 
+        [OperationContract]
+        [FaultContract(typeof(AlreadyExistFault))]
+        void AddHive(string username, string hiveName);
+
+        [OperationContract]
+        [FaultContract(typeof(AlreadyExistFault))]
+        bool RenameHive(string username, string newHiveName, string currentHiveName);
+
+        [OperationContract]
+        bool RemoveHive(string username, string hiveName);
     }
 }

@@ -17,8 +17,9 @@
 
         [Required]
         public int Position { get; set; }
+       
+        public int? HiveId { get; set; }
 
-        [Required,Column("HiveId")]
         public virtual Hive Hive { get; set; }
         
         [Required]

@@ -2,6 +2,7 @@
 {
     using MetroFramework.Controls;
     using System;
+    using System.Collections.Generic;
     using System.Windows.Forms;
 
     public interface IHiveView : IView
@@ -10,12 +11,21 @@
 
         event EventHandler HiveButtonClick;
 
-        TableLayoutPanel HivesPanel { get; }
+        event EventHandler AddHiveClick;
+
+        event EventHandler RenameHiveClick;
+
+        event EventHandler RemoveHiveClick;
+
+        TableLayoutPanel HivesTable { get; }
 
         MetroPanel HiveControls { get; }
 
-        void SubscibeHiveButtons();
+        bool IsEnabled { get; set; }
+
+        void SubscibeHiveButtons(IEnumerable<Control> buttonsToSubscribe);
 
         void ResetHiveView();
+
     }
 }

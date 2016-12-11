@@ -7,93 +7,203 @@
     using System;
     using System.Windows.Forms;
     using System.Linq;
+    using System.Collections.Generic;
+    using Views;
+    using System.ServiceModel;
+    using MetroFramework;
 
     public class HivePresenter : AbstractPresenter
     {
         private IHiveView hiveView;
+        //private INameView nameView;
         private SensatoServiceClient serviceClient;
+        private NamePresenter namePresenter;
+        private MetroButton selectedHive;
 
-        public HivePresenter(IHiveView hiveView)
+        public event EventHandler LogoutClick;
+
+        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter)
         {
             this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
+            this.namePresenter = namePresenter;
             this.SubscribeEvents();
-        }             
+        }
 
-        public void LoadHives()
+        public void Initialize()
         {
             var hivesDto = this.serviceClient.GetUserDataByUsername(this.User.Username);
             foreach (var hiveDto in hivesDto)
             {
                 HiveModel hive = new HiveModel();
-                if (!hiveDto.IsRemoved)
+                hive.Id = hiveDto.Id;
+                hive.Name = hiveDto.Name;
+                foreach (var frameDto in hiveDto.Frames)
                 {
-                    hive.Id = hiveDto.Id;
-                    hive.Name = hiveDto.Name;
-                    foreach (var frameDto in hiveDto.Frames)
+                    FrameModel frame = new FrameModel();
+                    if (!frameDto.IsRemoved)
                     {
-                        FrameModel frame = new FrameModel();
-                        if (!frameDto.IsRemoved)
-                        {
-                            frame.Position = frameDto.Position;
-                            hive.Frames.Add(frame);
-                        }
+                        frame.Position = frameDto.Position;
+                        hive.Frames.Add(frame);
                     }
-                    this.User.Hives.Add(hive);
                 }
+
+                this.User.Hives.Add(hive);
             }
 
-            this.PassHivesToView();
+            var hives = this.User.Hives.Select(h => h.Name).ToList();
+            this.PassHivesToView(hives);
+            this.hiveView.BringToFront();
         }
 
         protected override void SubscribeEvents()
         {
+            this.hiveView.LogoutClick += OnLogout;
             this.hiveView.HiveButtonClick += OnHiveButtonsClick;
+            this.hiveView.AddHiveClick += OnAddHiveButtonClick;
+            this.hiveView.RenameHiveClick += OnRenameHiveClick;
+            this.hiveView.RemoveHiveClick += OnRemoveHiveClick;
+            this.namePresenter.RenameSaveComplete += OnRenameComplete;
+            this.namePresenter.AddSaveComplete += OnAddComplete;
+            this.namePresenter.Cancel += OnCancel;
+        }
+
+        private void OnRemoveHiveClick(object sender, EventArgs e)
+        {
+            string hiveName = this.selectedHive.Text;
+
+            DialogResult result = MetroMessageBox.Show((MetroUserControl)sender
+                , $"Data for {hiveName} will be deleted. Do you want to continue?"
+                , $"Delete {hiveName}"
+                , MessageBoxButtons.YesNo
+                , MessageBoxIcon.Warning
+                , 100);
+
+            if (result == DialogResult.Yes)
+            {
+                this.serviceClient.RemoveHive(this.User.Username, hiveName);
+                var hive = this.User.Hives.FirstOrDefault(h => h.Name == hiveName);
+                this.User.Hives.Remove(hive);
+                this.hiveView.HivesTable.Controls.Remove(this.selectedHive);
+                this.hiveView.HivesTable.Refresh();
+                this.hiveView.HiveControls.Enabled = false;
+                this.selectedHive = null;
+            }
+        }
+
+        private void OnLogout(object sender, EventArgs e)
+        {
+            this.LogoutClick?.Invoke(sender, e);
+            this.hiveView.HivesTable.Height = 0;
+            this.hiveView.HivesTable.Controls.Clear();
+            this.hiveView.HiveControls.Enabled = false;
+        }
+
+        private void OnRenameHiveClick(object sender, EventArgs e)
+        {
+            this.namePresenter.User = this.User;
+            this.namePresenter.RenameInitialize(this.selectedHive.Text);
+            this.hiveView.IsEnabled = false;
+        }
+
+        private void OnAddHiveButtonClick(object sender, EventArgs e)
+        {
+            this.namePresenter.User = this.User;
+            this.namePresenter.AddInitialize();
+            this.hiveView.IsEnabled = false;
+        }
+
+        private void OnRenameComplete(object sender, EventArgs e)
+        {
+            MetroTextBox textBox = (MetroTextBox)sender;
+            string newHiveName = textBox.Text;
+            this.selectedHive.Text = newHiveName;
+
+            this.hiveView.IsEnabled = true;
+            this.hiveView.BringToFront();
+        }
+
+        private void OnCancel(object sender, EventArgs e)
+        {
+            this.hiveView.IsEnabled = true;
+            this.hiveView.BringToFront();
+        }
+
+        private void OnAddComplete(object sender, EventArgs e)
+        {
+            MetroTextBox textBox = (MetroTextBox)sender;
+            string hiveName = textBox.Text;
+            this.PassHivesToView(new List<string> { hiveName });
+
+            this.hiveView.IsEnabled = true;
+            this.hiveView.BringToFront();
         }
 
         private void OnHiveButtonsClick(object sender, EventArgs e)
         {
-            MetroButton hiveButton = (MetroButton)sender;
-            var hiveControls = this.hiveView.HiveControls.Controls.OfType<MetroButton>();
-            foreach (MetroButton button in hiveControls)
+            var buttons = this.hiveView.HivesTable.Controls.OfType<MetroButton>();
+            foreach (var button in buttons)
             {
-                button.Enabled = true;
+                button.Highlight = false;
             }
+
+            this.hiveView.HivesTable.Refresh();
+
+            MetroButton hiveButton = (MetroButton)sender;
+            hiveButton.Highlight = true;
+            hiveButton.Refresh();
+            this.selectedHive = hiveButton;
+            this.hiveView.HiveControls.Enabled = true;
         }
 
-        private void PassHivesToView()
+        private void PassHivesToView(IEnumerable<string> hiveNames)
         {
-            int hivesCount = this.User.Hives.Count;
-            int heigthToAdd = 0;
-            if (hivesCount > 20)
-            {
-                int diff = hivesCount - 20;
-                int rowsToAdd = (diff / 5) + 1;
-                heigthToAdd = rowsToAdd * 95;
-                this.hiveView.HivesPanel.Height += heigthToAdd;
-            }
+            int hivesCount = hiveNames.Count();
+            RearangeHivesTable(hivesCount);
 
             Control[] buttons = new Control[hivesCount];
 
             int counter = 0;
-            foreach (var hive in this.User.Hives)
+            foreach (var hiveName in hiveNames)
             {
                 MetroButton button = new MetroButton();
                 button.Width = 112;
                 button.Height = 95;
+                button.UseSelectable = false;
+                button.Style = MetroColorStyle.Yellow;
 
                 Padding padding = new Padding();
                 padding.All = 5;
 
                 button.Margin = padding;
-                button.Text = hive.Name;
+                button.Text = hiveName;
 
                 buttons[counter] = button;
                 counter++;
             }
 
-            this.hiveView.HivesPanel.Controls.AddRange(buttons);
-            this.hiveView.SubscibeHiveButtons();
+            this.hiveView.HivesTable.Controls.AddRange(buttons);
+            this.hiveView.SubscibeHiveButtons(buttons);
+        }
+
+        private void RearangeHivesTable(int hivesCount)
+        {
+            int currentHivesCount = this.hiveView.HivesTable.Controls.OfType<MetroButton>().Count();
+            int currentRowsCount = (int)Math.Ceiling(currentHivesCount / 5.0);
+
+            int totalHivesCount = hivesCount + currentHivesCount;
+            int totalRowsCount = (int)Math.Ceiling(totalHivesCount / 5.0);
+
+            int rowsToAdd = totalRowsCount - currentRowsCount;
+            if (rowsToAdd > 0)
+            {
+                for (int i = 0; i < rowsToAdd; i++)
+                {
+                    RowStyle rs = new RowStyle(SizeType.Absolute, 95);
+                    this.hiveView.HivesTable.RowStyles.Add(rs);
+                    this.hiveView.HivesTable.Height += 95;
+                }
+            }
         }
     }
 }

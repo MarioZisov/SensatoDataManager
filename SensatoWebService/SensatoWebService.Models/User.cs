@@ -17,7 +17,9 @@
         [Key]
         public int Id { get; set; }
         
-        [Required, Username, MinLength(4), MaxLength(30), Index(IsUnique = true)]
+        [Required]
+        [MinLength(4), MaxLength(30)]
+        [Username, Index(IsUnique = true)]
         public string Username { get; set; }
 
         [Required]

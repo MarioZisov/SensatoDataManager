@@ -21,7 +21,8 @@
         [Required]
         public DateTime DateTimeOfMeasurment { get; set; }
 
-        [Required,Column("FrameId")]
+        public int? FrameId { get; set; }
+       
         public virtual Frame Frame { get; set; }
 
         [Required]
