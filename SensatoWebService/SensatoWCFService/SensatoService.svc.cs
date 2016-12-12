@@ -86,7 +86,7 @@
         public void AddHive(string username, string hiveName)
         {
             var user = context.Users.FirstOrDefault(u => u.Username == username);
-            var hiveNames = user.Hives.Select(h => h.Name);
+            var hiveNames = user.Hives.Where(h => !h.IsRemoved).Select(h => h.Name);
             if (hiveNames.Contains(hiveName))
             {
                 throw new FaultException<AlreadyExistFault>(new AlreadyExistFault("Name is already taken"));
@@ -110,17 +110,17 @@
             }   
         }
 
-        public bool RenameHive(string username, string newHiveName, string currentHiveName)
+        public bool RenameHive(string username, string newHiveName, int hiveId)
         {
             var user = context.Users.FirstOrDefault(u => u.Username == username);            
-            var hiveNames = user.Hives.Select(h => h.Name);
+            var hiveNames = user.Hives.Where(h => !h.IsRemoved).Select(h => h.Name);
 
             if (hiveNames.Contains(newHiveName))
             {
                 throw new FaultException<AlreadyExistFault>(new AlreadyExistFault("Name is already taken"));
             }
 
-            var hive = user.Hives.FirstOrDefault(h => h.Name == currentHiveName);
+            var hive = user.Hives.FirstOrDefault(h => h.Id == hiveId);
             try
             {
                 hive.Name = newHiveName;

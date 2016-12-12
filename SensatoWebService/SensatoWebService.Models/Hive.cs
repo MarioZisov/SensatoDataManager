@@ -18,15 +18,13 @@
         public int Id { get; set; }
 
         [Required]
+        [ASCII]
         [MinLength(1), MaxLength(100)]
-        [HiveName]
-        [Index("HiveNameUserIdUnq", IsUnique = true, Order = 1)]
         public string Name { get; set; }
 
         [Required]
         public bool IsRemoved { get; set; }
 
-        [Index("HiveNameUserIdUnq", IsUnique = true, Order = 2)]
         public int? UserId { get; set; }
 
         public virtual User User { get; set; }

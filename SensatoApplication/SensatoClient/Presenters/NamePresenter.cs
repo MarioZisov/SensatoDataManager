@@ -58,8 +58,9 @@ namespace SensatoClient.Presenters
 
             try
             {
-                this.serviceClient.RenameHive(this.User.Username, newHiveName, currentHiveName);
                 var hive = this.User.Hives.FirstOrDefault(h => h.Name == currentHiveName);
+                int hiveId = hive.Id;
+                this.serviceClient.RenameHive(this.User.Username, newHiveName, currentHiveName);
                 hive.Name = newHiveName;
 
                 this.RenameSaveComplete?.Invoke(sender, EventArgs.Empty);
@@ -83,8 +84,9 @@ namespace SensatoClient.Presenters
 
             try
             {
-                this.serviceClient.AddHive(this.User.Username, hiveName);
                 HiveModel hive = new HiveModel { Name = hiveName };
+                int hiveId = hive.Id;
+                this.serviceClient.AddHive(this.User.Username, hiveName);
                 this.User.Hives.Add(hive);
 
                 this.AddSaveComplete?.Invoke(sender, EventArgs.Empty);

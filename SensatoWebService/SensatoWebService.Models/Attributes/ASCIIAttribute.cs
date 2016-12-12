@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SensatoWebService.Models.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-    public class HiveNameAttribute : ValidationAttribute
+    public class ASCIIAttribute : ValidationAttribute
     {
         private const string Pattern = @"^[\x20-\x7E]+$";
 
