@@ -37,6 +37,7 @@ namespace SensatoClient.Presenters
         {
             this.nameView.SaveButtonClick += OnAddSaveButtonClick;
             this.nameView.CancelButtonClick += OnCancelButtonClick;
+            this.nameView.HideError();
             this.nameView.BringToFront();
         }
 
@@ -44,15 +45,13 @@ namespace SensatoClient.Presenters
         {
             this.nameView.SaveButtonClick += OnRenameSaveButtonClick;
             this.nameView.CancelButtonClick += OnCancelButtonClick;
+            this.nameView.HideError();
             this.nameView.BringToFront();
             this.currentHiveName = currentHiveName;
         }
 
         private void OnRenameSaveButtonClick(object sender, EventArgs e)
         {
-            this.nameView.SaveButtonClick -= OnRenameSaveButtonClick;
-            this.nameView.CancelButtonClick -= OnCancelButtonClick;
-
             this.nameView.HideError();
             MetroTextBox textBox = (MetroTextBox)sender;
             string newHiveName = textBox.Text;
@@ -65,19 +64,19 @@ namespace SensatoClient.Presenters
 
                 this.RenameSaveComplete?.Invoke(sender, EventArgs.Empty);
                 this.nameView.HiveName = string.Empty;
+
+                this.nameView.SaveButtonClick -= OnRenameSaveButtonClick;
+                this.nameView.CancelButtonClick -= OnCancelButtonClick;
             }
             catch (FaultException<AlreadyExistFault> aef)
             {
                 this.nameView.ErrorText = aef.Detail.Message;
                 this.nameView.ShowError();
             }
-        }        
+        }
 
         private void OnAddSaveButtonClick(object sender, EventArgs e)
         {
-            this.nameView.SaveButtonClick -= OnAddSaveButtonClick;
-            this.nameView.CancelButtonClick -= OnCancelButtonClick;
-
             this.nameView.HideError();
             MetroTextBox textBox = (MetroTextBox)sender;
             string hiveName = textBox.Text;
@@ -90,6 +89,9 @@ namespace SensatoClient.Presenters
 
                 this.AddSaveComplete?.Invoke(sender, EventArgs.Empty);
                 this.nameView.HiveName = string.Empty;
+
+                this.nameView.SaveButtonClick -= OnAddSaveButtonClick;
+                this.nameView.CancelButtonClick -= OnCancelButtonClick;
             }
             catch (FaultException<AlreadyExistFault> aef)
             {

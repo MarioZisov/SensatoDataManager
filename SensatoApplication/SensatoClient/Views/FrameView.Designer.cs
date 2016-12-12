@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panelFrames = new MetroFramework.Controls.MetroPanel();
+            this.metroButton28 = new MetroFramework.Controls.MetroButton();
+            this.metroButton27 = new MetroFramework.Controls.MetroButton();
+            this.metroButton26 = new MetroFramework.Controls.MetroButton();
+            this.metroButton25 = new MetroFramework.Controls.MetroButton();
             this.metroButton17 = new MetroFramework.Controls.MetroButton();
             this.metroButton18 = new MetroFramework.Controls.MetroButton();
             this.metroButton19 = new MetroFramework.Controls.MetroButton();
@@ -53,11 +57,7 @@
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton25 = new MetroFramework.Controls.MetroButton();
-            this.metroButton26 = new MetroFramework.Controls.MetroButton();
             this.labelHiveName = new MetroFramework.Controls.MetroLabel();
-            this.metroButton27 = new MetroFramework.Controls.MetroButton();
-            this.metroButton28 = new MetroFramework.Controls.MetroButton();
             this.panelFrames.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,13 +94,53 @@
             this.panelFrames.HorizontalScrollbarBarColor = true;
             this.panelFrames.HorizontalScrollbarHighlightOnWheel = false;
             this.panelFrames.HorizontalScrollbarSize = 10;
-            this.panelFrames.Location = new System.Drawing.Point(172, 78);
+            this.panelFrames.Location = new System.Drawing.Point(98, 46);
             this.panelFrames.Name = "panelFrames";
             this.panelFrames.Size = new System.Drawing.Size(616, 325);
             this.panelFrames.TabIndex = 0;
             this.panelFrames.VerticalScrollbarBarColor = true;
             this.panelFrames.VerticalScrollbarHighlightOnWheel = false;
             this.panelFrames.VerticalScrollbarSize = 10;
+            // 
+            // metroButton28
+            // 
+            this.metroButton28.Location = new System.Drawing.Point(572, 0);
+            this.metroButton28.Margin = new System.Windows.Forms.Padding(0);
+            this.metroButton28.Name = "metroButton28";
+            this.metroButton28.Size = new System.Drawing.Size(22, 325);
+            this.metroButton28.TabIndex = 29;
+            this.metroButton28.Text = "27";
+            this.metroButton28.UseSelectable = true;
+            // 
+            // metroButton27
+            // 
+            this.metroButton27.Location = new System.Drawing.Point(594, 0);
+            this.metroButton27.Margin = new System.Windows.Forms.Padding(0);
+            this.metroButton27.Name = "metroButton27";
+            this.metroButton27.Size = new System.Drawing.Size(22, 325);
+            this.metroButton27.TabIndex = 28;
+            this.metroButton27.Text = "28";
+            this.metroButton27.UseSelectable = true;
+            // 
+            // metroButton26
+            // 
+            this.metroButton26.Location = new System.Drawing.Point(550, 0);
+            this.metroButton26.Margin = new System.Windows.Forms.Padding(0);
+            this.metroButton26.Name = "metroButton26";
+            this.metroButton26.Size = new System.Drawing.Size(22, 325);
+            this.metroButton26.TabIndex = 27;
+            this.metroButton26.Text = "26";
+            this.metroButton26.UseSelectable = true;
+            // 
+            // metroButton25
+            // 
+            this.metroButton25.Location = new System.Drawing.Point(528, 0);
+            this.metroButton25.Margin = new System.Windows.Forms.Padding(0);
+            this.metroButton25.Name = "metroButton25";
+            this.metroButton25.Size = new System.Drawing.Size(22, 325);
+            this.metroButton25.TabIndex = 26;
+            this.metroButton25.Text = "25";
+            this.metroButton25.UseSelectable = true;
             // 
             // metroButton17
             // 
@@ -342,56 +382,16 @@
             this.metroButton1.Text = "1";
             this.metroButton1.UseSelectable = true;
             // 
-            // metroButton25
-            // 
-            this.metroButton25.Location = new System.Drawing.Point(528, 0);
-            this.metroButton25.Margin = new System.Windows.Forms.Padding(0);
-            this.metroButton25.Name = "metroButton25";
-            this.metroButton25.Size = new System.Drawing.Size(22, 325);
-            this.metroButton25.TabIndex = 26;
-            this.metroButton25.Text = "25";
-            this.metroButton25.UseSelectable = true;
-            // 
-            // metroButton26
-            // 
-            this.metroButton26.Location = new System.Drawing.Point(550, 0);
-            this.metroButton26.Margin = new System.Windows.Forms.Padding(0);
-            this.metroButton26.Name = "metroButton26";
-            this.metroButton26.Size = new System.Drawing.Size(22, 325);
-            this.metroButton26.TabIndex = 27;
-            this.metroButton26.Text = "26";
-            this.metroButton26.UseSelectable = true;
-            // 
             // labelHiveName
             // 
             this.labelHiveName.AutoSize = true;
             this.labelHiveName.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.labelHiveName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelHiveName.Location = new System.Drawing.Point(414, 30);
+            this.labelHiveName.Location = new System.Drawing.Point(436, 371);
             this.labelHiveName.Name = "labelHiveName";
             this.labelHiveName.Size = new System.Drawing.Size(99, 25);
             this.labelHiveName.TabIndex = 1;
             this.labelHiveName.Text = "Hive Name";
-            // 
-            // metroButton27
-            // 
-            this.metroButton27.Location = new System.Drawing.Point(594, 0);
-            this.metroButton27.Margin = new System.Windows.Forms.Padding(0);
-            this.metroButton27.Name = "metroButton27";
-            this.metroButton27.Size = new System.Drawing.Size(22, 325);
-            this.metroButton27.TabIndex = 28;
-            this.metroButton27.Text = "28";
-            this.metroButton27.UseSelectable = true;
-            // 
-            // metroButton28
-            // 
-            this.metroButton28.Location = new System.Drawing.Point(572, 0);
-            this.metroButton28.Margin = new System.Windows.Forms.Padding(0);
-            this.metroButton28.Name = "metroButton28";
-            this.metroButton28.Size = new System.Drawing.Size(22, 325);
-            this.metroButton28.TabIndex = 29;
-            this.metroButton28.Text = "27";
-            this.metroButton28.UseSelectable = true;
             // 
             // FrameView
             // 

@@ -18,7 +18,7 @@
         //private INameView nameView;
         private SensatoServiceClient serviceClient;
         private NamePresenter namePresenter;
-        private MetroButton selectedHive;
+        private MetroButton selectedHiveButton;
 
         public event EventHandler LogoutClick;
 
@@ -70,7 +70,7 @@
 
         private void OnRemoveHiveClick(object sender, EventArgs e)
         {
-            string hiveName = this.selectedHive.Text;
+            string hiveName = this.selectedHiveButton.Text;
 
             DialogResult result = MetroMessageBox.Show((MetroUserControl)sender
                 , $"Data for {hiveName} will be deleted. Do you want to continue?"
@@ -84,10 +84,10 @@
                 this.serviceClient.RemoveHive(this.User.Username, hiveName);
                 var hive = this.User.Hives.FirstOrDefault(h => h.Name == hiveName);
                 this.User.Hives.Remove(hive);
-                this.hiveView.HivesTable.Controls.Remove(this.selectedHive);
+                this.hiveView.HivesTable.Controls.Remove(this.selectedHiveButton);
                 this.hiveView.HivesTable.Refresh();
                 this.hiveView.HiveControls.Enabled = false;
-                this.selectedHive = null;
+                this.selectedHiveButton = null;
             }
         }
 
@@ -102,7 +102,7 @@
         private void OnRenameHiveClick(object sender, EventArgs e)
         {
             this.namePresenter.User = this.User;
-            this.namePresenter.RenameInitialize(this.selectedHive.Text);
+            this.namePresenter.RenameInitialize(this.selectedHiveButton.Text);
             this.hiveView.IsEnabled = false;
         }
 
@@ -117,7 +117,7 @@
         {
             MetroTextBox textBox = (MetroTextBox)sender;
             string newHiveName = textBox.Text;
-            this.selectedHive.Text = newHiveName;
+            this.selectedHiveButton.Text = newHiveName;
 
             this.hiveView.IsEnabled = true;
             this.hiveView.BringToFront();
@@ -152,7 +152,7 @@
             MetroButton hiveButton = (MetroButton)sender;
             hiveButton.Highlight = true;
             hiveButton.Refresh();
-            this.selectedHive = hiveButton;
+            this.selectedHiveButton = hiveButton;
             this.hiveView.HiveControls.Enabled = true;
         }
 
@@ -161,7 +161,7 @@
             int hivesCount = hiveNames.Count();
             RearangeHivesTable(hivesCount);
 
-            Control[] buttons = new Control[hivesCount];
+            MetroButton[] buttons = new MetroButton[hivesCount];
 
             int counter = 0;
             foreach (var hiveName in hiveNames)
