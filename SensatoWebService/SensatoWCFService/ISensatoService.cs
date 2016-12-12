@@ -31,5 +31,8 @@ namespace SensatoDBService
 
         [OperationContract]
         bool RemoveHive(string username, string hiveName);
+
+        [OperationContract]
+        ICollection<FrameDTO> GetFramesByHiveName(string username, string hiveName);
     }
 }

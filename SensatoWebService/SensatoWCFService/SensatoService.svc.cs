@@ -32,7 +32,7 @@
             return true;
         }
 
-        public bool CheckPassowrdMatch(string passwordHash,string username)
+        public bool CheckPassowrdMatch(string passwordHash, string username)
         {
             var pass = this.context.Users.FirstOrDefault(n => n.Username == username).Password;
             if (pass != passwordHash)
@@ -48,16 +48,16 @@
             var hives = this.context.Hives
                 .Where(h => h.User.Username == username && !h.IsRemoved)
                 .Select(x => new
-            {
-                x.Id,
-                x.Name,
-                x.IsRemoved,
-                Frames = x.Frames.Select(f => new
                 {
-                    f.Position,
-                    f.IsRemoved
-                })
-            });
+                    x.Id,
+                    x.Name,
+                    x.IsRemoved,
+                    Frames = x.Frames.Select(f => new
+                    {
+                        f.Position,
+                        f.IsRemoved
+                    })
+                });
 
             ICollection<HiveDTO> hiveDtos = new HashSet<HiveDTO>();
 
@@ -97,22 +97,22 @@
                 Hive hive = new Hive
                 {
                     Name = hiveName,
-                    IsRemoved = false
+                    IsRemoved = false,
+                    Frames = this.InitializeFrames(username, hiveName)
                 };
 
                 user.Hives.Add(hive);
-
                 context.SaveChanges();
             }
             catch (DbEntityValidationException)
             {
                 throw new FaultException<AlreadyExistFault>(new AlreadyExistFault("Invalid name"));
-            }   
+            }
         }
 
         public bool RenameHive(string username, string newHiveName, string hiveName)
         {
-            var user = context.Users.FirstOrDefault(u => u.Username == username);            
+            var user = context.Users.FirstOrDefault(u => u.Username == username);
             var hiveNames = user.Hives.Select(h => h.Name);
 
             if (hiveNames.Contains(newHiveName))
@@ -142,6 +142,40 @@
             this.context.SaveChanges();
 
             return true;
+        }
+
+        public ICollection<FrameDTO> GetFramesByHiveName(string username, string hiveName)
+        {
+            ICollection<FrameDTO> framesDTOs = new HashSet<FrameDTO>();
+            var user = context.Users.FirstOrDefault(u => u.Username == username);
+            var frames = user.Hives.FirstOrDefault(h => h.Name == hiveName).Frames;
+            foreach (var frame in frames)
+            {
+                FrameDTO frameDTO = new FrameDTO
+                {
+                    Position = frame.Position,
+                    IsRemoved = frame.IsRemoved
+                };
+
+                framesDTOs.Add(frameDTO);
+            }
+
+            return framesDTOs;
+        }
+
+        private ICollection<Frame> InitializeFrames(string username, string hiveName)
+        {
+            ICollection<Frame> frames = new HashSet<Frame>();
+            for (int i = 1; i <= 28; i++)
+            {
+                Frame frame = new Frame
+                {
+                    Position = i,
+                    IsRemoved = true
+                };
+            }
+
+            return frames;
         }
     }
 }

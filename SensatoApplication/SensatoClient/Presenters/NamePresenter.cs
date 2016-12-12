@@ -81,9 +81,8 @@ namespace SensatoClient.Presenters
 
             try
             {
-                HiveModel hive = new HiveModel { Name = hiveName };
-                int hiveId = hive.Id;
                 this.serviceClient.AddHive(this.User.Username, hiveName);
+                HiveModel hive = new HiveModel { Name = hiveName };
                 this.User.Hives.Add(hive);
 
                 this.AddSaveComplete?.Invoke(sender, EventArgs.Empty);

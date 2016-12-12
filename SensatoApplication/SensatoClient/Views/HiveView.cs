@@ -14,6 +14,7 @@
         public event EventHandler AddHiveClick;
         public event EventHandler RenameHiveClick;
         public event EventHandler RemoveHiveClick;
+        public event EventHandler FrameClick;
 
         public HiveView()
         {
@@ -89,6 +90,11 @@
             this.buttonRemove.Click += delegate
             {
                 this.RemoveHiveClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.buttonFrame.Click += delegate
+            {
+                this.FrameClick?.Invoke(this, EventArgs.Empty);
             };
         }
 

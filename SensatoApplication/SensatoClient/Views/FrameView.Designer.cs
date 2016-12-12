@@ -94,7 +94,7 @@
             this.panelFrames.HorizontalScrollbarBarColor = true;
             this.panelFrames.HorizontalScrollbarHighlightOnWheel = false;
             this.panelFrames.HorizontalScrollbarSize = 10;
-            this.panelFrames.Location = new System.Drawing.Point(98, 46);
+            this.panelFrames.Location = new System.Drawing.Point(92, 55);
             this.panelFrames.Name = "panelFrames";
             this.panelFrames.Size = new System.Drawing.Size(616, 325);
             this.panelFrames.TabIndex = 0;
@@ -387,7 +387,7 @@
             this.labelHiveName.AutoSize = true;
             this.labelHiveName.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.labelHiveName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelHiveName.Location = new System.Drawing.Point(436, 371);
+            this.labelHiveName.Location = new System.Drawing.Point(356, 12);
             this.labelHiveName.Name = "labelHiveName";
             this.labelHiveName.Size = new System.Drawing.Size(99, 25);
             this.labelHiveName.TabIndex = 1;

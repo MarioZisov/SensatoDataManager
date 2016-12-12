@@ -58,6 +58,12 @@
   <wsdl:message name="ISensatoService_RemoveHive_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveHiveResponse" />
   </wsdl:message>
+  <wsdl:message name="ISensatoService_GetFramesByHiveName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFramesByHiveName" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_GetFramesByHiveName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFramesByHiveNameResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISensatoService">
     <wsdl:operation name="CheckUserExists">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/CheckUserExists" message="tns:ISensatoService_CheckUserExists_InputMessage" />
@@ -86,6 +92,10 @@
     <wsdl:operation name="RemoveHive">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/RemoveHive" message="tns:ISensatoService_RemoveHive_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/RemoveHiveResponse" message="tns:ISensatoService_RemoveHive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFramesByHiveName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetFramesByHiveName" message="tns:ISensatoService_GetFramesByHiveName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetFramesByHiveNameResponse" message="tns:ISensatoService_GetFramesByHiveName_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISensatoService" type="tns:ISensatoService">
@@ -149,6 +159,15 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveHive">
       <soap:operation soapAction="http://tempuri.org/ISensatoService/RemoveHive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFramesByHiveName">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/GetFramesByHiveName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

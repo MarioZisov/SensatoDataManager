@@ -10,5 +10,7 @@ namespace SensatoClient.Contracts
     public interface IFrameView : IView
     {
         MetroPanel FramesPanel { get; }
+
+        event EventHandler FrameButtonClick;       
     }
 }

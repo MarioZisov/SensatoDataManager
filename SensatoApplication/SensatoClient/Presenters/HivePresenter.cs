@@ -19,14 +19,16 @@
         private SensatoServiceClient serviceClient;
         private NamePresenter namePresenter;
         private MetroButton selectedHiveButton;
+        private FramePresenter framePresenter;
 
         public event EventHandler LogoutClick;
 
-        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter)
+        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter)
         {
             this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
             this.namePresenter = namePresenter;
+            this.framePresenter = framePresenter;
             this.SubscribeEvents();
         }
 
@@ -63,9 +65,19 @@
             this.hiveView.AddHiveClick += OnAddHiveButtonClick;
             this.hiveView.RenameHiveClick += OnRenameHiveClick;
             this.hiveView.RemoveHiveClick += OnRemoveHiveClick;
+            this.hiveView.FrameClick += OnFrameClick;
             this.namePresenter.RenameSaveComplete += OnRenameComplete;
             this.namePresenter.AddSaveComplete += OnAddComplete;
             this.namePresenter.Cancel += OnCancel;
+        }
+
+        private void OnFrameClick(object sender, EventArgs e)
+        {
+            IEnumerable<int> activeFrames = this.serviceClient
+                .GetFramesByHiveName(this.User.Username, this.selectedHiveButton.Text)
+                .Where(f => !f.IsRemoved).Select(f => f.Position);
+
+            this.framePresenter.LoadActiveFrames(activeFrames);
         }
 
         private void OnRemoveHiveClick(object sender, EventArgs e)

@@ -1110,6 +1110,12 @@ namespace SensatoClient.SensatoServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/RemoveHive", ReplyAction="http://tempuri.org/ISensatoService/RemoveHiveResponse")]
         System.Threading.Tasks.Task<bool> RemoveHiveAsync(string username, string hiveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetFramesByHiveName", ReplyAction="http://tempuri.org/ISensatoService/GetFramesByHiveNameResponse")]
+        SensatoClient.SensatoServiceReference.FrameDTO[] GetFramesByHiveName(string username, string hiveName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetFramesByHiveName", ReplyAction="http://tempuri.org/ISensatoService/GetFramesByHiveNameResponse")]
+        System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.FrameDTO[]> GetFramesByHiveNameAsync(string username, string hiveName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1185,6 +1191,14 @@ namespace SensatoClient.SensatoServiceReference {
         
         public System.Threading.Tasks.Task<bool> RemoveHiveAsync(string username, string hiveName) {
             return base.Channel.RemoveHiveAsync(username, hiveName);
+        }
+        
+        public SensatoClient.SensatoServiceReference.FrameDTO[] GetFramesByHiveName(string username, string hiveName) {
+            return base.Channel.GetFramesByHiveName(username, hiveName);
+        }
+        
+        public System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.FrameDTO[]> GetFramesByHiveNameAsync(string username, string hiveName) {
+            return base.Channel.GetFramesByHiveNameAsync(username, hiveName);
         }
     }
 }

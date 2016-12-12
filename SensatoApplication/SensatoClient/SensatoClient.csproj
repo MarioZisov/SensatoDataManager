@@ -146,6 +146,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\SensatoServiceReference\SensatoClient.SensatoServiceReference.FrameDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SensatoServiceReference\SensatoClient.SensatoServiceReference.HiveDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

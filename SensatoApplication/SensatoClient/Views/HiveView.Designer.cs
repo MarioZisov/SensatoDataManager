@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.buttonFrame = new MetroFramework.Controls.MetroButton();
             this.buttonRename = new MetroFramework.Controls.MetroButton();
             this.buttonRemove = new MetroFramework.Controls.MetroButton();
             this.buttonAddHive = new MetroFramework.Controls.MetroButton();
@@ -52,14 +52,14 @@
             this.metroButton1.Text = "Data";
             this.metroButton1.UseSelectable = true;
             // 
-            // metroButton2
+            // buttonFrame
             // 
-            this.metroButton2.Location = new System.Drawing.Point(3, 48);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(132, 31);
-            this.metroButton2.TabIndex = 3;
-            this.metroButton2.Text = "Frame";
-            this.metroButton2.UseSelectable = true;
+            this.buttonFrame.Location = new System.Drawing.Point(3, 48);
+            this.buttonFrame.Name = "buttonFrame";
+            this.buttonFrame.Size = new System.Drawing.Size(132, 31);
+            this.buttonFrame.TabIndex = 3;
+            this.buttonFrame.Text = "Frame";
+            this.buttonFrame.UseSelectable = true;
             // 
             // buttonRename
             // 
@@ -163,7 +163,7 @@
             // panelHiveControls
             // 
             this.panelHiveControls.Controls.Add(this.metroButton1);
-            this.panelHiveControls.Controls.Add(this.metroButton2);
+            this.panelHiveControls.Controls.Add(this.buttonFrame);
             this.panelHiveControls.Controls.Add(this.buttonRename);
             this.panelHiveControls.Controls.Add(this.buttonRemove);
             this.panelHiveControls.Enabled = false;
@@ -217,7 +217,7 @@
         #endregion
 
         private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton buttonFrame;
         private MetroFramework.Controls.MetroButton buttonRename;
         private MetroFramework.Controls.MetroButton buttonRemove;
         private MetroFramework.Controls.MetroButton buttonAddHive;

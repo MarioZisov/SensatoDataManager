@@ -14,9 +14,12 @@ namespace SensatoClient.Views
 {
     public partial class FrameView : MetroUserControl, IFrameView
     {
+        public event EventHandler FrameButtonClick;
+
         public FrameView()
         {
             InitializeComponent();
+            this.SubscribeViewButtons();
         }
 
         public MetroPanel FramesPanel
@@ -24,6 +27,18 @@ namespace SensatoClient.Views
             get
             {
                 return this.panelFrames;
+            }
+        }
+
+        private void SubscribeViewButtons()
+        {
+            var buttons = this.FramesPanel.Controls.OfType<MetroButton>();
+            foreach (MetroButton button in buttons)
+            {
+                button.Click += delegate
+                {
+                    this.FrameButtonClick?.Invoke(button, EventArgs.Empty);
+                };
             }
         }
     }
