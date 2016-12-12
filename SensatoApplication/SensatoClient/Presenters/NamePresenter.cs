@@ -25,7 +25,6 @@ namespace SensatoClient.Presenters
         {
             this.nameView = nameView;
             this.serviceClient = new SensatoServiceClient();
-            //SubscribeEvents();
         }
 
         protected override void SubscribeEvents()
@@ -35,16 +34,16 @@ namespace SensatoClient.Presenters
 
         public void AddInitialize()
         {
-            this.nameView.SaveButtonClick += OnAddSaveButtonClick;
-            this.nameView.CancelButtonClick += OnCancelButtonClick;
+            this.nameView.SaveButtonClick += this.OnAddSaveButtonClick;
+            this.nameView.CancelButtonClick += this.OnCancelButtonClick;
             this.nameView.HideError();
             this.nameView.BringToFront();
         }
 
         public void RenameInitialize(string currentHiveName)
         {
-            this.nameView.SaveButtonClick += OnRenameSaveButtonClick;
-            this.nameView.CancelButtonClick += OnCancelButtonClick;
+            this.nameView.SaveButtonClick += this.OnRenameSaveButtonClick;
+            this.nameView.CancelButtonClick += this.OnCancelButtonClick;
             this.nameView.HideError();
             this.nameView.BringToFront();
             this.currentHiveName = currentHiveName;
@@ -58,16 +57,14 @@ namespace SensatoClient.Presenters
 
             try
             {
-                var hive = this.User.Hives.FirstOrDefault(h => h.Name == currentHiveName);
-                int hiveId = hive.Id;
-                this.serviceClient.RenameHive(this.User.Username, newHiveName, currentHiveName);
+                var hive = this.User.Hives.FirstOrDefault(h => h.Name == this.currentHiveName);
+                this.serviceClient.RenameHive(this.User.Username, newHiveName, this.currentHiveName);
                 hive.Name = newHiveName;
 
                 this.RenameSaveComplete?.Invoke(sender, EventArgs.Empty);
                 this.nameView.HiveName = string.Empty;
-
-                this.nameView.SaveButtonClick -= OnRenameSaveButtonClick;
-                this.nameView.CancelButtonClick -= OnCancelButtonClick;
+                
+                this.UnsubscribeMethods();
             }
             catch (FaultException<AlreadyExistFault> aef)
             {
@@ -91,9 +88,8 @@ namespace SensatoClient.Presenters
 
                 this.AddSaveComplete?.Invoke(sender, EventArgs.Empty);
                 this.nameView.HiveName = string.Empty;
-
-                this.nameView.SaveButtonClick -= OnAddSaveButtonClick;
-                this.nameView.CancelButtonClick -= OnCancelButtonClick;
+                
+                this.UnsubscribeMethods();
             }
             catch (FaultException<AlreadyExistFault> aef)
             {
@@ -104,9 +100,18 @@ namespace SensatoClient.Presenters
 
         private void OnCancelButtonClick(object sender, EventArgs e)
         {
+            this.UnsubscribeMethods();
+
             this.nameView.HideError();
             this.nameView.HiveName = string.Empty;
             this.Cancel?.Invoke(sender, EventArgs.Empty);
+        }
+
+        private void UnsubscribeMethods()
+        {
+            this.nameView.SaveButtonClick -= this.OnAddSaveButtonClick;
+            this.nameView.SaveButtonClick -= this.OnRenameSaveButtonClick;
+            this.nameView.CancelButtonClick -= this.OnCancelButtonClick;
         }
     }
 }
