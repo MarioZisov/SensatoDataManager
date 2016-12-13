@@ -12,6 +12,8 @@ namespace SensatoClient.Presenters
     {
         private IFrameView frameView;
 
+        public event EventHandler ViewBackButtonClick;
+
         public FramePresenter(IFrameView frameView)
         {
             this.frameView = frameView;
@@ -21,6 +23,16 @@ namespace SensatoClient.Presenters
         protected override void SubscribeEvents()
         {
             this.frameView.FrameButtonClick += OnFrameButtonClick;
+            this.frameView.SaveButtonClick += OnSaveButtonClick;
+            this.frameView.BackButtonClick += delegate 
+            {
+                this.ViewBackButtonClick?.Invoke(this, EventArgs.Empty);
+            };
+        }
+
+        private void OnSaveButtonClick(object sender, EventArgs e)
+        {
+            
         }
 
         public void LoadActiveFrames(IEnumerable<int> framesPositions)

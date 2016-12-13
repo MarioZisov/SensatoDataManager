@@ -60,7 +60,11 @@ namespace SensatoClient.Views
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.labelHiveName = new MetroFramework.Controls.MetroLabel();
+            this.buttonSave = new MetroFramework.Controls.MetroButton();
+            this.buttonBack = new MetroFramework.Controls.MetroButton();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.panelFrames.SuspendLayout();
+            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelFrames
@@ -96,9 +100,9 @@ namespace SensatoClient.Views
             this.panelFrames.HorizontalScrollbarBarColor = true;
             this.panelFrames.HorizontalScrollbarHighlightOnWheel = false;
             this.panelFrames.HorizontalScrollbarSize = 10;
-            this.panelFrames.Location = new System.Drawing.Point(92, 55);
+            this.panelFrames.Location = new System.Drawing.Point(92, 79);
             this.panelFrames.Name = "panelFrames";
-            this.panelFrames.Size = new System.Drawing.Size(616, 325);
+            this.panelFrames.Size = new System.Drawing.Size(616, 270);
             this.panelFrames.TabIndex = 0;
             this.panelFrames.VerticalScrollbarBarColor = true;
             this.panelFrames.VerticalScrollbarHighlightOnWheel = false;
@@ -414,27 +418,62 @@ namespace SensatoClient.Views
             // 
             // labelHiveName
             // 
-            this.labelHiveName.AutoSize = true;
+            this.labelHiveName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelHiveName.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.labelHiveName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelHiveName.Location = new System.Drawing.Point(356, 10);
+            this.labelHiveName.Location = new System.Drawing.Point(0, 0);
             this.labelHiveName.Name = "labelHiveName";
-            this.labelHiveName.Size = new System.Drawing.Size(99, 25);
+            this.labelHiveName.Size = new System.Drawing.Size(794, 73);
             this.labelHiveName.TabIndex = 1;
             this.labelHiveName.Text = "Hive Name";
+            this.labelHiveName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(576, 369);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(132, 39);
+            this.buttonSave.TabIndex = 2;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseSelectable = true;
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Location = new System.Drawing.Point(92, 369);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(132, 39);
+            this.buttonBack.TabIndex = 3;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.UseSelectable = true;
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.Controls.Add(this.labelHiveName);
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(3, 3);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(794, 73);
+            this.metroPanel1.TabIndex = 4;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
             // 
             // FrameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.labelHiveName);
+            this.Controls.Add(this.metroPanel1);
+            this.Controls.Add(this.buttonBack);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.panelFrames);
             this.Location = new System.Drawing.Point(0, 72);
             this.Name = "FrameView";
             this.Size = new System.Drawing.Size(800, 428);
             this.panelFrames.ResumeLayout(false);
+            this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -470,5 +509,8 @@ namespace SensatoClient.Views
         private MetroFramework.Controls.MetroButton metroButton26;
         private MetroFramework.Controls.MetroButton metroButton25;
         private MetroFramework.Controls.MetroLabel labelHiveName;
+        private MetroFramework.Controls.MetroButton buttonSave;
+        private MetroFramework.Controls.MetroButton buttonBack;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
     }
 }

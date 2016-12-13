@@ -69,7 +69,11 @@
             this.namePresenter.RenameSaveComplete += OnRenameComplete;
             this.namePresenter.AddSaveComplete += OnAddComplete;
             this.namePresenter.Cancel += OnCancel;
+            this.framePresenter.ViewBackButtonClick += OnFrameViewBackButtonClick;
         }
+
+        private void OnFrameViewBackButtonClick(object sender, EventArgs e)
+            => this.hiveView.BringToFront();
 
         private void OnFrameClick(object sender, EventArgs e)
         {

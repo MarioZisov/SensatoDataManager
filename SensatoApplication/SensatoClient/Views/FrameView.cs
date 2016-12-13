@@ -15,6 +15,8 @@ namespace SensatoClient.Views
     public partial class FrameView : MetroUserControl, IFrameView
     {
         public event EventHandler FrameButtonClick;
+        public event EventHandler SaveButtonClick;
+        public event EventHandler BackButtonClick;
 
         public FrameView()
         {
@@ -46,6 +48,16 @@ namespace SensatoClient.Views
                     this.FrameButtonClick?.Invoke(button, EventArgs.Empty);
                 };
             }
+
+            buttonSave.Click += delegate
+            {
+                this.SaveButtonClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            buttonBack.Click += delegate
+            {
+                this.BackButtonClick?.Invoke(this, EventArgs.Empty);
+            };
         }
     }
 }

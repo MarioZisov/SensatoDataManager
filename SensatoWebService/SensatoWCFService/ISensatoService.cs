@@ -34,5 +34,7 @@ namespace SensatoDBService
 
         [OperationContract]
         ICollection<FrameDTO> GetFramesByHiveName(string username, string hiveName);
+
+
     }
 }
