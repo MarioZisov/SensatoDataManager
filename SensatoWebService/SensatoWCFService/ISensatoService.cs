@@ -1,11 +1,9 @@
-﻿using SensatoDBService.DataTransferObjects;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-
-namespace SensatoDBService
+﻿namespace SensatoDBService
 {
     using Faults;
     using System.Collections.Generic;
+    using System.ServiceModel;
+    using DataTransferObjects;
 
     [ServiceContract]
     public interface ISensatoService
@@ -35,6 +33,7 @@ namespace SensatoDBService
         [OperationContract]
         ICollection<FrameDTO> GetFramesByHiveName(string username, string hiveName);
 
-
+        [OperationContract]
+        void ChangeFrameStatusByHiveName(string username, string hivename,ICollection<int> activeFramesPositions);
     }
 }

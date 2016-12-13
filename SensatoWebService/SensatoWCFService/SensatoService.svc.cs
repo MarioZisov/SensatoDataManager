@@ -162,6 +162,25 @@
             return framesDTOs;
         }
 
+        public void ChangeFrameStatusByHiveName(string username, string hivename, ICollection<int> activeFramesPositions)
+        {
+            var user = this.context.Users.FirstOrDefault(u => u.Username == username);
+            var hive = user.Hives.FirstOrDefault(h => h.Name == hivename);
+            var frames = hive.Frames;
+            var positions = hive.Frames.Select(f => f.Position);
+
+            foreach (var position in positions)
+            {
+                if (!activeFramesPositions.Contains(position))
+                {
+                    frames.FirstOrDefault(f => f.Position == position).IsRemoved = true;
+                    continue;
+                }
+
+                frames.FirstOrDefault(f => f.Position == position).IsRemoved = false;
+            }
+        }
+
         private ICollection<Frame> InitializeFrames()
         {
             ICollection<Frame> frames = new HashSet<Frame>();
