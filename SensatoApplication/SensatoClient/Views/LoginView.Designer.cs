@@ -62,6 +62,7 @@
             this.tetBoxUsername.SelectionStart = 0;
             this.tetBoxUsername.ShortcutsEnabled = true;
             this.tetBoxUsername.Size = new System.Drawing.Size(116, 23);
+            this.tetBoxUsername.Style = MetroFramework.MetroColorStyle.Yellow;
             this.tetBoxUsername.TabIndex = 0;
             this.tetBoxUsername.UseSelectable = true;
             this.tetBoxUsername.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -92,6 +93,7 @@
             this.textBoxPassword.SelectionStart = 0;
             this.textBoxPassword.ShortcutsEnabled = true;
             this.textBoxPassword.Size = new System.Drawing.Size(116, 23);
+            this.textBoxPassword.Style = MetroFramework.MetroColorStyle.Yellow;
             this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.UseSelectable = true;
             this.textBoxPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
