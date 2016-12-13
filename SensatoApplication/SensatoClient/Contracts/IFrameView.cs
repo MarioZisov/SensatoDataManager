@@ -11,6 +11,8 @@ namespace SensatoClient.Contracts
     {
         MetroPanel FramesPanel { get; }
 
+        string HiveName { get; set; }
+
         event EventHandler FrameButtonClick;       
     }
 }

@@ -1,7 +1,6 @@
 ﻿namespace SensatoDBService
 {
     using SensatoWebService.Data;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.ServiceModel;
@@ -10,8 +9,6 @@
     using SensatoWebService.Models;
     using System.Data.Entity.Validation;
 
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class SensatoService : ISensatoService
     {
         private SensatoDbContext context;
@@ -85,7 +82,7 @@
 
         public void AddHive(string username, string hiveName)
         {
-            var user = context.Users.FirstOrDefault(u => u.Username == username);
+            var user = this.context.Users.FirstOrDefault(u => u.Username == username);
             var hiveNames = user.Hives.Where(h => !h.IsRemoved).Select(h => h.Name);
             if (hiveNames.Contains(hiveName))
             {
@@ -98,11 +95,11 @@
                 {
                     Name = hiveName,
                     IsRemoved = false,
-                    Frames = this.InitializeFrames(username, hiveName)
+                    Frames = this.InitializeFrames()
                 };
 
                 user.Hives.Add(hive);
-                context.SaveChanges();
+                this.context.SaveChanges();
             }
             catch (DbEntityValidationException)
             {
@@ -112,7 +109,7 @@
 
         public bool RenameHive(string username, string newHiveName, string hiveName)
         {
-            var user = context.Users.FirstOrDefault(u => u.Username == username);
+            var user = this.context.Users.FirstOrDefault(u => u.Username == username);
             var hiveNames = user.Hives.Select(h => h.Name);
 
             if (hiveNames.Contains(newHiveName))
@@ -124,7 +121,7 @@
             try
             {
                 hive.Name = newHiveName;
-                context.SaveChanges();
+                this.context.SaveChanges();
                 return true;
             }
             catch (DbEntityValidationException)
@@ -139,6 +136,8 @@
                 .FirstOrDefault(h => h.Name == hiveName && h.User.Username == username);
 
             hive.IsRemoved = true;
+            this.context.Frames.RemoveRange(hive.Frames);
+            
             this.context.SaveChanges();
 
             return true;
@@ -147,23 +146,23 @@
         public ICollection<FrameDTO> GetFramesByHiveName(string username, string hiveName)
         {
             ICollection<FrameDTO> framesDTOs = new HashSet<FrameDTO>();
-            var user = context.Users.FirstOrDefault(u => u.Username == username);
+            var user = this.context.Users.FirstOrDefault(u => u.Username == username);
             var frames = user.Hives.FirstOrDefault(h => h.Name == hiveName).Frames;
             foreach (var frame in frames)
             {
-                FrameDTO frameDTO = new FrameDTO
+                FrameDTO frameDto = new FrameDTO
                 {
                     Position = frame.Position,
                     IsRemoved = frame.IsRemoved
                 };
 
-                framesDTOs.Add(frameDTO);
+                framesDTOs.Add(frameDto);
             }
 
             return framesDTOs;
         }
 
-        private ICollection<Frame> InitializeFrames(string username, string hiveName)
+        private ICollection<Frame> InitializeFrames()
         {
             ICollection<Frame> frames = new HashSet<Frame>();
             for (int i = 1; i <= 28; i++)
@@ -173,6 +172,8 @@
                     Position = i,
                     IsRemoved = true
                 };
+
+                frames.Add(frame);
             }
 
             return frames;

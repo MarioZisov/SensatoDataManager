@@ -387,7 +387,7 @@
             this.labelHiveName.AutoSize = true;
             this.labelHiveName.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.labelHiveName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelHiveName.Location = new System.Drawing.Point(356, 12);
+            this.labelHiveName.Location = new System.Drawing.Point(356, 10);
             this.labelHiveName.Name = "labelHiveName";
             this.labelHiveName.Size = new System.Drawing.Size(99, 25);
             this.labelHiveName.TabIndex = 1;

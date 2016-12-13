@@ -38,6 +38,11 @@ namespace SensatoClient.Presenters
             this.frameView.BringToFront();
         }
 
+        public void SetCurrentHiveName(string hiveName)
+        {
+            this.frameView.HiveName = hiveName;
+        }
+
         private void OnFrameButtonClick(object sender, EventArgs e)
         {
             MetroButton frame = (MetroButton)sender;

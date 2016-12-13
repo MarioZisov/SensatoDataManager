@@ -77,6 +77,7 @@
                 .GetFramesByHiveName(this.User.Username, this.selectedHiveButton.Text)
                 .Where(f => !f.IsRemoved).Select(f => f.Position);
 
+            this.framePresenter.SetCurrentHiveName(this.selectedHiveButton.Text);
             this.framePresenter.LoadActiveFrames(activeFrames);
         }
 

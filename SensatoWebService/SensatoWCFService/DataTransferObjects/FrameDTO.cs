@@ -3,7 +3,7 @@
 
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using global::SensatoWebService.Models;
+    using SensatoWebService.Models;
 
     [DataContract]
     public class FrameDTO

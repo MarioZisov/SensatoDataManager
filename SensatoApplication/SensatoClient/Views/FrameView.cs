@@ -30,6 +30,12 @@ namespace SensatoClient.Views
             }
         }
 
+        public string HiveName
+        {
+            get { return this.labelHiveName.Text; }
+            set { this.labelHiveName.Text = value; }
+        }
+
         private void SubscribeViewButtons()
         {
             var buttons = this.FramesPanel.Controls.OfType<MetroButton>();
