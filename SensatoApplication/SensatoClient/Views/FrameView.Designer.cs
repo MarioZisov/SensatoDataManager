@@ -1,4 +1,6 @@
-﻿namespace SensatoClient.Views
+﻿using MetroFramework;
+
+namespace SensatoClient.Views
 {
     partial class FrameView
     {
@@ -110,7 +112,8 @@
             this.metroButton28.Size = new System.Drawing.Size(22, 325);
             this.metroButton28.TabIndex = 29;
             this.metroButton28.Text = "27";
-            this.metroButton28.UseSelectable = true;
+            this.metroButton28.UseSelectable = false;
+            this.metroButton28.Style = MetroColorStyle.Yellow;
             // 
             // metroButton27
             // 
@@ -120,7 +123,8 @@
             this.metroButton27.Size = new System.Drawing.Size(22, 325);
             this.metroButton27.TabIndex = 28;
             this.metroButton27.Text = "28";
-            this.metroButton27.UseSelectable = true;
+            this.metroButton27.UseSelectable = false;
+            this.metroButton27.Style = MetroColorStyle.Yellow;
             // 
             // metroButton26
             // 
@@ -130,7 +134,8 @@
             this.metroButton26.Size = new System.Drawing.Size(22, 325);
             this.metroButton26.TabIndex = 27;
             this.metroButton26.Text = "26";
-            this.metroButton26.UseSelectable = true;
+            this.metroButton26.UseSelectable = false;
+            this.metroButton26.Style = MetroColorStyle.Yellow;
             // 
             // metroButton25
             // 
@@ -140,7 +145,8 @@
             this.metroButton25.Size = new System.Drawing.Size(22, 325);
             this.metroButton25.TabIndex = 26;
             this.metroButton25.Text = "25";
-            this.metroButton25.UseSelectable = true;
+            this.metroButton25.UseSelectable = false;
+            this.metroButton25.Style = MetroColorStyle.Yellow;
             // 
             // metroButton17
             // 
@@ -150,7 +156,8 @@
             this.metroButton17.Size = new System.Drawing.Size(22, 325);
             this.metroButton17.TabIndex = 25;
             this.metroButton17.Text = "24";
-            this.metroButton17.UseSelectable = true;
+            this.metroButton17.UseSelectable = false;
+            this.metroButton17.Style = MetroColorStyle.Yellow;
             // 
             // metroButton18
             // 
@@ -160,7 +167,8 @@
             this.metroButton18.Size = new System.Drawing.Size(22, 325);
             this.metroButton18.TabIndex = 24;
             this.metroButton18.Text = "23";
-            this.metroButton18.UseSelectable = true;
+            this.metroButton18.UseSelectable = false;
+            this.metroButton18.Style = MetroColorStyle.Yellow;
             // 
             // metroButton19
             // 
@@ -170,7 +178,8 @@
             this.metroButton19.Size = new System.Drawing.Size(22, 325);
             this.metroButton19.TabIndex = 23;
             this.metroButton19.Text = "22";
-            this.metroButton19.UseSelectable = true;
+            this.metroButton19.UseSelectable = false;
+            this.metroButton19.Style = MetroColorStyle.Yellow;
             // 
             // metroButton20
             // 
@@ -180,7 +189,8 @@
             this.metroButton20.Size = new System.Drawing.Size(22, 325);
             this.metroButton20.TabIndex = 22;
             this.metroButton20.Text = "21";
-            this.metroButton20.UseSelectable = true;
+            this.metroButton20.UseSelectable = false;
+            this.metroButton20.Style = MetroColorStyle.Yellow;
             // 
             // metroButton21
             // 
@@ -190,7 +200,8 @@
             this.metroButton21.Size = new System.Drawing.Size(22, 325);
             this.metroButton21.TabIndex = 21;
             this.metroButton21.Text = "20";
-            this.metroButton21.UseSelectable = true;
+            this.metroButton21.UseSelectable = false;
+            this.metroButton21.Style = MetroColorStyle.Yellow;
             // 
             // metroButton22
             // 
@@ -200,7 +211,8 @@
             this.metroButton22.Size = new System.Drawing.Size(22, 325);
             this.metroButton22.TabIndex = 20;
             this.metroButton22.Text = "19";
-            this.metroButton22.UseSelectable = true;
+            this.metroButton22.UseSelectable = false;
+            this.metroButton22.Style = MetroColorStyle.Yellow;
             // 
             // metroButton23
             // 
@@ -210,7 +222,8 @@
             this.metroButton23.Size = new System.Drawing.Size(22, 325);
             this.metroButton23.TabIndex = 19;
             this.metroButton23.Text = "18";
-            this.metroButton23.UseSelectable = true;
+            this.metroButton23.UseSelectable = false;
+            this.metroButton23.Style = MetroColorStyle.Yellow;
             // 
             // metroButton24
             // 
@@ -220,7 +233,8 @@
             this.metroButton24.Size = new System.Drawing.Size(22, 325);
             this.metroButton24.TabIndex = 18;
             this.metroButton24.Text = "17";
-            this.metroButton24.UseSelectable = true;
+            this.metroButton24.UseSelectable = false;
+            this.metroButton24.Style = MetroColorStyle.Yellow;
             // 
             // metroButton9
             // 
@@ -230,7 +244,8 @@
             this.metroButton9.Size = new System.Drawing.Size(22, 325);
             this.metroButton9.TabIndex = 17;
             this.metroButton9.Text = "16";
-            this.metroButton9.UseSelectable = true;
+            this.metroButton9.UseSelectable = false;
+            this.metroButton9.Style = MetroColorStyle.Yellow;
             // 
             // metroButton10
             // 
@@ -240,7 +255,8 @@
             this.metroButton10.Size = new System.Drawing.Size(22, 325);
             this.metroButton10.TabIndex = 16;
             this.metroButton10.Text = "15";
-            this.metroButton10.UseSelectable = true;
+            this.metroButton10.UseSelectable = false;
+            this.metroButton10.Style = MetroColorStyle.Yellow;
             // 
             // metroButton11
             // 
@@ -250,7 +266,8 @@
             this.metroButton11.Size = new System.Drawing.Size(22, 325);
             this.metroButton11.TabIndex = 15;
             this.metroButton11.Text = "14";
-            this.metroButton11.UseSelectable = true;
+            this.metroButton11.UseSelectable = false;
+            this.metroButton11.Style = MetroColorStyle.Yellow;
             // 
             // metroButton12
             // 
@@ -260,7 +277,8 @@
             this.metroButton12.Size = new System.Drawing.Size(22, 325);
             this.metroButton12.TabIndex = 14;
             this.metroButton12.Text = "13";
-            this.metroButton12.UseSelectable = true;
+            this.metroButton12.UseSelectable = false;
+            this.metroButton12.Style = MetroColorStyle.Yellow;
             // 
             // metroButton13
             // 
@@ -270,7 +288,8 @@
             this.metroButton13.Size = new System.Drawing.Size(22, 325);
             this.metroButton13.TabIndex = 13;
             this.metroButton13.Text = "12";
-            this.metroButton13.UseSelectable = true;
+            this.metroButton13.UseSelectable = false;
+            this.metroButton13.Style = MetroColorStyle.Yellow;
             // 
             // metroButton14
             // 
@@ -280,7 +299,8 @@
             this.metroButton14.Size = new System.Drawing.Size(22, 325);
             this.metroButton14.TabIndex = 12;
             this.metroButton14.Text = "11";
-            this.metroButton14.UseSelectable = true;
+            this.metroButton14.UseSelectable = false;
+            this.metroButton14.Style = MetroColorStyle.Yellow;
             // 
             // metroButton15
             // 
@@ -290,7 +310,8 @@
             this.metroButton15.Size = new System.Drawing.Size(22, 325);
             this.metroButton15.TabIndex = 11;
             this.metroButton15.Text = "10";
-            this.metroButton15.UseSelectable = true;
+            this.metroButton15.UseSelectable = false;
+            this.metroButton15.Style = MetroColorStyle.Yellow;
             // 
             // metroButton16
             // 
@@ -300,7 +321,8 @@
             this.metroButton16.Size = new System.Drawing.Size(22, 325);
             this.metroButton16.TabIndex = 10;
             this.metroButton16.Text = "9";
-            this.metroButton16.UseSelectable = true;
+            this.metroButton16.UseSelectable = false;
+            this.metroButton16.Style = MetroColorStyle.Yellow;
             // 
             // metroButton8
             // 
@@ -310,7 +332,8 @@
             this.metroButton8.Size = new System.Drawing.Size(22, 325);
             this.metroButton8.TabIndex = 9;
             this.metroButton8.Text = "8";
-            this.metroButton8.UseSelectable = true;
+            this.metroButton8.UseSelectable = false;
+            this.metroButton8.Style = MetroColorStyle.Yellow;
             // 
             // metroButton7
             // 
@@ -320,7 +343,8 @@
             this.metroButton7.Size = new System.Drawing.Size(22, 325);
             this.metroButton7.TabIndex = 8;
             this.metroButton7.Text = "7";
-            this.metroButton7.UseSelectable = true;
+            this.metroButton7.UseSelectable = false;
+            this.metroButton7.Style = MetroColorStyle.Yellow;
             // 
             // metroButton6
             // 
@@ -330,7 +354,8 @@
             this.metroButton6.Size = new System.Drawing.Size(22, 325);
             this.metroButton6.TabIndex = 7;
             this.metroButton6.Text = "6";
-            this.metroButton6.UseSelectable = true;
+            this.metroButton6.UseSelectable = false;
+            this.metroButton6.Style = MetroColorStyle.Yellow;
             // 
             // metroButton5
             // 
@@ -340,7 +365,8 @@
             this.metroButton5.Size = new System.Drawing.Size(22, 325);
             this.metroButton5.TabIndex = 6;
             this.metroButton5.Text = "5";
-            this.metroButton5.UseSelectable = true;
+            this.metroButton5.UseSelectable = false;
+            this.metroButton5.Style = MetroColorStyle.Yellow;
             // 
             // metroButton4
             // 
@@ -350,7 +376,8 @@
             this.metroButton4.Size = new System.Drawing.Size(22, 325);
             this.metroButton4.TabIndex = 5;
             this.metroButton4.Text = "4";
-            this.metroButton4.UseSelectable = true;
+            this.metroButton4.UseSelectable = false;
+            this.metroButton4.Style = MetroColorStyle.Yellow;
             // 
             // metroButton3
             // 
@@ -360,7 +387,8 @@
             this.metroButton3.Size = new System.Drawing.Size(22, 325);
             this.metroButton3.TabIndex = 4;
             this.metroButton3.Text = "3";
-            this.metroButton3.UseSelectable = true;
+            this.metroButton3.UseSelectable = false;
+            this.metroButton3.Style = MetroColorStyle.Yellow;
             // 
             // metroButton2
             // 
@@ -370,7 +398,8 @@
             this.metroButton2.Size = new System.Drawing.Size(22, 325);
             this.metroButton2.TabIndex = 3;
             this.metroButton2.Text = "2";
-            this.metroButton2.UseSelectable = true;
+            this.metroButton2.UseSelectable = false;
+            this.metroButton2.Style = MetroColorStyle.Yellow;
             // 
             // metroButton1
             // 
@@ -380,7 +409,8 @@
             this.metroButton1.Size = new System.Drawing.Size(22, 325);
             this.metroButton1.TabIndex = 2;
             this.metroButton1.Text = "1";
-            this.metroButton1.UseSelectable = true;
+            this.metroButton1.UseSelectable = false;
+            this.metroButton1.Style = MetroColorStyle.Yellow;
             // 
             // labelHiveName
             // 

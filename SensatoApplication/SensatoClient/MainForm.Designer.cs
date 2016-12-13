@@ -53,7 +53,8 @@
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.Controls.Add(this.metroPanel1);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Style = MetroFramework.MetroColorStyle.Yellow;
+            this.Text = "Sensato Data Manager";
             this.TransparencyKey = System.Drawing.Color.WhiteSmoke;
             this.ResumeLayout(false);
 
