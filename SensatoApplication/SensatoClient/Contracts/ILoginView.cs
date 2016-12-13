@@ -8,14 +8,10 @@
 
         string Username { get; }
 
-        string Password { get; }        
+        string Password { get; set; }        
 
-        void ShowUsernameError(string errorMessage);
+        void ShowErrorMessage(string errorMessage);
 
-        void HideUsernameError();
-
-        void ShowPasswordError(string errorMessage);
-                 
-        void HidePasswordError();
+        void HideErrorMessage();
     }
 }

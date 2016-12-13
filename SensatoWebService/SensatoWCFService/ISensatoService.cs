@@ -17,7 +17,7 @@
         bool CheckPassowrdMatch(string passwordHash, string username);
 
         [OperationContract]
-        ICollection<HiveDTO> GetUserDataByUsername(string username);
+        IEnumerable<string> GetUserHivesByUsername(string username);
 
         [OperationContract]
         [FaultContract(typeof(AlreadyExistFault))]
@@ -31,9 +31,9 @@
         bool RemoveHive(string username, string hiveName);
 
         [OperationContract]
-        ICollection<FrameDTO> GetFramesByHiveName(string username, string hiveName);
+        IEnumerable<int> GetFramesByHiveName(string username, string hiveName);
 
         [OperationContract]
-        void ChangeFrameStatusByHiveName(string username, string hivename,ICollection<int> activeFramesPositions);
+        void ChangeFrameStatusByHiveName(string username, string hivename, IEnumerable<int> activeFramesPositions);
     }
 }

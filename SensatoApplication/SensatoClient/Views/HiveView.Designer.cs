@@ -38,7 +38,6 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.tablePanelHives = new System.Windows.Forms.TableLayoutPanel();
             this.panelHiveControls = new MetroFramework.Controls.MetroPanel();
-            this.buttonTest = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.panelHiveControls.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +80,7 @@
             // 
             // buttonAddHive
             // 
-            this.buttonAddHive.Location = new System.Drawing.Point(0, 237);
+            this.buttonAddHive.Location = new System.Drawing.Point(3, 237);
             this.buttonAddHive.Name = "buttonAddHive";
             this.buttonAddHive.Size = new System.Drawing.Size(129, 31);
             this.buttonAddHive.TabIndex = 6;
@@ -90,7 +89,7 @@
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(0, 369);
+            this.buttonLogout.Location = new System.Drawing.Point(3, 374);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(132, 31);
             this.buttonLogout.TabIndex = 7;
@@ -112,7 +111,7 @@
             this.metroTextBox1.CustomButton.UseSelectable = true;
             this.metroTextBox1.CustomButton.Visible = false;
             this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(0, 274);
+            this.metroTextBox1.Location = new System.Drawing.Point(3, 274);
             this.metroTextBox1.MaxLength = 32767;
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.PasswordChar = '\0';
@@ -178,27 +177,10 @@
             this.panelHiveControls.VerticalScrollbarHighlightOnWheel = false;
             this.panelHiveControls.VerticalScrollbarSize = 10;
             // 
-            // buttonTest
-            // 
-            this.buttonTest.BackColor = System.Drawing.Color.DimGray;
-            this.buttonTest.ForeColor = System.Drawing.Color.White;
-            this.buttonTest.Location = new System.Drawing.Point(-2, 312);
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(144, 36);
-            this.buttonTest.Style = MetroFramework.MetroColorStyle.Yellow;
-            this.buttonTest.TabIndex = 0;
-            this.buttonTest.TabStop = false;
-            this.buttonTest.Text = "Test";
-            this.buttonTest.UseCustomBackColor = true;
-            this.buttonTest.UseCustomForeColor = true;
-            this.buttonTest.UseSelectable = true;
-            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
-            // 
             // HiveView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonTest);
             this.Controls.Add(this.panelHiveControls);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroTextBox1);
@@ -226,6 +208,5 @@
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private System.Windows.Forms.TableLayoutPanel tablePanelHives;
         private MetroFramework.Controls.MetroPanel panelHiveControls;
-        private MetroFramework.Controls.MetroButton buttonTest;
     }
 }

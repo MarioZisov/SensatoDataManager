@@ -5,9 +5,7 @@
       <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.Faults" />
       <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.DataTransferObjects" />
-      <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SensatoWebService.Models" />
-      <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/SensatoWebService.Models.Enumerations" />
+      <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ISensatoService_CheckUserExists_InputMessage">
@@ -28,11 +26,11 @@
   <wsdl:message name="ISensatoService_CheckPassowrdMatch_PasswordValidationFaultFault_FaultMessage">
     <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/SensatoDBService.Faults" name="detail" element="q2:PasswordValidationFault" />
   </wsdl:message>
-  <wsdl:message name="ISensatoService_GetUserDataByUsername_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserDataByUsername" />
+  <wsdl:message name="ISensatoService_GetUserHivesByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserHivesByUsername" />
   </wsdl:message>
-  <wsdl:message name="ISensatoService_GetUserDataByUsername_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserDataByUsernameResponse" />
+  <wsdl:message name="ISensatoService_GetUserHivesByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserHivesByUsernameResponse" />
   </wsdl:message>
   <wsdl:message name="ISensatoService_AddHive_InputMessage">
     <wsdl:part name="parameters" element="tns:AddHive" />
@@ -64,6 +62,12 @@
   <wsdl:message name="ISensatoService_GetFramesByHiveName_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFramesByHiveNameResponse" />
   </wsdl:message>
+  <wsdl:message name="ISensatoService_ChangeFrameStatusByHiveName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeFrameStatusByHiveName" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_ChangeFrameStatusByHiveName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeFrameStatusByHiveNameResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISensatoService">
     <wsdl:operation name="CheckUserExists">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/CheckUserExists" message="tns:ISensatoService_CheckUserExists_InputMessage" />
@@ -75,9 +79,9 @@
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/CheckPassowrdMatchResponse" message="tns:ISensatoService_CheckPassowrdMatch_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ISensatoService/CheckPassowrdMatchPasswordValidationFaultFault" name="PasswordValidationFaultFault" message="tns:ISensatoService_CheckPassowrdMatch_PasswordValidationFaultFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserDataByUsername">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetUserDataByUsername" message="tns:ISensatoService_GetUserDataByUsername_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetUserDataByUsernameResponse" message="tns:ISensatoService_GetUserDataByUsername_OutputMessage" />
+    <wsdl:operation name="GetUserHivesByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetUserHivesByUsername" message="tns:ISensatoService_GetUserHivesByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetUserHivesByUsernameResponse" message="tns:ISensatoService_GetUserHivesByUsername_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddHive">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/AddHive" message="tns:ISensatoService_AddHive_InputMessage" />
@@ -96,6 +100,10 @@
     <wsdl:operation name="GetFramesByHiveName">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetFramesByHiveName" message="tns:ISensatoService_GetFramesByHiveName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetFramesByHiveNameResponse" message="tns:ISensatoService_GetFramesByHiveName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeFrameStatusByHiveName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveName" message="tns:ISensatoService_ChangeFrameStatusByHiveName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveNameResponse" message="tns:ISensatoService_ChangeFrameStatusByHiveName_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISensatoService" type="tns:ISensatoService">
@@ -124,8 +132,8 @@
         <soap:fault use="literal" name="PasswordValidationFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
-    <wsdl:operation name="GetUserDataByUsername">
-      <soap:operation soapAction="http://tempuri.org/ISensatoService/GetUserDataByUsername" style="document" />
+    <wsdl:operation name="GetUserHivesByUsername">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/GetUserHivesByUsername" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -168,6 +176,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetFramesByHiveName">
       <soap:operation soapAction="http://tempuri.org/ISensatoService/GetFramesByHiveName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeFrameStatusByHiveName">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

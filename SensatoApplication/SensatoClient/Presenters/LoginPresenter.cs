@@ -28,11 +28,10 @@
 
         private void OnLoginClick(object sender, EventArgs e)
         {
-            this.loginView.HideUsernameError();
-            this.loginView.HidePasswordError();
+            this.loginView.HideErrorMessage();
 
-            string username = "FirstUser";// this.loginView.Username;
-            string password = "123";// this.loginView.Password;
+            string username = this.loginView.Username;
+            string password = this.loginView.Password;
 
             try
             {
@@ -40,16 +39,17 @@
                 this.serviceClient.CheckPassowrdMatch(password, username);
                 this.User = new UserModel(username);
                 this.hivePresenter.User = this.User;
+                this.loginView.Password = string.Empty;
 
                 this.hivePresenter.Initialize();;
             }
             catch (FaultException<UsernameValidationFault> fex)
             {
-                this.loginView.ShowUsernameError(fex.Detail.Message);
+                this.loginView.ShowErrorMessage(fex.Detail.Message);
             }
             catch (FaultException<PasswordValidationFault> fex)
             {
-                this.loginView.ShowPasswordError(fex.Detail.Message);
+                this.loginView.ShowErrorMessage(fex.Detail.Message);
             }
         }
 

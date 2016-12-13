@@ -97,13 +97,5 @@
                 this.FrameClick?.Invoke(this, EventArgs.Empty);
             };
         }
-
-        private void buttonTest_Click(object sender, EventArgs e)
-        {
-            this.buttonTest.Highlight = true;
-            this.buttonTest.UseCustomForeColor = false;
-            this.buttonTest.UseStyleColors = true;
-            this.buttonTest.Refresh();
-        }
     }
 }

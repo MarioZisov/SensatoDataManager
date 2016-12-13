@@ -33,8 +33,9 @@
             this.labelUsername = new MetroFramework.Controls.MetroLabel();
             this.labelPassword = new MetroFramework.Controls.MetroLabel();
             this.buttonLogin = new MetroFramework.Controls.MetroButton();
-            this.labelUsernameError = new MetroFramework.Controls.MetroLabel();
-            this.labelPasswordError = new MetroFramework.Controls.MetroLabel();
+            this.labelError = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tetBoxUsername
@@ -86,7 +87,7 @@
             this.textBoxPassword.Location = new System.Drawing.Point(342, 228);
             this.textBoxPassword.MaxLength = 32767;
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '\0';
+            this.textBoxPassword.PasswordChar = '●';
             this.textBoxPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.textBoxPassword.SelectedText = "";
             this.textBoxPassword.SelectionLength = 0;
@@ -96,6 +97,7 @@
             this.textBoxPassword.Style = MetroFramework.MetroColorStyle.Yellow;
             this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.UseSelectable = true;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             this.textBoxPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -126,38 +128,39 @@
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseSelectable = true;
             // 
-            // labelUsernameError
+            // labelError
             // 
-            this.labelUsernameError.AutoSize = true;
-            this.labelUsernameError.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.labelUsernameError.ForeColor = System.Drawing.Color.Red;
-            this.labelUsernameError.Location = new System.Drawing.Point(363, 311);
-            this.labelUsernameError.Name = "labelUsernameError";
-            this.labelUsernameError.Size = new System.Drawing.Size(70, 15);
-            this.labelUsernameError.TabIndex = 5;
-            this.labelUsernameError.Text = "metroLabel1";
-            this.labelUsernameError.UseCustomForeColor = true;
-            this.labelUsernameError.Visible = false;
+            this.labelError.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelError.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(0, 0);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(800, 27);
+            this.labelError.TabIndex = 5;
+            this.labelError.Text = "error";
+            this.labelError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelError.UseCustomForeColor = true;
+            this.labelError.Visible = false;
             // 
-            // labelPasswordError
+            // metroPanel1
             // 
-            this.labelPasswordError.AutoSize = true;
-            this.labelPasswordError.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.labelPasswordError.ForeColor = System.Drawing.Color.Red;
-            this.labelPasswordError.Location = new System.Drawing.Point(363, 326);
-            this.labelPasswordError.Name = "labelPasswordError";
-            this.labelPasswordError.Size = new System.Drawing.Size(70, 15);
-            this.labelPasswordError.TabIndex = 6;
-            this.labelPasswordError.Text = "metroLabel2";
-            this.labelPasswordError.UseCustomForeColor = true;
-            this.labelPasswordError.Visible = false;
+            this.metroPanel1.Controls.Add(this.labelError);
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(0, 315);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(800, 27);
+            this.metroPanel1.TabIndex = 6;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
             // 
             // LoginView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.labelPasswordError);
-            this.Controls.Add(this.labelUsernameError);
+            this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelUsername);
@@ -166,6 +169,7 @@
             this.Location = new System.Drawing.Point(0, 72);
             this.Name = "LoginView";
             this.Size = new System.Drawing.Size(800, 428);
+            this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,7 +182,7 @@
         private MetroFramework.Controls.MetroLabel labelUsername;
         private MetroFramework.Controls.MetroLabel labelPassword;
         private MetroFramework.Controls.MetroButton buttonLogin;
-        private MetroFramework.Controls.MetroLabel labelUsernameError;
-        private MetroFramework.Controls.MetroLabel labelPasswordError;
+        private MetroFramework.Controls.MetroLabel labelError;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
     }
 }

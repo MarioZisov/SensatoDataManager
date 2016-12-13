@@ -1,5 +1,6 @@
 ﻿using MetroFramework.Controls;
 using SensatoClient.Contracts;
+using SensatoClient.SensatoServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,14 @@ namespace SensatoClient.Presenters
     public class FramePresenter : AbstractPresenter
     {
         private IFrameView frameView;
+        private SensatoServiceClient serviceClient;
 
         public event EventHandler ViewBackButtonClick;
 
         public FramePresenter(IFrameView frameView)
         {
             this.frameView = frameView;
+            this.serviceClient = new SensatoServiceClient();
             this.SubscribeEvents();
         }
 
@@ -32,7 +35,14 @@ namespace SensatoClient.Presenters
 
         private void OnSaveButtonClick(object sender, EventArgs e)
         {
-            
+            var activeFramesPositions = this.frameView.FramesPanel.Controls
+                .OfType<MetroButton>()
+                .Where(b => b.Highlight)
+                .Select(b => int.Parse(b.Text))
+                .ToArray();
+
+            this.serviceClient.ChangeFrameStatusByHiveName(this.User.Username, this.frameView.HiveName, activeFramesPositions);
+
         }
 
         public void LoadActiveFrames(IEnumerable<int> framesPositions)
@@ -41,10 +51,13 @@ namespace SensatoClient.Presenters
             foreach (MetroButton frameButton in frameButtons)
             {
                 int pos = int.Parse(frameButton.Text);
-                if (framesPositions.Contains(pos))
+                if (!framesPositions.Contains(pos))
                 {
-                    frameButton.Highlight = true;
+                    frameButton.Highlight = false;
+                    continue;
                 }
+
+                frameButton.Highlight = true;
             }
 
             this.frameView.BringToFront();

@@ -8,6 +8,7 @@
     using Faults;
     using SensatoWebService.Models;
     using System.Data.Entity.Validation;
+    using System;
 
     public class SensatoService : ISensatoService
     {
@@ -20,7 +21,7 @@
 
         public bool CheckUserExists(string username)
         {
-            var user = this.context.Users.FirstOrDefault(u => u.Username == username);
+            var user = this.GetUserByUsername(username);
             if (user == null)
             {
                 throw new FaultException<UsernameValidationFault>(new UsernameValidationFault("Invalid Username"));
@@ -31,7 +32,7 @@
 
         public bool CheckPassowrdMatch(string passwordHash, string username)
         {
-            var pass = this.context.Users.FirstOrDefault(n => n.Username == username).Password;
+            var pass = this.GetUserByUsername(username).Password;
             if (pass != passwordHash)
             {
                 throw new FaultException<PasswordValidationFault>(new PasswordValidationFault("Wrong Password"));
@@ -40,49 +41,20 @@
             return true;
         }
 
-        public ICollection<HiveDTO> GetUserDataByUsername(string username)
+        public IEnumerable<string> GetUserHivesByUsername(string username)
         {
-            var hives = this.context.Hives
+            var user = GetUserByUsername(username);
+            var hiveNames = user.Hives
                 .Where(h => h.User.Username == username && !h.IsRemoved)
-                .Select(x => new
-                {
-                    x.Id,
-                    x.Name,
-                    x.IsRemoved,
-                    Frames = x.Frames.Select(f => new
-                    {
-                        f.Position,
-                        f.IsRemoved
-                    })
-                });
+                .Select(h => h.Name)
+                .ToArray();           
 
-            ICollection<HiveDTO> hiveDtos = new HashSet<HiveDTO>();
-
-            foreach (var hive in hives)
-            {
-                var hiveDto = new HiveDTO();
-                hiveDto.Id = hive.Id;
-                hiveDto.Name = hive.Name;
-                foreach (var frame in hive.Frames)
-                {
-                    FrameDTO frameDto = new FrameDTO
-                    {
-                        IsRemoved = frame.IsRemoved,
-                        Position = frame.Position
-                    };
-
-                    hiveDto.Frames.Add(frameDto);
-                }
-
-                hiveDtos.Add(hiveDto);
-            }
-
-            return hiveDtos;
-        }
+            return hiveNames;
+        }        
 
         public void AddHive(string username, string hiveName)
         {
-            var user = this.context.Users.FirstOrDefault(u => u.Username == username);
+            var user = this.GetUserByUsername(username);
             var hiveNames = user.Hives.Where(h => !h.IsRemoved).Select(h => h.Name);
             if (hiveNames.Contains(hiveName))
             {
@@ -109,7 +81,7 @@
 
         public bool RenameHive(string username, string newHiveName, string hiveName)
         {
-            var user = this.context.Users.FirstOrDefault(u => u.Username == username);
+            var user = this.GetUserByUsername(username);
             var hiveNames = user.Hives.Select(h => h.Name);
 
             if (hiveNames.Contains(newHiveName))
@@ -117,7 +89,7 @@
                 throw new FaultException<AlreadyExistFault>(new AlreadyExistFault("Name is already taken"));
             }
 
-            var hive = user.Hives.FirstOrDefault(h => h.Name == hiveName);
+            var hive = this.GetHive(user, hiveName);
             try
             {
                 hive.Name = newHiveName;
@@ -132,8 +104,8 @@
 
         public bool RemoveHive(string username, string hiveName)
         {
-            var hive = this.context.Hives
-                .FirstOrDefault(h => h.Name == hiveName && h.User.Username == username);
+            var user = GetUserByUsername(username);
+            var hive = GetHive(user, hiveName);
 
             hive.IsRemoved = true;
             this.context.Frames.RemoveRange(hive.Frames);
@@ -143,29 +115,21 @@
             return true;
         }
 
-        public ICollection<FrameDTO> GetFramesByHiveName(string username, string hiveName)
+        public IEnumerable<int> GetFramesByHiveName(string username, string hiveName)
         {
-            ICollection<FrameDTO> framesDTOs = new HashSet<FrameDTO>();
-            var user = this.context.Users.FirstOrDefault(u => u.Username == username);
-            var frames = user.Hives.FirstOrDefault(h => h.Name == hiveName).Frames;
-            foreach (var frame in frames)
-            {
-                FrameDTO frameDto = new FrameDTO
-                {
-                    Position = frame.Position,
-                    IsRemoved = frame.IsRemoved
-                };
+            var user = this.GetUserByUsername(username);
+            var framesPositions = this.GetHive(user, hiveName).Frames
+                .Where(f => !f.IsRemoved)
+                .Select(f => f.Position)
+                .ToArray();            
 
-                framesDTOs.Add(frameDto);
-            }
-
-            return framesDTOs;
+            return framesPositions;
         }
 
-        public void ChangeFrameStatusByHiveName(string username, string hivename, ICollection<int> activeFramesPositions)
+        public void ChangeFrameStatusByHiveName(string username, string hiveName, IEnumerable<int> activeFramesPositions)
         {
-            var user = this.context.Users.FirstOrDefault(u => u.Username == username);
-            var hive = user.Hives.FirstOrDefault(h => h.Name == hivename);
+            var user = this.GetUserByUsername(username);
+            var hive = this.GetHive(user, hiveName);
             var frames = hive.Frames;
             var positions = hive.Frames.Select(f => f.Position);
 
@@ -179,6 +143,8 @@
 
                 frames.FirstOrDefault(f => f.Position == position).IsRemoved = false;
             }
+
+            this.context.SaveChanges();
         }
 
         private ICollection<Frame> InitializeFrames()
@@ -196,6 +162,19 @@
             }
 
             return frames;
+        }
+
+        private User GetUserByUsername(string username)
+        {
+            User user = context.Users.FirstOrDefault(u => u.Username == username);
+            return user;
+        }
+
+        private Hive GetHive(User user, string hiveName)
+        {
+            var hive = user.Hives.FirstOrDefault(h => h.Name == hiveName);
+
+            return hive;
         }
     }
 }

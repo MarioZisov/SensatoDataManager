@@ -34,27 +34,8 @@
 
         public void Initialize()
         {
-            var hivesDto = this.serviceClient.GetUserDataByUsername(this.User.Username);
-            foreach (var hiveDto in hivesDto)
-            {
-                HiveModel hive = new HiveModel();
-                hive.Id = hiveDto.Id;
-                hive.Name = hiveDto.Name;
-                foreach (var frameDto in hiveDto.Frames)
-                {
-                    FrameModel frame = new FrameModel();
-                    if (!frameDto.IsRemoved)
-                    {
-                        frame.Position = frameDto.Position;
-                        hive.Frames.Add(frame);
-                    }
-                }
-
-                this.User.Hives.Add(hive);
-            }
-
-            var hives = this.User.Hives.Select(h => h.Name).ToList();
-            this.PassHivesToView(hives);
+            var hivesNames = this.serviceClient.GetUserHivesByUsername(this.User.Username);            
+            this.PassHivesToView(hivesNames);
             this.hiveView.BringToFront();
         }
 
@@ -77,9 +58,10 @@
 
         private void OnFrameClick(object sender, EventArgs e)
         {
+            this.framePresenter.User = this.User;
+
             IEnumerable<int> activeFrames = this.serviceClient
-                .GetFramesByHiveName(this.User.Username, this.selectedHiveButton.Text)
-                .Where(f => !f.IsRemoved).Select(f => f.Position);
+                .GetFramesByHiveName(this.User.Username, this.selectedHiveButton.Text);                
 
             this.framePresenter.SetCurrentHiveName(this.selectedHiveButton.Text);
             this.framePresenter.LoadActiveFrames(activeFrames);

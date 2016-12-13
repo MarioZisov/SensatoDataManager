@@ -20,7 +20,7 @@
             {
                 return this.textBoxPassword.Text;
             }
-            private set
+            set
             {
                 this.textBoxPassword.Text = value;
             }
@@ -38,26 +38,15 @@
             }
         }
 
-        public void ShowUsernameError(string errorMessage)
+        public void ShowErrorMessage(string errorMessage)
         {
-            this.labelUsernameError.Text = errorMessage;
-            this.labelUsernameError.Show();
+            this.labelError.Text = errorMessage;
+            this.labelError.Show();
         }
 
-        public void HideUsernameError()
+        public void HideErrorMessage()
         {
-            this.labelUsernameError.Hide();
-        }
-
-        public void ShowPasswordError(string errorMessage)
-        {
-            this.labelPasswordError.Text = errorMessage;
-            this.labelPasswordError.Show();
-        }
-
-        public void HidePasswordError()
-        {
-            this.labelPasswordError.Hide();
+            this.labelError.Hide();
         }
 
         private void SubscribeEvents()
