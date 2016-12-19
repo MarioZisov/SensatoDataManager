@@ -158,7 +158,7 @@
             {
                 f.Position,
                 Measurments = f.Measurments
-                .Where(m => m.DateTimeOfMeasurment >= startDate && m.DateTimeOfMeasurment <= endDate)
+                .Where(m => m.DateTimeOfMeasurment.Date >= startDate.Date && m.DateTimeOfMeasurment.Date <= endDate.Date)
             });
 
             ICollection<FrameDTO> framesDTOs = new HashSet<FrameDTO>();
