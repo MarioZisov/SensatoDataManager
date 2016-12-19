@@ -1,22 +1,20 @@
 ﻿namespace SensatoDBService
 {
-    using SensatoWebService.Data;
     using System.Collections.Generic;
     using System.Linq;
     using System.ServiceModel;
-    using DataTransferObjects;
     using Faults;
     using SensatoWebService.Models;
     using System.Data.Entity.Validation;
     using System;
-
+    using SensatoWebService.Data;
     public class SensatoService : ISensatoService
     {
-        private SensatoDbContext context;
+        private SensatoContext context;
 
         public SensatoService()
         {
-            this.context = new SensatoDbContext();
+            this.context = new SensatoContext();
         }
 
         public bool CheckUserExists(string username)
@@ -67,7 +65,8 @@
                 {
                     Name = hiveName,
                     IsRemoved = false,
-                    Frames = this.InitializeFrames()
+                    Frames = this.InitializeFrames(),
+                    DateOfCreation = DateTime.Now
                 };
 
                 user.Hives.Add(hive);
@@ -108,8 +107,9 @@
             var hive = GetHive(user, hiveName);
 
             hive.IsRemoved = true;
-            this.context.Frames.RemoveRange(hive.Frames);
-            
+            hive.DateRemoved = DateTime.Now;
+            this.RemoveFramesByHive(hive);
+
             this.context.SaveChanges();
 
             return true;
@@ -119,7 +119,7 @@
         {
             var user = this.GetUserByUsername(username);
             var framesPositions = this.GetHive(user, hiveName).Frames
-                .Where(f => !f.IsRemoved)
+                .Where(f => f.IsActive)
                 .Select(f => f.Position)
                 .ToArray();            
 
@@ -137,11 +137,11 @@
             {
                 if (!activeFramesPositions.Contains(position))
                 {
-                    frames.FirstOrDefault(f => f.Position == position).IsRemoved = true;
+                    frames.FirstOrDefault(f => f.Position == position).IsActive = false;
                     continue;
                 }
 
-                frames.FirstOrDefault(f => f.Position == position).IsRemoved = false;
+                frames.FirstOrDefault(f => f.Position == position).IsActive = true;
             }
 
             this.context.SaveChanges();
@@ -155,7 +155,8 @@
                 Frame frame = new Frame
                 {
                     Position = i,
-                    IsRemoved = true
+                    IsRemoved = false,
+                    IsActive = false
                 };
 
                 frames.Add(frame);
@@ -175,6 +176,14 @@
             var hive = user.Hives.FirstOrDefault(h => h.Name == hiveName);
 
             return hive;
+        }
+
+        private void RemoveFramesByHive(Hive hive)
+        {
+            foreach (var frame in hive.Frames)
+            {
+                frame.IsRemoved = true;
+            }
         }
     }
 }

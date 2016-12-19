@@ -1,5 +1,6 @@
 ﻿namespace SensatoWebService.Models
 {
+    using System;
     using Attributes;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -27,6 +28,11 @@
         public int? UserId { get; set; }
 
         public virtual User User { get; set; }
+
+        [Required]
+        public DateTime DateOfCreation { get; set; }
+
+        public DateTime? DateRemoved { get; set; }
 
         public virtual ICollection<Frame> Frames
         {

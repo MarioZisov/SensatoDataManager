@@ -13,6 +13,7 @@ namespace SensatoWebService.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(SensatoContext context)
@@ -63,7 +64,7 @@ namespace SensatoWebService.Data.Migrations
                         SecondSensorTemp = 17,
                         ThirdSensorTemp = 20,
                         DateTimeOfMeasurment = DateTime.Now.AddHours(1),
-                        IsDeleted = false,
+                        
                     };
 
                     frame.Measurments.Add(measurment);

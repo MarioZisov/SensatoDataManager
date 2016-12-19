@@ -23,8 +23,6 @@
         public int? FrameId { get; set; }
        
         public virtual Frame Frame { get; set; }
-
-        [Required]
-        public bool IsDeleted { get; set; }
+        
     }
 }

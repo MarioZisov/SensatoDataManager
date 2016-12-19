@@ -1,5 +1,6 @@
 ﻿namespace SensatoWebService.Models
 {
+    using System;
     using System.Collections.Generic;
     using Enumerations;
     using Attributes;
@@ -34,6 +35,10 @@
         [Required]
         public RoleType Role { get; set; }
 
+        [Required]
+        public DateTime DateOfRegistration { get; set; }
+
+        public DateTime? DateDisabled { get; set; }
         public virtual ICollection<Hive> Hives
         {
             get { return this.hives; }

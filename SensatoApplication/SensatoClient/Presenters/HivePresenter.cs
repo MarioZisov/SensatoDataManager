@@ -8,8 +8,6 @@
     using System.Windows.Forms;
     using System.Linq;
     using System.Collections.Generic;
-    using Views;
-    using System.ServiceModel;
     using MetroFramework;
 
     public class HivePresenter : AbstractPresenter
