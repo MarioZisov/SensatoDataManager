@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.buttonData = new MetroFramework.Controls.MetroButton();
             this.buttonFrame = new MetroFramework.Controls.MetroButton();
             this.buttonRename = new MetroFramework.Controls.MetroButton();
             this.buttonRemove = new MetroFramework.Controls.MetroButton();
@@ -42,14 +42,14 @@
             this.panelHiveControls.SuspendLayout();
             this.SuspendLayout();
             // 
-            // metroButton1
+            // buttonData
             // 
-            this.metroButton1.Location = new System.Drawing.Point(3, 9);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(132, 31);
-            this.metroButton1.TabIndex = 2;
-            this.metroButton1.Text = "Data";
-            this.metroButton1.UseSelectable = true;
+            this.buttonData.Location = new System.Drawing.Point(3, 9);
+            this.buttonData.Name = "buttonData";
+            this.buttonData.Size = new System.Drawing.Size(132, 31);
+            this.buttonData.TabIndex = 2;
+            this.buttonData.Text = "Data";
+            this.buttonData.UseSelectable = true;
             // 
             // buttonFrame
             // 
@@ -161,7 +161,7 @@
             // 
             // panelHiveControls
             // 
-            this.panelHiveControls.Controls.Add(this.metroButton1);
+            this.panelHiveControls.Controls.Add(this.buttonData);
             this.panelHiveControls.Controls.Add(this.buttonFrame);
             this.panelHiveControls.Controls.Add(this.buttonRename);
             this.panelHiveControls.Controls.Add(this.buttonRemove);
@@ -198,7 +198,7 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton buttonData;
         private MetroFramework.Controls.MetroButton buttonFrame;
         private MetroFramework.Controls.MetroButton buttonRename;
         private MetroFramework.Controls.MetroButton buttonRemove;

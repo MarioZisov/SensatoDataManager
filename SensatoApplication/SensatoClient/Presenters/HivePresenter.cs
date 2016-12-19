@@ -17,15 +17,17 @@
         private NamePresenter namePresenter;
         private MetroButton selectedHiveButton;
         private FramePresenter framePresenter;
+        private DataPresenter dataPresenter;
 
         public event EventHandler LogoutClick;
 
-        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter)
+        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter, DataPresenter dataPresenter)
         {
             this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
             this.namePresenter = namePresenter;
             this.framePresenter = framePresenter;
+            this.dataPresenter = dataPresenter;
             this.SubscribeEvents();
         }
 
@@ -38,6 +40,7 @@
 
         protected override void SubscribeEvents()
         {
+            this.hiveView.DataClick += OnDataButtonClick;
             this.hiveView.LogoutClick += OnLogout;
             this.hiveView.HiveButtonClick += OnHiveButtonsClick;
             this.hiveView.AddHiveClick += OnAddHiveButtonClick;
@@ -48,6 +51,12 @@
             this.namePresenter.AddSaveComplete += OnAddComplete;
             this.namePresenter.Cancel += OnCancel;
             this.framePresenter.ViewBackButtonClick += OnFrameViewBackButtonClick;
+        }
+
+        private void OnDataButtonClick(object sender, EventArgs e)
+        {
+            this.dataPresenter.User = this.User;
+            this.dataPresenter.InitializeData(this.selectedHiveButton.Text);
         }
 
         private void OnFrameViewBackButtonClick(object sender, EventArgs e)

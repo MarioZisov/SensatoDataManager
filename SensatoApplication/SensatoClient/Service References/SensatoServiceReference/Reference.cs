@@ -148,6 +148,176 @@ namespace SensatoClient.SensatoServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FrameDTO", Namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.DataTransferObjects")]
+    [System.SerializableAttribute()]
+    public partial class FrameDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SensatoClient.SensatoServiceReference.MeasurmentDTO[] MeasurmentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PositionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SensatoClient.SensatoServiceReference.MeasurmentDTO[] Measurments {
+            get {
+                return this.MeasurmentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MeasurmentsField, value) != true)) {
+                    this.MeasurmentsField = value;
+                    this.RaisePropertyChanged("Measurments");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Position {
+            get {
+                return this.PositionField;
+            }
+            set {
+                if ((this.PositionField.Equals(value) != true)) {
+                    this.PositionField = value;
+                    this.RaisePropertyChanged("Position");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MeasurmentDTO", Namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.DataTransferObjects")]
+    [System.SerializableAttribute()]
+    public partial class MeasurmentDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateTimeOfMeasurmentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float FirstSensorTempField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<float> OutsideTempField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float SecondSensorTempField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float ThirdSensorTempField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateTimeOfMeasurment {
+            get {
+                return this.DateTimeOfMeasurmentField;
+            }
+            set {
+                if ((this.DateTimeOfMeasurmentField.Equals(value) != true)) {
+                    this.DateTimeOfMeasurmentField = value;
+                    this.RaisePropertyChanged("DateTimeOfMeasurment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float FirstSensorTemp {
+            get {
+                return this.FirstSensorTempField;
+            }
+            set {
+                if ((this.FirstSensorTempField.Equals(value) != true)) {
+                    this.FirstSensorTempField = value;
+                    this.RaisePropertyChanged("FirstSensorTemp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<float> OutsideTemp {
+            get {
+                return this.OutsideTempField;
+            }
+            set {
+                if ((this.OutsideTempField.Equals(value) != true)) {
+                    this.OutsideTempField = value;
+                    this.RaisePropertyChanged("OutsideTemp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float SecondSensorTemp {
+            get {
+                return this.SecondSensorTempField;
+            }
+            set {
+                if ((this.SecondSensorTempField.Equals(value) != true)) {
+                    this.SecondSensorTempField = value;
+                    this.RaisePropertyChanged("SecondSensorTemp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float ThirdSensorTemp {
+            get {
+                return this.ThirdSensorTempField;
+            }
+            set {
+                if ((this.ThirdSensorTempField.Equals(value) != true)) {
+                    this.ThirdSensorTempField = value;
+                    this.RaisePropertyChanged("ThirdSensorTemp");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SensatoServiceReference.ISensatoService")]
     public interface ISensatoService {
@@ -204,6 +374,12 @@ namespace SensatoClient.SensatoServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveName", ReplyAction="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveNameResponse")]
         System.Threading.Tasks.Task ChangeFrameStatusByHiveNameAsync(string username, string hivename, int[] activeFramesPositions);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetMeasurmentData", ReplyAction="http://tempuri.org/ISensatoService/GetMeasurmentDataResponse")]
+        SensatoClient.SensatoServiceReference.FrameDTO[] GetMeasurmentData(string username, string hiveName, System.DateTime startDate, System.DateTime endDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetMeasurmentData", ReplyAction="http://tempuri.org/ISensatoService/GetMeasurmentDataResponse")]
+        System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.FrameDTO[]> GetMeasurmentDataAsync(string username, string hiveName, System.DateTime startDate, System.DateTime endDate);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -295,6 +471,14 @@ namespace SensatoClient.SensatoServiceReference {
         
         public System.Threading.Tasks.Task ChangeFrameStatusByHiveNameAsync(string username, string hivename, int[] activeFramesPositions) {
             return base.Channel.ChangeFrameStatusByHiveNameAsync(username, hivename, activeFramesPositions);
+        }
+        
+        public SensatoClient.SensatoServiceReference.FrameDTO[] GetMeasurmentData(string username, string hiveName, System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.GetMeasurmentData(username, hiveName, startDate, endDate);
+        }
+        
+        public System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.FrameDTO[]> GetMeasurmentDataAsync(string username, string hiveName, System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.GetMeasurmentDataAsync(username, hiveName, startDate, endDate);
         }
     }
 }

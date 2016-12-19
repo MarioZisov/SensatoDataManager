@@ -17,6 +17,8 @@
         [Required]
         public float ThirdSensorTemp { get; set; }
 
+        public float? OutsideTemp { get; set; }
+
         [Required]
         public DateTime DateTimeOfMeasurment { get; set; }
 

@@ -16,16 +16,7 @@
         }
 
         [DataMember]
-        public int Id { get; set; }
-
-        [DataMember]
         public int Position { get; set; }
-
-        [DataMember]
-        public virtual Hive Hive { get; set; }
-
-        [DataMember]
-        public bool IsRemoved { get; set; }
 
         [DataMember]
         public ICollection<MeasurmentDTO> Measurments

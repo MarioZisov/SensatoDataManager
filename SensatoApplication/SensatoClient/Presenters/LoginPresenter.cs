@@ -30,8 +30,8 @@
         {
             this.loginView.HideErrorMessage();
 
-            string username = this.loginView.Username;
-            string password = this.loginView.Password;
+            string username = "FirstUser";// this.loginView.Username;
+            string password = "123";// this.loginView.Password;
 
             try
             {

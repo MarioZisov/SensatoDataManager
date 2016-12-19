@@ -8,6 +8,8 @@
     using System.Data.Entity.Validation;
     using System;
     using SensatoWebService.Data;
+    using DataTransferObjects;
+
     public class SensatoService : ISensatoService
     {
         private SensatoContext context;
@@ -147,6 +149,42 @@
             this.context.SaveChanges();
         }
 
+        public ICollection<FrameDTO> GetMeasurmentData(string username, string hiveName, DateTime startDate, DateTime endDate)
+        {
+            var user = GetUserByUsername(username);
+            var hive = GetHive(user, hiveName);            
+
+            var frames = hive.Frames.Where(f => f.IsActive).Select(f => new
+            {
+                f.Position,
+                Measurments = f.Measurments
+                .Where(m => m.DateTimeOfMeasurment >= startDate && m.DateTimeOfMeasurment <= endDate)
+            });
+
+            ICollection<FrameDTO> framesDTOs = new HashSet<FrameDTO>();
+            foreach (var frame in frames)
+            {
+                var frameDTO = new FrameDTO { Position = frame.Position };
+                foreach (var measurment in frame.Measurments)
+                {
+                    var measurmentDTO = new MeasurmentDTO
+                    {
+                        FirstSensorTemp = measurment.FirstSensorTemp,
+                        SecondSensorTemp = measurment.SecondSensorTemp,
+                        ThirdSensorTemp = measurment.ThirdSensorTemp,
+                        OutsideTemp = measurment.OutsideTemp,
+                        DateTimeOfMeasurment = measurment.DateTimeOfMeasurment
+                    };
+
+                    frameDTO.Measurments.Add(measurmentDTO);
+                }
+
+                framesDTOs.Add(frameDTO);
+            }
+
+            return framesDTOs;
+        }
+
         private ICollection<Frame> InitializeFrames()
         {
             ICollection<Frame> frames = new HashSet<Frame>();
@@ -185,5 +223,6 @@
                 frame.IsRemoved = true;
             }
         }
+
     }
 }

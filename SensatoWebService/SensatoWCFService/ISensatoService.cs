@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ServiceModel;
     using DataTransferObjects;
+    using System;
 
     [ServiceContract]
     public interface ISensatoService
@@ -35,5 +36,8 @@
 
         [OperationContract]
         void ChangeFrameStatusByHiveName(string username, string hivename, IEnumerable<int> activeFramesPositions);
+
+        [OperationContract]
+        ICollection<FrameDTO> GetMeasurmentData(string username, string hiveName, DateTime startDate, DateTime endDate);
     }
 }

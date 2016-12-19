@@ -112,6 +112,7 @@
     <Compile Include="DataTransferObjects\MeasurmentDTO.cs" />
     <Compile Include="DataTransferObjects\UserDTO.cs" />
     <Compile Include="Faults\AlreadyExistFault.cs" />
+    <Compile Include="Faults\InvalidDateFault.cs" />
     <Compile Include="Faults\PasswordValidationFault.cs" />
     <Compile Include="Faults\UsernameValidationFault.cs" />
     <Compile Include="SensatoService.svc.cs">

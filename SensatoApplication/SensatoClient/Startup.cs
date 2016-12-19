@@ -17,10 +17,12 @@
             IHiveView hiveView = new HiveView();
             INameView nameView = new NameView();
             IFrameView frameView = new FrameView();
+            IDataView dataView = new DataView();
 
+            DataPresenter dataPres = new DataPresenter(dataView);
             FramePresenter framePres = new FramePresenter(frameView);
             NamePresenter namePres = new NamePresenter(nameView);
-            HivePresenter hivePres = new HivePresenter(hiveView, namePres, framePres);
+            HivePresenter hivePres = new HivePresenter(hiveView, namePres, framePres, dataPres);
             LoginPresenter loginPres = new LoginPresenter(loginView, hivePres);
 
             MainForm mainForm = new MainForm(loginView, hiveView, nameView, frameView);

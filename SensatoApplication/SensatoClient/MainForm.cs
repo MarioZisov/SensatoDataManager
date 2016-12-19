@@ -3,6 +3,7 @@
     using System.Windows.Forms;
     using Contracts;
     using MetroFramework.Forms;
+    using Views;
 
     public partial class MainForm : MetroForm
     {

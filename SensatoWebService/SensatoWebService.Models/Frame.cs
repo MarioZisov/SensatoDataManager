@@ -26,6 +26,7 @@
 
         [Required]
         public bool IsActive { get; set; }
+
         public virtual ICollection<Measurment> Measurments
         {
             get { return this.measurments; }

@@ -19,6 +19,8 @@
 
         event EventHandler FrameClick;
 
+        event EventHandler DataClick;
+
         TableLayoutPanel HivesTable { get; }
 
         MetroPanel HiveControls { get; }

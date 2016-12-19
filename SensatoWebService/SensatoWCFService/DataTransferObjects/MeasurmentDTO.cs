@@ -8,9 +8,6 @@
     public class MeasurmentDTO
     {
         [DataMember]
-        public int Id { get; set; }
-
-        [DataMember]
         public float FirstSensorTemp { get; set; }
 
         [DataMember]
@@ -20,12 +17,9 @@
         public float ThirdSensorTemp { get; set; }
 
         [DataMember]
+        public float? OutsideTemp { get; set; }
+
+        [DataMember]
         public DateTime DateTimeOfMeasurment { get; set; }
-
-        [DataMember]
-        public FrameDTO Frame { get; set; }
-
-        [DataMember]
-        public bool IsDeleted { get; set; }
     }
 }

@@ -27,6 +27,7 @@
     <MetadataFile FileName="SensatoService2.xsd" MetadataType="Schema" ID="3b7cd92d-1859-4086-86a0-de7e4da9eb0e" SourceId="1" SourceUrl="http://localhost:50589/SensatoService.svc?xsd=xsd3" />
     <MetadataFile FileName="SensatoService3.xsd" MetadataType="Schema" ID="eac135f1-feab-4233-8550-db81d19e7e77" SourceId="1" SourceUrl="http://localhost:50589/SensatoService.svc?xsd=xsd2" />
     <MetadataFile FileName="SensatoService.disco" MetadataType="Disco" ID="f7fee6d3-a5c0-4a47-8faf-a039f7073a01" SourceId="1" SourceUrl="http://localhost:50589/SensatoService.svc?disco" />
+    <MetadataFile FileName="SensatoService4.xsd" MetadataType="Schema" ID="a42ece61-8828-4442-9ea4-ac48e63807ba" SourceId="1" SourceUrl="http://localhost:50589/SensatoService.svc?xsd=xsd4" />
     <MetadataFile FileName="SensatoService.wsdl" MetadataType="Wsdl" ID="053c719e-44c0-42a3-bb63-b3c6d19ee252" SourceId="1" SourceUrl="http://localhost:50589/SensatoService.svc?wsdl" />
   </Metadata>
   <Extensions>

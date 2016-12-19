@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.Faults" />
       <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:50589/SensatoService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/SensatoDBService.DataTransferObjects" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ISensatoService_CheckUserExists_InputMessage">
@@ -68,6 +69,12 @@
   <wsdl:message name="ISensatoService_ChangeFrameStatusByHiveName_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangeFrameStatusByHiveNameResponse" />
   </wsdl:message>
+  <wsdl:message name="ISensatoService_GetMeasurmentData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasurmentData" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_GetMeasurmentData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMeasurmentDataResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISensatoService">
     <wsdl:operation name="CheckUserExists">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/CheckUserExists" message="tns:ISensatoService_CheckUserExists_InputMessage" />
@@ -104,6 +111,10 @@
     <wsdl:operation name="ChangeFrameStatusByHiveName">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveName" message="tns:ISensatoService_ChangeFrameStatusByHiveName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveNameResponse" message="tns:ISensatoService_ChangeFrameStatusByHiveName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMeasurmentData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetMeasurmentData" message="tns:ISensatoService_GetMeasurmentData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetMeasurmentDataResponse" message="tns:ISensatoService_GetMeasurmentData_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISensatoService" type="tns:ISensatoService">
@@ -185,6 +196,15 @@
     </wsdl:operation>
     <wsdl:operation name="ChangeFrameStatusByHiveName">
       <soap:operation soapAction="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMeasurmentData">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/GetMeasurmentData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
