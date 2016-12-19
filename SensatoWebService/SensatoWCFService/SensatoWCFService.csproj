@@ -137,10 +137,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SensatoWebService.Data\SensatoWebService.Data.csproj">
-      <Project>{bce8c01e-7168-4535-a1ac-fdfc15bea172}</Project>
-      <Name>SensatoWebService.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SensatoWebService.Models\SensatoWebService.Models.csproj">
       <Project>{739FBEB2-71F9-4536-8C08-08D41DA6EC85}</Project>
       <Name>SensatoWebService.Models</Name>

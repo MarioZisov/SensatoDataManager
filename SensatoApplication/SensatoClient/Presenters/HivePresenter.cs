@@ -15,7 +15,6 @@
     public class HivePresenter : AbstractPresenter
     {
         private IHiveView hiveView;
-        //private INameView nameView;
         private SensatoServiceClient serviceClient;
         private NamePresenter namePresenter;
         private MetroButton selectedHiveButton;

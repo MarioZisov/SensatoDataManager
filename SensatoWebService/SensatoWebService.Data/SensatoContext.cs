@@ -1,12 +1,14 @@
 namespace SensatoWebService.Data
 {
-    using System.Data.Entity;
     using Models;
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
 
-    public partial class SensatoDbContext : DbContext
+    public class SensatoContext : DbContext
     {
-        public SensatoDbContext()
-            : base("SensatoDbContext")
+        public SensatoContext()
+            : base("name=SensatoContext")
         {
         }
 
@@ -17,9 +19,5 @@ namespace SensatoWebService.Data
         public DbSet<Frame> Frames { get; set; }
 
         public DbSet<Measurment> Measurments { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-        }
     }
 }
