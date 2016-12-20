@@ -65,9 +65,11 @@ namespace SensatoClient.Presenters
 
         private void OnShowClick(object sender, EventArgs e)
         {
+            this.dataView.DataGrid.Rows.Clear();
+
             var startDate = this.dataView.StartDate.Value;
             var endDate = this.dataView.EndDate.Value;
-
+            
             var framesWithMeasurments = 
                 this.client.GetMeasurmentData(this.User.Username, this.hiveName, startDate, endDate);
 
@@ -100,26 +102,31 @@ namespace SensatoClient.Presenters
                     string dateOfMeasurment = measurmentDto.DateTimeOfMeasurment.Date.ToString("d");
                     string timeOfMeasurment = measurmentDto.DateTimeOfMeasurment.TimeOfDay.ToString("g");
 
-                    this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.Alignment =
+                        DataGridViewContentAlignment.MiddleCenter;
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FramePositionColumn].Value = "Sensor 1: ";
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FrameColumn + frameCounter].Value = fristTemp;
-                    this.dataView.DataGrid.Rows[measurmentCounter].Cells[OutsideColumn].Value = !string.IsNullOrEmpty(outsideTemp) ? outsideTemp :"n/a";
+                    this.dataView.DataGrid.Rows[measurmentCounter].Cells[OutsideColumn].Value =
+                        !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
                     this.dataView.DataGrid.Rows[measurmentCounter++].Cells[DateColumn].Value = dateOfMeasurment;
 
-                    this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.Alignment =
+                        DataGridViewContentAlignment.MiddleCenter;
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FramePositionColumn].Value = "Sensor 2: ";
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FrameColumn + frameCounter].Value = secondTemp;
-                    this.dataView.DataGrid.Rows[measurmentCounter].Cells[OutsideColumn].Value = !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
+                    this.dataView.DataGrid.Rows[measurmentCounter].Cells[OutsideColumn].Value =
+                        !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[TimeColumn].Value = timeOfMeasurment;
                     this.dataView.DataGrid.Rows[measurmentCounter++].Cells[DateColumn].Value = dateOfMeasurment;
 
-                    this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.Alignment =
+                        DataGridViewContentAlignment.MiddleCenter;
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FramePositionColumn].Value = "Sensor 3: ";
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FrameColumn + frameCounter].Value = thirdTemp;
-                    this.dataView.DataGrid.Rows[measurmentCounter].Cells[OutsideColumn].Value = !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
+                    this.dataView.DataGrid.Rows[measurmentCounter].Cells[OutsideColumn].Value =
+                        !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
                     this.dataView.DataGrid.Rows[measurmentCounter++].Cells[DateColumn].Value = dateOfMeasurment;
                 }
-
                 frameCounter++;
             }
         }
