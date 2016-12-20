@@ -1,4 +1,4 @@
-﻿                                         
+﻿
 
 namespace SensatoClient.Presenters
 {
@@ -45,7 +45,7 @@ namespace SensatoClient.Presenters
 
         private void OnStartDateChange(object sender, EventArgs e)
         {
-            this.dataView.EndDate.MaxDate = DateTime.Now;          
+            this.dataView.EndDate.MaxDate = DateTime.Now;
 
             if (!this.dataView.EndDate.Enabled)
             {
@@ -56,8 +56,8 @@ namespace SensatoClient.Presenters
 
             var startDateValue = this.dataView.StartDate.Value;
             this.dataView.EndDate.MinDate = startDateValue;
-            var maxDateDiff = (DateTime.Now - startDateValue).TotalDays <= 30 
-                ? (DateTime.Now - startDateValue).TotalDays 
+            var maxDateDiff = (DateTime.Now - startDateValue).TotalDays <= 30
+                ? (DateTime.Now - startDateValue).TotalDays
                 : 30;
 
             this.dataView.EndDate.MaxDate = startDateValue.AddDays(maxDateDiff);
@@ -69,8 +69,8 @@ namespace SensatoClient.Presenters
 
             var startDate = this.dataView.StartDate.Value;
             var endDate = this.dataView.EndDate.Value;
-            
-            var framesWithMeasurments = 
+
+            var framesWithMeasurments =
                 this.client.GetMeasurmentData(this.User.Username, this.hiveName, startDate, endDate);
 
             this.ManageMeasurments(framesWithMeasurments);
@@ -84,13 +84,16 @@ namespace SensatoClient.Presenters
             {
                 int measurmentCounter = 0;
                 int framePos = frameWithMeasurments.Position;
-                
+
                 this.dataView.DataGrid.Columns[FrameColumn + frameCounter].HeaderText = "Position " + framePos;
 
                 //It will be good if we can avoid this - first adding empty rows then putting data in them
-                for (int i = 0; i < frameWithMeasurments.Measurments.Length * NumberOfSensorsOnFrame; i++)
+                if (this.dataView.DataGrid.RowCount < frameWithMeasurments.Measurments.Length * 3)
                 {
-                    this.dataView.DataGrid.Rows.Add();
+                    for (int i = 0; i < frameWithMeasurments.Measurments.Length * NumberOfSensorsOnFrame; i++)
+                    {
+                        this.dataView.DataGrid.Rows.Add();
+                    }
                 }
 
                 foreach (var measurmentDto in frameWithMeasurments.Measurments)
