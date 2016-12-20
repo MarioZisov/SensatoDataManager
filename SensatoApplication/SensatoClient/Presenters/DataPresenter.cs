@@ -86,7 +86,7 @@ namespace SensatoClient.Presenters
                 this.dataView.DataGrid.Columns[FrameColumn + frameCounter].HeaderText = "Position " + framePos;
 
                 //It will be good if we can avoid this - first adding empty rows then putting data in them
-                for (int i = 1; i < frameWithMeasurments.Measurments.Length * NumberOfSensorsOnFrame; i++)
+                for (int i = 0; i < frameWithMeasurments.Measurments.Length * NumberOfSensorsOnFrame; i++)
                 {
                     this.dataView.DataGrid.Rows.Add();
                 }
