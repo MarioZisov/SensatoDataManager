@@ -33,11 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.gridData = new MetroFramework.Controls.MetroGrid();
-            this.dateStart = new MetroFramework.Controls.MetroDateTime();
-            this.dateEnd = new MetroFramework.Controls.MetroDateTime();
-            this.labelStart = new MetroFramework.Controls.MetroLabel();
-            this.labelEnd = new MetroFramework.Controls.MetroLabel();
-            this.buttonShow = new MetroFramework.Controls.MetroButton();
             this.framePos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.frame1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.frame2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +46,11 @@
             this.outside = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateStart = new MetroFramework.Controls.MetroDateTime();
+            this.dateEnd = new MetroFramework.Controls.MetroDateTime();
+            this.labelStart = new MetroFramework.Controls.MetroLabel();
+            this.labelEnd = new MetroFramework.Controls.MetroLabel();
+            this.buttonShow = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +100,7 @@
             this.time,
             this.date});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
@@ -127,54 +127,8 @@
             this.gridData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridData.Size = new System.Drawing.Size(862, 361);
             this.gridData.TabIndex = 1;
-            // 
-            // dateStart
-            // 
-            this.dateStart.Location = new System.Drawing.Point(137, 88);
-            this.dateStart.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dateStart.Name = "dateStart";
-            this.dateStart.Size = new System.Drawing.Size(207, 29);
-            this.dateStart.TabIndex = 2;
-            // 
-            // dateEnd
-            // 
-            this.dateEnd.Enabled = false;
-            this.dateEnd.Location = new System.Drawing.Point(438, 88);
-            this.dateEnd.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dateEnd.Name = "dateEnd";
-            this.dateEnd.Size = new System.Drawing.Size(207, 29);
-            this.dateEnd.TabIndex = 3;
-            // 
-            // labelStart
-            // 
-            this.labelStart.AutoSize = true;
-            this.labelStart.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.labelStart.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelStart.Location = new System.Drawing.Point(78, 88);
-            this.labelStart.Name = "labelStart";
-            this.labelStart.Size = new System.Drawing.Size(53, 25);
-            this.labelStart.TabIndex = 4;
-            this.labelStart.Text = "Start:";
-            // 
-            // labelEnd
-            // 
-            this.labelEnd.AutoSize = true;
-            this.labelEnd.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.labelEnd.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelEnd.Location = new System.Drawing.Point(386, 88);
-            this.labelEnd.Name = "labelEnd";
-            this.labelEnd.Size = new System.Drawing.Size(46, 25);
-            this.labelEnd.TabIndex = 5;
-            this.labelEnd.Text = "End:";
-            // 
-            // buttonShow
-            // 
-            this.buttonShow.Location = new System.Drawing.Point(690, 88);
-            this.buttonShow.Name = "buttonShow";
-            this.buttonShow.Size = new System.Drawing.Size(101, 29);
-            this.buttonShow.TabIndex = 6;
-            this.buttonShow.Text = "Show";
-            this.buttonShow.UseSelectable = true;
+            this.gridData.UseCustomBackColor = true;
+            this.gridData.UseCustomForeColor = true;
             // 
             // framePos
             // 
@@ -286,6 +240,54 @@
             this.date.ReadOnly = true;
             this.date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.date.Width = 70;
+            // 
+            // dateStart
+            // 
+            this.dateStart.Location = new System.Drawing.Point(137, 88);
+            this.dateStart.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dateStart.Name = "dateStart";
+            this.dateStart.Size = new System.Drawing.Size(207, 29);
+            this.dateStart.TabIndex = 2;
+            // 
+            // dateEnd
+            // 
+            this.dateEnd.Enabled = false;
+            this.dateEnd.Location = new System.Drawing.Point(438, 88);
+            this.dateEnd.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dateEnd.Name = "dateEnd";
+            this.dateEnd.Size = new System.Drawing.Size(207, 29);
+            this.dateEnd.TabIndex = 3;
+            // 
+            // labelStart
+            // 
+            this.labelStart.AutoSize = true;
+            this.labelStart.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.labelStart.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelStart.Location = new System.Drawing.Point(78, 88);
+            this.labelStart.Name = "labelStart";
+            this.labelStart.Size = new System.Drawing.Size(53, 25);
+            this.labelStart.TabIndex = 4;
+            this.labelStart.Text = "Start:";
+            // 
+            // labelEnd
+            // 
+            this.labelEnd.AutoSize = true;
+            this.labelEnd.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.labelEnd.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelEnd.Location = new System.Drawing.Point(386, 88);
+            this.labelEnd.Name = "labelEnd";
+            this.labelEnd.Size = new System.Drawing.Size(46, 25);
+            this.labelEnd.TabIndex = 5;
+            this.labelEnd.Text = "End:";
+            // 
+            // buttonShow
+            // 
+            this.buttonShow.Location = new System.Drawing.Point(690, 88);
+            this.buttonShow.Name = "buttonShow";
+            this.buttonShow.Size = new System.Drawing.Size(101, 29);
+            this.buttonShow.TabIndex = 6;
+            this.buttonShow.Text = "Show";
+            this.buttonShow.UseSelectable = true;
             // 
             // DataView
             // 

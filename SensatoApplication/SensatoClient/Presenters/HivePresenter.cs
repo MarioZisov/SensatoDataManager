@@ -9,6 +9,7 @@
     using System.Linq;
     using System.Collections.Generic;
     using MetroFramework;
+    using Views;
 
     public class HivePresenter : AbstractPresenter
     {
@@ -21,13 +22,13 @@
 
         public event EventHandler LogoutClick;
 
-        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter, DataPresenter dataPresenter)
+        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter/*, DataPresenter dataPresenter*/)
         {
             this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
             this.namePresenter = namePresenter;
             this.framePresenter = framePresenter;
-            this.dataPresenter = dataPresenter;
+            //this.dataPresenter = dataPresenter;
             this.SubscribeEvents();
         }
 
@@ -55,8 +56,10 @@
 
         private void OnDataButtonClick(object sender, EventArgs e)
         {
-            this.dataPresenter.User = this.User;
-            this.dataPresenter.InitializeData(this.selectedHiveButton.Text);
+            IDataView dataView = new DataView();
+            DataPresenter dataPres = new DataPresenter(dataView);
+            dataPres.User = this.User;
+            dataPres.InitializeData(this.selectedHiveButton.Text);
         }
 
         private void OnFrameViewBackButtonClick(object sender, EventArgs e)

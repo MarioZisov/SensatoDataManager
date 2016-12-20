@@ -5,6 +5,7 @@ namespace SensatoClient.Presenters
     using Contracts;
     using SensatoServiceReference;
     using System;
+    using System.Drawing;
     using System.Windows.Forms;
     using Views;
 
@@ -20,19 +21,20 @@ namespace SensatoClient.Presenters
         private IDataView dataView;
         private SensatoServiceClient client;
         private string hiveName;
+        private bool rowColorFlag = true;
+        private Color colorSectorA = Color.Yellow;
+        private Color colorSectorB = Color.White;
 
-        public DataPresenter(/*IDataView dataView*/)
+        public DataPresenter(IDataView dataView)
         {
-            //this.dataView = dataView;
+            this.dataView = dataView;
             this.client = new SensatoServiceClient();
-            //this.SubscribeEvents();
+            this.SubscribeEvents();
         }
 
         public void InitializeData(string hiveName)
         {
-            this.dataView = new DataView();
             this.dataView.Show();
-            this.SubscribeEvents();
             this.hiveName = hiveName;
             this.dataView.StartDate.MaxDate = DateTime.Now;
         }
@@ -76,9 +78,13 @@ namespace SensatoClient.Presenters
             this.ManageMeasurments(framesWithMeasurments);
         }
 
+        //TODO: Implement progress spinner for cooler loading
         private void ManageMeasurments(FrameDTO[] framesWithMeasurments)
         {
             int frameCounter = 1;
+
+            //Collection of rows that can replace the for-loop below
+            //DataGridViewRow[] rows = new DataGridViewRow[frameWithMeasurments.Measurments.Length * NumberOfSensorsOnFrame];
 
             foreach (var frameWithMeasurments in framesWithMeasurments)
             {
@@ -90,14 +96,15 @@ namespace SensatoClient.Presenters
                 //It will be good if we can avoid this - first adding empty rows then putting data in them
                 if (this.dataView.DataGrid.RowCount < frameWithMeasurments.Measurments.Length * 3)
                 {
-                    for (int i = 0; i < frameWithMeasurments.Measurments.Length * NumberOfSensorsOnFrame; i++)
+                    for (int i = 1; i < frameWithMeasurments.Measurments.Length * NumberOfSensorsOnFrame; i++)
                     {
                         this.dataView.DataGrid.Rows.Add();
+                                              
                     }
-                }
+                }                
 
                 foreach (var measurmentDto in frameWithMeasurments.Measurments)
-                {
+                {                   
                     string fristTemp = measurmentDto.FirstSensorTemp.ToString();
                     string secondTemp = measurmentDto.SecondSensorTemp.ToString();
                     string thirdTemp = measurmentDto.ThirdSensorTemp.ToString();
@@ -105,6 +112,24 @@ namespace SensatoClient.Presenters
                     string dateOfMeasurment = measurmentDto.DateTimeOfMeasurment.Date.ToString("d");
                     string timeOfMeasurment = measurmentDto.DateTimeOfMeasurment.TimeOfDay.ToString("g");
 
+                    //Possible usege of the row collection (NOT TESTED!)
+                    //
+                    //Example:
+                    //
+                    //rows[measurmentCounter].DefaultCellStyle.BackColor =
+                    //    rowColorFlag ? this.colorSectorA : this.colorSectorB;
+                    //rows[measurmentCounter].DefaultCellStyle.Alignment =
+                    //    DataGridViewContentAlignment.MiddleCenter;
+                    //rows[measurmentCounter].Cells[FramePositionColumn].Value = "Sensor 1: ";
+                    //rows[measurmentCounter].Cells[FrameColumn + frameCounter].Value = fristTemp;
+                    //rows[measurmentCounter].Cells[OutsideColumn].Value =
+                    //    !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
+                    //rows[measurmentCounter++].Cells[DateColumn].Value = dateOfMeasurment;
+                    //
+                    //...
+
+                    this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.BackColor =
+                        rowColorFlag ? this.colorSectorA : this.colorSectorB;
                     this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.Alignment =
                         DataGridViewContentAlignment.MiddleCenter;
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FramePositionColumn].Value = "Sensor 1: ";
@@ -113,6 +138,8 @@ namespace SensatoClient.Presenters
                         !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
                     this.dataView.DataGrid.Rows[measurmentCounter++].Cells[DateColumn].Value = dateOfMeasurment;
 
+                    this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.BackColor =
+                        rowColorFlag ? this.colorSectorA : this.colorSectorB;
                     this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.Alignment =
                         DataGridViewContentAlignment.MiddleCenter;
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FramePositionColumn].Value = "Sensor 2: ";
@@ -122,6 +149,8 @@ namespace SensatoClient.Presenters
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[TimeColumn].Value = timeOfMeasurment;
                     this.dataView.DataGrid.Rows[measurmentCounter++].Cells[DateColumn].Value = dateOfMeasurment;
 
+                    this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.BackColor =
+                        rowColorFlag ? this.colorSectorA : this.colorSectorB;
                     this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.Alignment =
                         DataGridViewContentAlignment.MiddleCenter;
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FramePositionColumn].Value = "Sensor 3: ";
@@ -129,7 +158,10 @@ namespace SensatoClient.Presenters
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[OutsideColumn].Value =
                         !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
                     this.dataView.DataGrid.Rows[measurmentCounter++].Cells[DateColumn].Value = dateOfMeasurment;
+
+                    this.rowColorFlag = !rowColorFlag;
                 }
+
                 frameCounter++;
             }
         }
