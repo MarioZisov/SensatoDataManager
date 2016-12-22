@@ -38,6 +38,8 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.tablePanelHives = new System.Windows.Forms.TableLayoutPanel();
             this.panelHiveControls = new MetroFramework.Controls.MetroPanel();
+            this.buttonAddData = new MetroFramework.Controls.MetroButton();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.metroPanel1.SuspendLayout();
             this.panelHiveControls.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +86,7 @@
             this.buttonAddHive.Name = "buttonAddHive";
             this.buttonAddHive.Size = new System.Drawing.Size(129, 31);
             this.buttonAddHive.TabIndex = 6;
-            this.buttonAddHive.Text = "Add";
+            this.buttonAddHive.Text = "Add Hive";
             this.buttonAddHive.UseSelectable = true;
             // 
             // buttonLogout
@@ -161,6 +163,7 @@
             // 
             // panelHiveControls
             // 
+            this.panelHiveControls.Controls.Add(this.buttonAddData);
             this.panelHiveControls.Controls.Add(this.buttonData);
             this.panelHiveControls.Controls.Add(this.buttonFrame);
             this.panelHiveControls.Controls.Add(this.buttonRename);
@@ -171,11 +174,24 @@
             this.panelHiveControls.HorizontalScrollbarSize = 10;
             this.panelHiveControls.Location = new System.Drawing.Point(0, 20);
             this.panelHiveControls.Name = "panelHiveControls";
-            this.panelHiveControls.Size = new System.Drawing.Size(142, 165);
+            this.panelHiveControls.Size = new System.Drawing.Size(142, 192);
             this.panelHiveControls.TabIndex = 10;
             this.panelHiveControls.VerticalScrollbarBarColor = true;
             this.panelHiveControls.VerticalScrollbarHighlightOnWheel = false;
             this.panelHiveControls.VerticalScrollbarSize = 10;
+            // 
+            // buttonAddData
+            // 
+            this.buttonAddData.Location = new System.Drawing.Point(3, 158);
+            this.buttonAddData.Name = "buttonAddData";
+            this.buttonAddData.Size = new System.Drawing.Size(132, 31);
+            this.buttonAddData.TabIndex = 6;
+            this.buttonAddData.Text = "Add Data File";
+            this.buttonAddData.UseSelectable = true;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
             // 
             // HiveView
             // 
@@ -208,5 +224,7 @@
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private System.Windows.Forms.TableLayoutPanel tablePanelHives;
         private MetroFramework.Controls.MetroPanel panelHiveControls;
+        private MetroFramework.Controls.MetroButton buttonAddData;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

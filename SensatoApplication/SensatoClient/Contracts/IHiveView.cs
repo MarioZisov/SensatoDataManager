@@ -21,9 +21,13 @@
 
         event EventHandler DataClick;
 
+        event EventHandler AddDataFileClick;
+
         TableLayoutPanel HivesTable { get; }
 
         MetroPanel HiveControls { get; }
+
+        OpenFileDialog FileDialog { get; }
 
         bool IsEnabled { get; set; }
 

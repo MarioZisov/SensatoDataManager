@@ -66,6 +66,7 @@
     <Compile Include="Contracts\ILoginView.cs" />
     <Compile Include="Contracts\INameView.cs" />
     <Compile Include="Contracts\IView.cs" />
+    <Compile Include="IO\FileInputReader.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -5,20 +5,29 @@
     using Models;
     using SensatoServiceReference;
     using System;
+    using System.Collections;
     using System.Windows.Forms;
     using System.Linq;
     using System.Collections.Generic;
+    using System.Text.RegularExpressions;
+    using IO;
     using MetroFramework;
     using Views;
 
     public class HivePresenter : AbstractPresenter
     {
+        private const string Pattern =
+            @"((\+\d{1,2}\,){3}(---,)+)+((\+\d{1,2}\,){3}(---,)+(\+\d{1,2},)?(---,)+)?([0-9]|0[0-9]|1[0-9]|2[0-3])h(.+)";
+
+        private const string ValidateFileMessage = "Are you sure you want to add data from file: {0}?";
+
         private IHiveView hiveView;
         private SensatoServiceClient serviceClient;
         private NamePresenter namePresenter;
         private MetroButton selectedHiveButton;
         private FramePresenter framePresenter;
         private DataPresenter dataPresenter;
+        private FileInputReader reader;
 
         public event EventHandler LogoutClick;
 
@@ -26,6 +35,7 @@
         {
             this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
+            this.reader = new FileInputReader();
             this.namePresenter = namePresenter;
             this.framePresenter = framePresenter;
             //this.dataPresenter = dataPresenter;
@@ -34,7 +44,7 @@
 
         public void Initialize()
         {
-            var hivesNames = this.serviceClient.GetUserHivesByUsername(this.User.Username);            
+            var hivesNames = this.serviceClient.GetUserHivesByUsername(this.User.Username);
             this.PassHivesToView(hivesNames);
             this.hiveView.BringToFront();
         }
@@ -47,11 +57,61 @@
             this.hiveView.AddHiveClick += OnAddHiveButtonClick;
             this.hiveView.RenameHiveClick += OnRenameHiveClick;
             this.hiveView.RemoveHiveClick += OnRemoveHiveClick;
+            this.hiveView.AddDataFileClick += OnAddDataFileClick;
             this.hiveView.FrameClick += OnFrameClick;
             this.namePresenter.RenameSaveComplete += OnRenameComplete;
             this.namePresenter.AddSaveComplete += OnAddComplete;
             this.namePresenter.Cancel += OnCancel;
             this.framePresenter.ViewBackButtonClick += OnFrameViewBackButtonClick;
+        }
+
+        private void OnAddDataFileClick(object sender, EventArgs e)
+        {
+            
+            this.hiveView.FileDialog.Filter = "All files(*.txt) | *.txt";
+            DialogResult fileOpenResult = this.hiveView.FileDialog.ShowDialog();
+            if (fileOpenResult != DialogResult.Cancel)
+            {
+                string addedFilePath = this.hiveView.FileDialog.FileName;
+
+                DialogResult confirmResult = MetroMessageBox.Show
+                    ((MetroUserControl) sender,
+                        string.Format(ValidateFileMessage, addedFilePath),
+                        "Confrim data upload"
+                        , MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question,
+                        100);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    IList<string> allLines = this.reader.ReadInput(addedFilePath);
+                    IList<string> validLines = this.ParseValideLines(allLines);
+                    this.ProcessData(validLines);
+                }
+            }
+        }
+
+        private void ProcessData(IList<string> validLines)
+        {
+            List<string[]> measurments = new List<string[]>();
+
+            string splitString = "---|,---,";
+
+            foreach (var line in validLines)
+            {
+                string[] splittedDataByFrame = Regex.Split(line, splitString);
+                for (int i = 0; i < splittedDataByFrame.Length - 2; i++)
+                {
+                    string[] tempBYframe = new string[5];
+
+                    if (!string.IsNullOrEmpty(splittedDataByFrame[i]))
+                    {
+                        tempBYframe = splittedDataByFrame[i].Split(',');
+                    }
+
+                    tempBYframe[4] = splittedDataByFrame[splittedDataByFrame.Length - 1];
+                }
+            }
         }
 
         private void OnDataButtonClick(object sender, EventArgs e)
@@ -70,7 +130,7 @@
             this.framePresenter.User = this.User;
 
             IEnumerable<int> activeFrames = this.serviceClient
-                .GetFramesByHiveName(this.User.Username, this.selectedHiveButton.Text);                
+                .GetFramesByHiveName(this.User.Username, this.selectedHiveButton.Text);
 
             this.framePresenter.SetCurrentHiveName(this.selectedHiveButton.Text);
             this.framePresenter.LoadActiveFrames(activeFrames);
@@ -212,6 +272,22 @@
                     this.hiveView.HivesTable.Height += 95;
                 }
             }
+        }
+
+        private IList<string> ParseValideLines(IList<string> allLines)
+        {
+            Regex regex = new Regex(Pattern);
+
+            IList<string> validLines = new List<string>();
+            foreach (var line in allLines)
+            {
+                if (regex.IsMatch(line))
+                {
+                    validLines.Add(line);
+                }
+            }
+
+            return validLines;
         }
     }
 }

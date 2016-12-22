@@ -16,6 +16,7 @@
         public event EventHandler RemoveHiveClick;
         public event EventHandler FrameClick;
         public event EventHandler DataClick;
+        public event EventHandler AddDataFileClick;
 
         public HiveView()
         {
@@ -37,6 +38,11 @@
             {
                 return this.panelHiveControls;
             }
+        }
+
+        public OpenFileDialog FileDialog
+        {
+            get { return this.openFileDialog; }
         }
 
         public bool IsEnabled
@@ -101,6 +107,11 @@
             this.buttonData.Click += delegate
             {
                 this.DataClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.buttonAddData.Click += delegate
+            {
+                this.AddDataFileClick?.Invoke(this, EventArgs.Empty);
             };
         }
     }
