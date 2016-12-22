@@ -110,7 +110,7 @@ namespace SensatoClient.Presenters
                     string thirdTemp = measurmentDto.ThirdSensorTemp.ToString();
                     string outsideTemp = measurmentDto.OutsideTemp.ToString();
                     string dateOfMeasurment = measurmentDto.DateTimeOfMeasurment.Date.ToString("d");
-                    string timeOfMeasurment = measurmentDto.DateTimeOfMeasurment.TimeOfDay.ToString("g");
+                    string timeOfMeasurment = measurmentDto.DateTimeOfMeasurment.TimeOfDay.Hours.ToString();
 
                     //Possible usege of the row collection (NOT TESTED!)
                     //
@@ -146,7 +146,7 @@ namespace SensatoClient.Presenters
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[FrameColumn + frameCounter].Value = secondTemp;
                     this.dataView.DataGrid.Rows[measurmentCounter].Cells[OutsideColumn].Value =
                         !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
-                    this.dataView.DataGrid.Rows[measurmentCounter].Cells[TimeColumn].Value = timeOfMeasurment;
+                    this.dataView.DataGrid.Rows[measurmentCounter].Cells[TimeColumn].Value = timeOfMeasurment + "h";
                     this.dataView.DataGrid.Rows[measurmentCounter++].Cells[DateColumn].Value = dateOfMeasurment;
 
                     this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.BackColor =

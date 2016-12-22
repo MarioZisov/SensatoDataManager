@@ -33,6 +33,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.gridData = new MetroFramework.Controls.MetroGrid();
+            this.dateStart = new MetroFramework.Controls.MetroDateTime();
+            this.dateEnd = new MetroFramework.Controls.MetroDateTime();
+            this.labelStart = new MetroFramework.Controls.MetroLabel();
+            this.labelEnd = new MetroFramework.Controls.MetroLabel();
+            this.buttonShow = new MetroFramework.Controls.MetroButton();
             this.framePos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.frame1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.frame2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,11 +51,6 @@
             this.outside = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateStart = new MetroFramework.Controls.MetroDateTime();
-            this.dateEnd = new MetroFramework.Controls.MetroDateTime();
-            this.labelStart = new MetroFramework.Controls.MetroLabel();
-            this.labelEnd = new MetroFramework.Controls.MetroLabel();
-            this.buttonShow = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,117 +130,6 @@
             this.gridData.UseCustomBackColor = true;
             this.gridData.UseCustomForeColor = true;
             // 
-            // framePos
-            // 
-            this.framePos.Frozen = true;
-            this.framePos.HeaderText = "Frame Position";
-            this.framePos.Name = "framePos";
-            this.framePos.ReadOnly = true;
-            this.framePos.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.framePos.Width = 60;
-            // 
-            // frame1
-            // 
-            this.frame1.Frozen = true;
-            this.frame1.HeaderText = "Inactive";
-            this.frame1.Name = "frame1";
-            this.frame1.ReadOnly = true;
-            this.frame1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.frame1.Width = 60;
-            // 
-            // frame2
-            // 
-            this.frame2.Frozen = true;
-            this.frame2.HeaderText = "Inactive";
-            this.frame2.Name = "frame2";
-            this.frame2.ReadOnly = true;
-            this.frame2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.frame2.Width = 60;
-            // 
-            // frame3
-            // 
-            this.frame3.Frozen = true;
-            this.frame3.HeaderText = "Inactive";
-            this.frame3.Name = "frame3";
-            this.frame3.ReadOnly = true;
-            this.frame3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.frame3.Width = 60;
-            // 
-            // frame4
-            // 
-            this.frame4.Frozen = true;
-            this.frame4.HeaderText = "Inactive";
-            this.frame4.Name = "frame4";
-            this.frame4.ReadOnly = true;
-            this.frame4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.frame4.Width = 60;
-            // 
-            // frame5
-            // 
-            this.frame5.Frozen = true;
-            this.frame5.HeaderText = "Inactive";
-            this.frame5.Name = "frame5";
-            this.frame5.ReadOnly = true;
-            this.frame5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.frame5.Width = 60;
-            // 
-            // frame6
-            // 
-            this.frame6.Frozen = true;
-            this.frame6.HeaderText = "Inactive";
-            this.frame6.Name = "frame6";
-            this.frame6.ReadOnly = true;
-            this.frame6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.frame6.Width = 60;
-            // 
-            // frame7
-            // 
-            this.frame7.HeaderText = "Inactive";
-            this.frame7.Name = "frame7";
-            this.frame7.ReadOnly = true;
-            this.frame7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.frame7.Width = 60;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Inactive";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column8.Width = 60;
-            // 
-            // underTheRoof
-            // 
-            this.underTheRoof.HeaderText = "Under the roof T";
-            this.underTheRoof.Name = "underTheRoof";
-            this.underTheRoof.ReadOnly = true;
-            this.underTheRoof.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.underTheRoof.Width = 60;
-            // 
-            // outside
-            // 
-            this.outside.HeaderText = "Outside T";
-            this.outside.Name = "outside";
-            this.outside.ReadOnly = true;
-            this.outside.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.outside.Width = 60;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "    Time";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            this.time.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.time.Width = 70;
-            // 
-            // date
-            // 
-            this.date.HeaderText = "     Date";
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            this.date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.date.Width = 70;
-            // 
             // dateStart
             // 
             this.dateStart.Location = new System.Drawing.Point(137, 88);
@@ -289,6 +178,130 @@
             this.buttonShow.Text = "Show";
             this.buttonShow.UseSelectable = true;
             // 
+            // framePos
+            // 
+            this.framePos.Frozen = true;
+            this.framePos.HeaderText = "Frame Position";
+            this.framePos.Name = "framePos";
+            this.framePos.ReadOnly = true;
+            this.framePos.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.framePos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.framePos.Width = 60;
+            // 
+            // frame1
+            // 
+            this.frame1.Frozen = true;
+            this.frame1.HeaderText = "Inactive";
+            this.frame1.Name = "frame1";
+            this.frame1.ReadOnly = true;
+            this.frame1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.frame1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.frame1.Width = 60;
+            // 
+            // frame2
+            // 
+            this.frame2.Frozen = true;
+            this.frame2.HeaderText = "Inactive";
+            this.frame2.Name = "frame2";
+            this.frame2.ReadOnly = true;
+            this.frame2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.frame2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.frame2.Width = 60;
+            // 
+            // frame3
+            // 
+            this.frame3.Frozen = true;
+            this.frame3.HeaderText = "Inactive";
+            this.frame3.Name = "frame3";
+            this.frame3.ReadOnly = true;
+            this.frame3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.frame3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.frame3.Width = 60;
+            // 
+            // frame4
+            // 
+            this.frame4.Frozen = true;
+            this.frame4.HeaderText = "Inactive";
+            this.frame4.Name = "frame4";
+            this.frame4.ReadOnly = true;
+            this.frame4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.frame4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.frame4.Width = 60;
+            // 
+            // frame5
+            // 
+            this.frame5.Frozen = true;
+            this.frame5.HeaderText = "Inactive";
+            this.frame5.Name = "frame5";
+            this.frame5.ReadOnly = true;
+            this.frame5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.frame5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.frame5.Width = 60;
+            // 
+            // frame6
+            // 
+            this.frame6.Frozen = true;
+            this.frame6.HeaderText = "Inactive";
+            this.frame6.Name = "frame6";
+            this.frame6.ReadOnly = true;
+            this.frame6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.frame6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.frame6.Width = 60;
+            // 
+            // frame7
+            // 
+            this.frame7.HeaderText = "Inactive";
+            this.frame7.Name = "frame7";
+            this.frame7.ReadOnly = true;
+            this.frame7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.frame7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.frame7.Width = 60;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Inactive";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column8.Width = 60;
+            // 
+            // underTheRoof
+            // 
+            this.underTheRoof.HeaderText = "Under the roof T";
+            this.underTheRoof.Name = "underTheRoof";
+            this.underTheRoof.ReadOnly = true;
+            this.underTheRoof.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.underTheRoof.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.underTheRoof.Width = 60;
+            // 
+            // outside
+            // 
+            this.outside.HeaderText = "Outside T";
+            this.outside.Name = "outside";
+            this.outside.ReadOnly = true;
+            this.outside.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.outside.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.outside.Width = 60;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "    Time";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            this.time.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.time.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.time.Width = 70;
+            // 
+            // date
+            // 
+            this.date.HeaderText = "     Date";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            this.date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.date.Width = 70;
+            // 
             // DataView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,18 +331,18 @@
         private MetroFramework.Controls.MetroLabel labelStart;
         private MetroFramework.Controls.MetroLabel labelEnd;
         private MetroFramework.Controls.MetroButton buttonShow;
-        private System.Windows.Forms.DataGridViewTextBoxColumn date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn outside;
-        private System.Windows.Forms.DataGridViewTextBoxColumn underTheRoof;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frame7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frame6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frame5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frame4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frame3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frame2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frame1;
         private System.Windows.Forms.DataGridViewTextBoxColumn framePos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn frame1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn frame2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn frame3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn frame4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn frame5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn frame6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn frame7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn underTheRoof;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outside;
+        private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date;
     }
 }
