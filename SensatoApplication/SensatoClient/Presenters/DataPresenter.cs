@@ -5,7 +5,9 @@ namespace SensatoClient.Presenters
     using Contracts;
     using SensatoServiceReference;
     using System;
+    using System.Diagnostics;
     using System.Drawing;
+    using System.Linq;
     using System.Windows.Forms;
     using Views;
 
@@ -83,50 +85,27 @@ namespace SensatoClient.Presenters
         {
             int frameCounter = 1;
 
-            //Collection of rows that can replace the for-loop below
-            //DataGridViewRow[] rows = new DataGridViewRow[frameWithMeasurments.Measurments.Length * NumberOfSensorsOnFrame];
+            int maxMeasurments = framesWithMeasurments.Max(f => f.Measurments.Count());
+            for (int i = 1; i < maxMeasurments * NumberOfSensorsOnFrame; i++)
+            {
+                this.dataView.DataGrid.Rows.Add();
+            }
 
             foreach (var frameWithMeasurments in framesWithMeasurments)
             {
                 int measurmentCounter = 0;
                 int framePos = frameWithMeasurments.Position;
 
-                this.dataView.DataGrid.Columns[FrameColumn + frameCounter].HeaderText = "Position " + framePos;
-
-                //It will be good if we can avoid this - first adding empty rows then putting data in them
-                if (this.dataView.DataGrid.RowCount < frameWithMeasurments.Measurments.Length * 3)
-                {
-                    for (int i = 1; i < frameWithMeasurments.Measurments.Length * NumberOfSensorsOnFrame; i++)
-                    {
-                        this.dataView.DataGrid.Rows.Add();
-                                              
-                    }
-                }                
+                this.dataView.DataGrid.Columns[frameCounter].HeaderText = "Position " + framePos;                
 
                 foreach (var measurmentDto in frameWithMeasurments.Measurments)
-                {                   
+                {
                     string fristTemp = measurmentDto.FirstSensorTemp.ToString();
                     string secondTemp = measurmentDto.SecondSensorTemp.ToString();
                     string thirdTemp = measurmentDto.ThirdSensorTemp.ToString();
                     string outsideTemp = measurmentDto.OutsideTemp.ToString();
                     string dateOfMeasurment = measurmentDto.DateTimeOfMeasurment.Date.ToString("d");
                     string timeOfMeasurment = measurmentDto.DateTimeOfMeasurment.TimeOfDay.Hours.ToString();
-
-                    //Possible usege of the row collection (NOT TESTED!)
-                    //
-                    //Example:
-                    //
-                    //rows[measurmentCounter].DefaultCellStyle.BackColor =
-                    //    rowColorFlag ? this.colorSectorA : this.colorSectorB;
-                    //rows[measurmentCounter].DefaultCellStyle.Alignment =
-                    //    DataGridViewContentAlignment.MiddleCenter;
-                    //rows[measurmentCounter].Cells[FramePositionColumn].Value = "Sensor 1: ";
-                    //rows[measurmentCounter].Cells[FrameColumn + frameCounter].Value = fristTemp;
-                    //rows[measurmentCounter].Cells[OutsideColumn].Value =
-                    //    !string.IsNullOrEmpty(outsideTemp) ? outsideTemp : "n/a";
-                    //rows[measurmentCounter++].Cells[DateColumn].Value = dateOfMeasurment;
-                    //
-                    //...
 
                     this.dataView.DataGrid.Rows[measurmentCounter].DefaultCellStyle.BackColor =
                         rowColorFlag ? this.colorSectorA : this.colorSectorB;
