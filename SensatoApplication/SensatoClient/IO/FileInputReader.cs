@@ -7,7 +7,6 @@
     { 
         public FileInputReader()
         {
-
         }
 
         public List<string> ReadInput(string filePath)

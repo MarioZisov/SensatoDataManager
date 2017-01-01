@@ -73,10 +73,12 @@
             if (fileOpenResult != DialogResult.Cancel)
             {
                 string addedFilePath = this.hiveView.FileDialog.FileName;
+                int lastSlashIndex = addedFilePath.LastIndexOf('\\');
+                string fileName = addedFilePath.Substring(lastSlashIndex + 1);
 
                 DialogResult confirmResult = MetroMessageBox.Show
                     ((MetroUserControl) sender,
-                        string.Format(ValidateFileMessage, addedFilePath),
+                        string.Format(ValidateFileMessage, fileName),
                         "Confrim data upload"
                         , MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question,
@@ -99,7 +101,10 @@
 
             foreach (var line in validLines)
             {
-                string[] splittedDataByFrame = Regex.Split(line, splitString);
+                string[] splittedDataByFrame = Regex.Split(line, splitString)
+                    .Where(s => !string.IsNullOrEmpty(s))
+                    .ToArray();
+
                 for (int i = 0; i < splittedDataByFrame.Length - 2; i++)
                 {
                     string[] tempBYframe = new string[5];
