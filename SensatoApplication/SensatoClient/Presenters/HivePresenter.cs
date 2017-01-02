@@ -19,19 +19,18 @@
         private const string Pattern =
             @"((\+\d{1,2}\,){3}(---,)+)+((\+\d{1,2}\,){3}(---,)+(\+\d{1,2},)?(---,)+)?([0-9]|0[0-9]|1[0-9]|2[0-3])h(.+)";
 
-        private const string ValidateFileMessage = "Are you sure you want to add data from file: {0}?";
-
+        private const string ValidateFileMessage = "Are you sure you want to add data to \"{0}\" from file: \"{1}\"?";
+        
         private IHiveView hiveView;
         private SensatoServiceClient serviceClient;
         private NamePresenter namePresenter;
         private MetroButton selectedHiveButton;
         private FramePresenter framePresenter;
-        private DataPresenter dataPresenter;
         private FileInputReader reader;
 
         public event EventHandler LogoutClick;
 
-        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter/*, DataPresenter dataPresenter*/)
+        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter)
         {
             this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
@@ -67,7 +66,7 @@
 
         private void OnAddDataFileClick(object sender, EventArgs e)
         {
-            
+
             this.hiveView.FileDialog.Filter = "All files(*.txt) | *.txt";
             DialogResult fileOpenResult = this.hiveView.FileDialog.ShowDialog();
             if (fileOpenResult != DialogResult.Cancel)
@@ -77,12 +76,12 @@
                 string fileName = addedFilePath.Substring(lastSlashIndex + 1);
 
                 DialogResult confirmResult = MetroMessageBox.Show
-                    ((MetroUserControl) sender,
-                        string.Format(ValidateFileMessage, fileName),
+                    ((MetroUserControl)sender,
+                        string.Format(ValidateFileMessage, this.selectedHiveButton.Text, fileName),
                         "Confrim data upload"
                         , MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question,
-                        100);
+                        120);
 
                 if (confirmResult == DialogResult.Yes)
                 {
@@ -93,9 +92,19 @@
             }
         }
 
+        //Maybe this method should be moved in a separate class
         private void ProcessData(IList<string> validLines)
         {
-            List<string[]> measurments = new List<string[]>();
+            //TODO: Change IDictionary<int, IList<IList<object>>> to IDictionary<int, object[][]>
+            IDictionary<int, IList<IList<object>>> dataTranferCollection = new Dictionary<int, IList<IList<object>>>();
+            int framesCount = this.serviceClient
+                .GetFramesByHive(this.User.Username, this.selectedHiveButton.Text)
+                .Count();
+
+            for (int i = 0; i < framesCount; i++)
+            {
+                dataTranferCollection.Add(i, new List<IList<object>>());
+            }
 
             string splitString = "---|,---,";
 
@@ -105,18 +114,35 @@
                     .Where(s => !string.IsNullOrEmpty(s))
                     .ToArray();
 
-                for (int i = 0; i < splittedDataByFrame.Length - 2; i++)
+                string dateTime = splittedDataByFrame[splittedDataByFrame.Length - 1];
+
+                int hour = int.Parse(dateTime.Split(',')[0].Substring(0, 1));
+                DateTime measurmentDate = DateTime.Parse(dateTime.Split(',')[1]);
+                measurmentDate = measurmentDate.AddHours(hour);
+
+                string outsideTemp = null;
+
+                if (framesCount + 2 == splittedDataByFrame.Length)
                 {
-                    string[] tempBYframe = new string[5];
+                    outsideTemp = splittedDataByFrame[splittedDataByFrame.Length - 2];
+                }
 
-                    if (!string.IsNullOrEmpty(splittedDataByFrame[i]))
-                    {
-                        tempBYframe = splittedDataByFrame[i].Split(',');
-                    }
+                string[] temps = splittedDataByFrame
+                    .Take(framesCount)
+                    .ToArray();
 
-                    tempBYframe[4] = splittedDataByFrame[splittedDataByFrame.Length - 1];
+                for (int i = 0; i < temps.Length - 1; i++)
+                {
+                    List<object> dataByFrame = new List<object>();
+                    dataByFrame.AddRange(temps[i].Split(','));
+                    dataByFrame.Add(outsideTemp);
+                    dataByFrame.Add(measurmentDate);
+
+                    dataTranferCollection[i].Add(dataByFrame);
                 }
             }
+
+            //this.serviceClient.UploadMeasurmentData(this.User.Username, this.selectedHiveButton.Text, dataTranferCollection);
         }
 
         private void OnDataButtonClick(object sender, EventArgs e)
@@ -135,7 +161,7 @@
             this.framePresenter.User = this.User;
 
             IEnumerable<int> activeFrames = this.serviceClient
-                .GetFramesByHiveName(this.User.Username, this.selectedHiveButton.Text);
+                .GetFramesByHive(this.User.Username, this.selectedHiveButton.Text);
 
             this.framePresenter.SetCurrentHiveName(this.selectedHiveButton.Text);
             this.framePresenter.LoadActiveFrames(activeFrames);

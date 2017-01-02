@@ -32,12 +32,15 @@
         bool RemoveHive(string username, string hiveName);
 
         [OperationContract]
-        IEnumerable<int> GetFramesByHiveName(string username, string hiveName);
+        IEnumerable<int> GetFramesByHive(string username, string hiveName);
 
         [OperationContract]
-        void ChangeFrameStatusByHiveName(string username, string hivename, IEnumerable<int> activeFramesPositions);
+        void ChangeFrameStatusByHive(string username, string hivename, IEnumerable<int> activeFramesPositions);
 
         [OperationContract]
         ICollection<FrameDTO> GetMeasurmentData(string username, string hiveName, DateTime startDate, DateTime endDate);
+
+        [OperationContract]
+        void UploadMeasurmentData(string usernama, string hiveName, IDictionary<int, List<List<object>>> measurmentsData);
     }
 }

@@ -363,23 +363,29 @@ namespace SensatoClient.SensatoServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/RemoveHive", ReplyAction="http://tempuri.org/ISensatoService/RemoveHiveResponse")]
         System.Threading.Tasks.Task<bool> RemoveHiveAsync(string username, string hiveName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetFramesByHiveName", ReplyAction="http://tempuri.org/ISensatoService/GetFramesByHiveNameResponse")]
-        int[] GetFramesByHiveName(string username, string hiveName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetFramesByHive", ReplyAction="http://tempuri.org/ISensatoService/GetFramesByHiveResponse")]
+        int[] GetFramesByHive(string username, string hiveName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetFramesByHiveName", ReplyAction="http://tempuri.org/ISensatoService/GetFramesByHiveNameResponse")]
-        System.Threading.Tasks.Task<int[]> GetFramesByHiveNameAsync(string username, string hiveName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetFramesByHive", ReplyAction="http://tempuri.org/ISensatoService/GetFramesByHiveResponse")]
+        System.Threading.Tasks.Task<int[]> GetFramesByHiveAsync(string username, string hiveName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveName", ReplyAction="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveNameResponse")]
-        void ChangeFrameStatusByHiveName(string username, string hivename, int[] activeFramesPositions);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHive", ReplyAction="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveResponse")]
+        void ChangeFrameStatusByHive(string username, string hivename, int[] activeFramesPositions);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveName", ReplyAction="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveNameResponse")]
-        System.Threading.Tasks.Task ChangeFrameStatusByHiveNameAsync(string username, string hivename, int[] activeFramesPositions);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHive", ReplyAction="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveResponse")]
+        System.Threading.Tasks.Task ChangeFrameStatusByHiveAsync(string username, string hivename, int[] activeFramesPositions);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetMeasurmentData", ReplyAction="http://tempuri.org/ISensatoService/GetMeasurmentDataResponse")]
         SensatoClient.SensatoServiceReference.FrameDTO[] GetMeasurmentData(string username, string hiveName, System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetMeasurmentData", ReplyAction="http://tempuri.org/ISensatoService/GetMeasurmentDataResponse")]
         System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.FrameDTO[]> GetMeasurmentDataAsync(string username, string hiveName, System.DateTime startDate, System.DateTime endDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/UploadMeasurmentData", ReplyAction="http://tempuri.org/ISensatoService/UploadMeasurmentDataResponse")]
+        void UploadMeasurmentData(string usernama, string hiveName, System.Collections.Generic.Dictionary<int, object[][]> measurmentsData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/UploadMeasurmentData", ReplyAction="http://tempuri.org/ISensatoService/UploadMeasurmentDataResponse")]
+        System.Threading.Tasks.Task UploadMeasurmentDataAsync(string usernama, string hiveName, System.Collections.Generic.Dictionary<int, object[][]> measurmentsData);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -457,20 +463,20 @@ namespace SensatoClient.SensatoServiceReference {
             return base.Channel.RemoveHiveAsync(username, hiveName);
         }
         
-        public int[] GetFramesByHiveName(string username, string hiveName) {
-            return base.Channel.GetFramesByHiveName(username, hiveName);
+        public int[] GetFramesByHive(string username, string hiveName) {
+            return base.Channel.GetFramesByHive(username, hiveName);
         }
         
-        public System.Threading.Tasks.Task<int[]> GetFramesByHiveNameAsync(string username, string hiveName) {
-            return base.Channel.GetFramesByHiveNameAsync(username, hiveName);
+        public System.Threading.Tasks.Task<int[]> GetFramesByHiveAsync(string username, string hiveName) {
+            return base.Channel.GetFramesByHiveAsync(username, hiveName);
         }
         
-        public void ChangeFrameStatusByHiveName(string username, string hivename, int[] activeFramesPositions) {
-            base.Channel.ChangeFrameStatusByHiveName(username, hivename, activeFramesPositions);
+        public void ChangeFrameStatusByHive(string username, string hivename, int[] activeFramesPositions) {
+            base.Channel.ChangeFrameStatusByHive(username, hivename, activeFramesPositions);
         }
         
-        public System.Threading.Tasks.Task ChangeFrameStatusByHiveNameAsync(string username, string hivename, int[] activeFramesPositions) {
-            return base.Channel.ChangeFrameStatusByHiveNameAsync(username, hivename, activeFramesPositions);
+        public System.Threading.Tasks.Task ChangeFrameStatusByHiveAsync(string username, string hivename, int[] activeFramesPositions) {
+            return base.Channel.ChangeFrameStatusByHiveAsync(username, hivename, activeFramesPositions);
         }
         
         public SensatoClient.SensatoServiceReference.FrameDTO[] GetMeasurmentData(string username, string hiveName, System.DateTime startDate, System.DateTime endDate) {
@@ -479,6 +485,14 @@ namespace SensatoClient.SensatoServiceReference {
         
         public System.Threading.Tasks.Task<SensatoClient.SensatoServiceReference.FrameDTO[]> GetMeasurmentDataAsync(string username, string hiveName, System.DateTime startDate, System.DateTime endDate) {
             return base.Channel.GetMeasurmentDataAsync(username, hiveName, startDate, endDate);
+        }
+        
+        public void UploadMeasurmentData(string usernama, string hiveName, System.Collections.Generic.Dictionary<int, object[][]> measurmentsData) {
+            base.Channel.UploadMeasurmentData(usernama, hiveName, measurmentsData);
+        }
+        
+        public System.Threading.Tasks.Task UploadMeasurmentDataAsync(string usernama, string hiveName, System.Collections.Generic.Dictionary<int, object[][]> measurmentsData) {
+            return base.Channel.UploadMeasurmentDataAsync(usernama, hiveName, measurmentsData);
         }
     }
 }

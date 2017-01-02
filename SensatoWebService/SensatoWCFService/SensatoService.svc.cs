@@ -47,10 +47,10 @@
             var hiveNames = user.Hives
                 .Where(h => h.User.Username == username && !h.IsRemoved)
                 .Select(h => h.Name)
-                .ToArray();           
+                .ToArray();
 
             return hiveNames;
-        }        
+        }
 
         public void AddHive(string username, string hiveName)
         {
@@ -117,18 +117,18 @@
             return true;
         }
 
-        public IEnumerable<int> GetFramesByHiveName(string username, string hiveName)
+        public IEnumerable<int> GetFramesByHive(string username, string hiveName)
         {
             var user = this.GetUserByUsername(username);
             var framesPositions = this.GetHive(user, hiveName).Frames
                 .Where(f => f.IsActive)
                 .Select(f => f.Position)
-                .ToArray();            
+                .ToArray();
 
             return framesPositions;
         }
 
-        public void ChangeFrameStatusByHiveName(string username, string hiveName, IEnumerable<int> activeFramesPositions)
+        public void ChangeFrameStatusByHive(string username, string hiveName, IEnumerable<int> activeFramesPositions)
         {
             var user = this.GetUserByUsername(username);
             var hive = this.GetHive(user, hiveName);
@@ -152,7 +152,7 @@
         public ICollection<FrameDTO> GetMeasurmentData(string username, string hiveName, DateTime startDate, DateTime endDate)
         {
             var user = GetUserByUsername(username);
-            var hive = GetHive(user, hiveName);            
+            var hive = GetHive(user, hiveName);
 
             var frames = hive.Frames.Where(f => f.IsActive).Select(f => new
             {
@@ -183,6 +183,33 @@
             }
 
             return framesDTOs;
+        }
+
+        public void UploadMeasurmentData(string usernama, string hiveName, IDictionary<int, List<List<object>>> measurmentsData)
+        {
+            var user = GetUserByUsername(usernama);
+            var hive = GetHive(user, hiveName);
+            var frames = hive.Frames.OrderBy(f => f.Position);
+
+            int dataCounter = 0;
+            foreach (var frame in frames)
+            {
+                foreach (var measurmentData in measurmentsData[dataCounter])
+                {
+                    Measurment measurment = new Measurment
+                    {
+                        FirstSensorTemp = float.Parse(measurmentData[0].ToString()),
+                        SecondSensorTemp = float.Parse(measurmentData[1].ToString()),
+                        ThirdSensorTemp = float.Parse(measurmentData[2].ToString()),
+                        OutsideTemp = measurmentData[3] != null ? float.Parse(measurmentData[3].ToString()) : default(float?),
+                        DateTimeOfMeasurment = DateTime.Parse(measurmentData[4].ToString())
+                    };
+
+                    frame.Measurments.Add(measurment);
+                }
+
+                dataCounter++;
+            }
         }
 
         private ICollection<Frame> InitializeFrames()
@@ -223,6 +250,5 @@
                 frame.IsRemoved = true;
             }
         }
-
     }
 }

@@ -1,15 +1,12 @@
 ﻿namespace SensatoClient.IO
 {
+    using Contracts;
     using System.Collections.Generic;
     using System.IO;
 
-    public class FileInputReader
+    public class FileInputReader : IFileInputReader
     { 
-        public FileInputReader()
-        {
-        }
-
-        public List<string> ReadInput(string filePath)
+        public IList<string> ReadInput(string filePath)
         {
             List<string> allLines = new List<string>();
 

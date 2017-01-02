@@ -57,23 +57,29 @@
   <wsdl:message name="ISensatoService_RemoveHive_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveHiveResponse" />
   </wsdl:message>
-  <wsdl:message name="ISensatoService_GetFramesByHiveName_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetFramesByHiveName" />
+  <wsdl:message name="ISensatoService_GetFramesByHive_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFramesByHive" />
   </wsdl:message>
-  <wsdl:message name="ISensatoService_GetFramesByHiveName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetFramesByHiveNameResponse" />
+  <wsdl:message name="ISensatoService_GetFramesByHive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFramesByHiveResponse" />
   </wsdl:message>
-  <wsdl:message name="ISensatoService_ChangeFrameStatusByHiveName_InputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeFrameStatusByHiveName" />
+  <wsdl:message name="ISensatoService_ChangeFrameStatusByHive_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeFrameStatusByHive" />
   </wsdl:message>
-  <wsdl:message name="ISensatoService_ChangeFrameStatusByHiveName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeFrameStatusByHiveNameResponse" />
+  <wsdl:message name="ISensatoService_ChangeFrameStatusByHive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeFrameStatusByHiveResponse" />
   </wsdl:message>
   <wsdl:message name="ISensatoService_GetMeasurmentData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMeasurmentData" />
   </wsdl:message>
   <wsdl:message name="ISensatoService_GetMeasurmentData_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMeasurmentDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_UploadMeasurmentData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadMeasurmentData" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_UploadMeasurmentData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadMeasurmentDataResponse" />
   </wsdl:message>
   <wsdl:portType name="ISensatoService">
     <wsdl:operation name="CheckUserExists">
@@ -104,17 +110,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/RemoveHive" message="tns:ISensatoService_RemoveHive_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/RemoveHiveResponse" message="tns:ISensatoService_RemoveHive_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetFramesByHiveName">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetFramesByHiveName" message="tns:ISensatoService_GetFramesByHiveName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetFramesByHiveNameResponse" message="tns:ISensatoService_GetFramesByHiveName_OutputMessage" />
+    <wsdl:operation name="GetFramesByHive">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetFramesByHive" message="tns:ISensatoService_GetFramesByHive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetFramesByHiveResponse" message="tns:ISensatoService_GetFramesByHive_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ChangeFrameStatusByHiveName">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveName" message="tns:ISensatoService_ChangeFrameStatusByHiveName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveNameResponse" message="tns:ISensatoService_ChangeFrameStatusByHiveName_OutputMessage" />
+    <wsdl:operation name="ChangeFrameStatusByHive">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHive" message="tns:ISensatoService_ChangeFrameStatusByHive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveResponse" message="tns:ISensatoService_ChangeFrameStatusByHive_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMeasurmentData">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetMeasurmentData" message="tns:ISensatoService_GetMeasurmentData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetMeasurmentDataResponse" message="tns:ISensatoService_GetMeasurmentData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadMeasurmentData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/UploadMeasurmentData" message="tns:ISensatoService_UploadMeasurmentData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/UploadMeasurmentDataResponse" message="tns:ISensatoService_UploadMeasurmentData_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISensatoService" type="tns:ISensatoService">
@@ -185,8 +195,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetFramesByHiveName">
-      <soap:operation soapAction="http://tempuri.org/ISensatoService/GetFramesByHiveName" style="document" />
+    <wsdl:operation name="GetFramesByHive">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/GetFramesByHive" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -194,8 +204,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ChangeFrameStatusByHiveName">
-      <soap:operation soapAction="http://tempuri.org/ISensatoService/ChangeFrameStatusByHiveName" style="document" />
+    <wsdl:operation name="ChangeFrameStatusByHive">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/ChangeFrameStatusByHive" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -205,6 +215,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetMeasurmentData">
       <soap:operation soapAction="http://tempuri.org/ISensatoService/GetMeasurmentData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadMeasurmentData">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/UploadMeasurmentData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

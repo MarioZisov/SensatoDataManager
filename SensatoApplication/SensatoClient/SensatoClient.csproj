@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IDataView.cs" />
+    <Compile Include="Contracts\IFileInputReader.cs" />
     <Compile Include="Contracts\IFrameView.cs" />
     <Compile Include="Contracts\IHiveView.cs" />
     <Compile Include="Contracts\ILoginView.cs" />
