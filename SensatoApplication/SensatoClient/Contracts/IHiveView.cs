@@ -23,6 +23,8 @@
 
         event EventHandler AddDataFileClick;
 
+        event EventHandler SearchTextChanged;
+
         TableLayoutPanel HivesTable { get; }
 
         MetroPanel HiveControls { get; }

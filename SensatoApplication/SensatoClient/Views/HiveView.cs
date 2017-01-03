@@ -17,6 +17,7 @@
         public event EventHandler FrameClick;
         public event EventHandler DataClick;
         public event EventHandler AddDataFileClick;
+        public event EventHandler SearchTextChanged;
 
         public HiveView()
         {
@@ -112,6 +113,11 @@
             this.buttonAddData.Click += delegate
             {
                 this.AddDataFileClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.textBoxSearch.TextChanged += delegate
+            {
+                this.SearchTextChanged?.Invoke(textBoxSearch, EventArgs.Empty);
             };
         }
     }

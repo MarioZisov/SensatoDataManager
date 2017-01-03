@@ -34,7 +34,7 @@
             this.buttonRemove = new MetroFramework.Controls.MetroButton();
             this.buttonAddHive = new MetroFramework.Controls.MetroButton();
             this.buttonLogout = new MetroFramework.Controls.MetroButton();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.textBoxSearch = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.tablePanelHives = new System.Windows.Forms.TableLayoutPanel();
             this.panelHiveControls = new MetroFramework.Controls.MetroPanel();
@@ -98,35 +98,39 @@
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseSelectable = true;
             // 
-            // metroTextBox1
+            // textBoxSearch
             // 
             // 
             // 
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(107, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(3, 274);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(129, 23);
-            this.metroTextBox1.TabIndex = 8;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textBoxSearch.CustomButton.Image = null;
+            this.textBoxSearch.CustomButton.Location = new System.Drawing.Point(107, 1);
+            this.textBoxSearch.CustomButton.Name = "";
+            this.textBoxSearch.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textBoxSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBoxSearch.CustomButton.TabIndex = 1;
+            this.textBoxSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBoxSearch.CustomButton.UseCustomBackColor = true;
+            this.textBoxSearch.CustomButton.UseSelectable = true;
+            this.textBoxSearch.Lines = new string[0];
+            this.textBoxSearch.Location = new System.Drawing.Point(3, 274);
+            this.textBoxSearch.MaxLength = 32767;
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.PasswordChar = '\0';
+            this.textBoxSearch.PromptText = "Search hives...";
+            this.textBoxSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBoxSearch.SelectedText = "";
+            this.textBoxSearch.SelectionLength = 0;
+            this.textBoxSearch.SelectionStart = 0;
+            this.textBoxSearch.ShortcutsEnabled = true;
+            this.textBoxSearch.ShowClearButton = true;
+            this.textBoxSearch.Size = new System.Drawing.Size(129, 23);
+            this.textBoxSearch.Style = MetroFramework.MetroColorStyle.Yellow;
+            this.textBoxSearch.TabIndex = 8;
+            this.textBoxSearch.UseSelectable = true;
+            this.textBoxSearch.WaterMark = "Search hives...";
+            this.textBoxSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBoxSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroPanel1
             // 
@@ -199,7 +203,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelHiveControls);
             this.Controls.Add(this.metroPanel1);
-            this.Controls.Add(this.metroTextBox1);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonAddHive);
             this.Location = new System.Drawing.Point(0, 72);
@@ -220,7 +224,7 @@
         private MetroFramework.Controls.MetroButton buttonRemove;
         private MetroFramework.Controls.MetroButton buttonAddHive;
         private MetroFramework.Controls.MetroButton buttonLogout;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox textBoxSearch;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private System.Windows.Forms.TableLayoutPanel tablePanelHives;
         private MetroFramework.Controls.MetroPanel panelHiveControls;

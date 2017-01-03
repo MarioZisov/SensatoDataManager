@@ -58,10 +58,44 @@
             this.hiveView.RemoveHiveClick += OnRemoveHiveClick;
             this.hiveView.AddDataFileClick += OnAddDataFileClick;
             this.hiveView.FrameClick += OnFrameClick;
+            this.hiveView.SearchTextChanged += OnSearchTextChange;
             this.namePresenter.RenameSaveComplete += OnRenameComplete;
             this.namePresenter.AddSaveComplete += OnAddComplete;
             this.namePresenter.Cancel += OnCancel;
             this.framePresenter.ViewBackButtonClick += OnFrameViewBackButtonClick;
+        }
+
+        private void OnSearchTextChange(object sender, EventArgs e)
+        {
+            var searchBox = (MetroTextBox)sender;
+            string text = searchBox.Text.ToLower();
+
+            var buttons = this.hiveView.HivesTable.Controls
+                .OfType<MetroButton>();
+
+            if (string.IsNullOrEmpty(text))
+            {               
+                foreach (var button in buttons)
+                {
+                    button.Visible = true;
+                    button.Refresh();
+                }
+            }
+            else
+            {
+                foreach (var button in buttons)
+                {
+                    if (!button.Text.ToLower().Contains(text))
+                    {
+                        button.Visible = false;
+                        button.Refresh();
+                        continue;
+                    }
+
+                    button.Visible = true;
+                    button.Refresh();
+                }
+            }
         }
 
         private void OnAddDataFileClick(object sender, EventArgs e)
