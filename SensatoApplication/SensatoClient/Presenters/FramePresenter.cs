@@ -41,7 +41,7 @@ namespace SensatoClient.Presenters
                 .Select(b => int.Parse(b.Text))
                 .ToArray();
 
-            this.serviceClient.ChangeFrameStatusByHiveName(this.User.Username, this.frameView.HiveName, activeFramesPositions);
+            this.serviceClient.ChangeFrameStatusByHive(this.User.Username, this.frameView.HiveName, activeFramesPositions);
 
         }
 

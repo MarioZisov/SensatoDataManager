@@ -20,7 +20,7 @@
             @"((\+\d{1,2}\,){3}(---,)+)+((\+\d{1,2}\,){3}(---,)+(\+\d{1,2},)?(---,)+)?([0-9]|0[0-9]|1[0-9]|2[0-3])h(.+)";
 
         private const string ValidateFileMessage = "Are you sure you want to add data to \"{0}\" from file: \"{1}\"?";
-        
+
         private IHiveView hiveView;
         private SensatoServiceClient serviceClient;
         private NamePresenter namePresenter;
@@ -95,28 +95,27 @@
         //Maybe this method should be moved in a separate class
         private void ProcessData(IList<string> validLines)
         {
-            //TODO: Change IDictionary<int, IList<IList<object>>> to IDictionary<int, object[][]>
-            IDictionary<int, IList<IList<object>>> dataTranferCollection = new Dictionary<int, IList<IList<object>>>();
+            Dictionary<int, object[][]> dataTranferCollection = new Dictionary<int, object[][]>();
             int framesCount = this.serviceClient
                 .GetFramesByHive(this.User.Username, this.selectedHiveButton.Text)
                 .Count();
 
             for (int i = 0; i < framesCount; i++)
             {
-                dataTranferCollection.Add(i, new List<IList<object>>());
+                dataTranferCollection.Add(i, new object[validLines.Count][]);
             }
 
             string splitString = "---|,---,";
 
-            foreach (var line in validLines)
+            for (int lineIndex = 0; lineIndex < validLines.Count; lineIndex++)
             {
-                string[] splittedDataByFrame = Regex.Split(line, splitString)
-                    .Where(s => !string.IsNullOrEmpty(s))
-                    .ToArray();
+                string[] splittedDataByFrame = Regex.Split(validLines[lineIndex], splitString)
+                        .Where(s => !string.IsNullOrEmpty(s))
+                        .ToArray();
 
                 string dateTime = splittedDataByFrame[splittedDataByFrame.Length - 1];
 
-                int hour = int.Parse(dateTime.Split(',')[0].Substring(0, 1));
+                int hour = int.Parse(dateTime.Split(',')[0].Substring(0, 2));
                 DateTime measurmentDate = DateTime.Parse(dateTime.Split(',')[1]);
                 measurmentDate = measurmentDate.AddHours(hour);
 
@@ -131,18 +130,20 @@
                     .Take(framesCount)
                     .ToArray();
 
-                for (int i = 0; i < temps.Length - 1; i++)
+                for (int index = 0; index < temps.Length; index++)
                 {
-                    List<object> dataByFrame = new List<object>();
-                    dataByFrame.AddRange(temps[i].Split(','));
-                    dataByFrame.Add(outsideTemp);
-                    dataByFrame.Add(measurmentDate);
+                    object[] dataByFrame = new object[5];
+                    dataByFrame[0] = temps[index].Split(',')[0];
+                    dataByFrame[1] = temps[index].Split(',')[1];
+                    dataByFrame[2] = temps[index].Split(',')[2];
+                    dataByFrame[3] = outsideTemp;
+                    dataByFrame[4] = measurmentDate;
 
-                    dataTranferCollection[i].Add(dataByFrame);
+                    dataTranferCollection[index][lineIndex] = dataByFrame;
                 }
             }
 
-            //this.serviceClient.UploadMeasurmentData(this.User.Username, this.selectedHiveButton.Text, dataTranferCollection);
+            this.serviceClient.UploadMeasurmentData(this.User.Username, this.selectedHiveButton.Text, dataTranferCollection);
         }
 
         private void OnDataButtonClick(object sender, EventArgs e)

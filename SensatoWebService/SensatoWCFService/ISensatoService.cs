@@ -41,6 +41,6 @@
         ICollection<FrameDTO> GetMeasurmentData(string username, string hiveName, DateTime startDate, DateTime endDate);
 
         [OperationContract]
-        void UploadMeasurmentData(string usernama, string hiveName, IDictionary<int, List<List<object>>> measurmentsData);
+        void UploadMeasurmentData(string usernama, string hiveName, IDictionary<int, object[][]> measurmentsData);
     }
 }

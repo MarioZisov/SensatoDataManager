@@ -185,11 +185,13 @@
             return framesDTOs;
         }
 
-        public void UploadMeasurmentData(string usernama, string hiveName, IDictionary<int, List<List<object>>> measurmentsData)
+        public void UploadMeasurmentData(string usernama, string hiveName, IDictionary<int, object[][]> measurmentsData)
         {
             var user = GetUserByUsername(usernama);
             var hive = GetHive(user, hiveName);
-            var frames = hive.Frames.OrderBy(f => f.Position);
+            var frames = hive.Frames
+                .Where(f => f.IsActive)
+                .OrderBy(f => f.Position);
 
             int dataCounter = 0;
             foreach (var frame in frames)
@@ -210,6 +212,8 @@
 
                 dataCounter++;
             }
+
+            this.context.SaveChanges();
         }
 
         private ICollection<Frame> InitializeFrames()
