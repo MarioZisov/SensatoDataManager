@@ -59,6 +59,14 @@
             }
         }
 
+        public MetroProgressSpinner Spinner
+        {
+            get
+            {
+                return this.progressSpinner;
+            }
+        }
+
         public void ResetHiveView()
         {
             this.HivesTable.Height = 0;

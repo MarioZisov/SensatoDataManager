@@ -8,6 +8,7 @@ namespace SensatoClient.Presenters
     using System.Diagnostics;
     using System.Drawing;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
     using Views;
 
@@ -67,20 +68,35 @@ namespace SensatoClient.Presenters
             this.dataView.EndDate.MaxDate = startDateValue.AddDays(maxDateDiff);
         }
 
-        private void OnShowClick(object sender, EventArgs e)
+        private async void OnShowClick(object sender, EventArgs e)
         {
             this.dataView.DataGrid.Rows.Clear();
 
             var startDate = this.dataView.StartDate.Value;
             var endDate = this.dataView.EndDate.Value;
 
+            this.dataView.Spinner.Visible = true;
+            this.dataView.Spinner.Spinning = true;
+            this.dataView.ShowButton.Enabled = false;
+            this.dataView.DataGrid.Enabled = false;
+
+            await Task.Factory.StartNew(() => this.LoadData(startDate, endDate));
+            //this.LoadData(startDate, endDate);
+
+            this.dataView.Spinner.Visible = false;
+            this.dataView.Spinner.Spinning = false;
+            this.dataView.ShowButton.Enabled = true;
+            this.dataView.DataGrid.Enabled = true;
+        }
+
+        private void LoadData(DateTime startDate, DateTime endDate)
+        {
             var framesWithMeasurments =
                 this.client.GetMeasurmentData(this.User.Username, this.hiveName, startDate, endDate);
 
             this.ManageMeasurments(framesWithMeasurments);
         }
 
-        //TODO: Implement progress spinner for cooler loading
         private void ManageMeasurments(FrameDTO[] framesWithMeasurments)
         {
             int frameCounter = 1;

@@ -40,6 +40,7 @@
             this.panelHiveControls = new MetroFramework.Controls.MetroPanel();
             this.buttonAddData = new MetroFramework.Controls.MetroButton();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.progressSpinner = new MetroFramework.Controls.MetroProgressSpinner();
             this.metroPanel1.SuspendLayout();
             this.panelHiveControls.SuspendLayout();
             this.SuspendLayout();
@@ -112,6 +113,7 @@
             this.textBoxSearch.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBoxSearch.CustomButton.UseCustomBackColor = true;
             this.textBoxSearch.CustomButton.UseSelectable = true;
+            this.textBoxSearch.CustomButton.Visible = false;
             this.textBoxSearch.Lines = new string[0];
             this.textBoxSearch.Location = new System.Drawing.Point(3, 274);
             this.textBoxSearch.MaxLength = 32767;
@@ -135,6 +137,7 @@
             // metroPanel1
             // 
             this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.Controls.Add(this.progressSpinner);
             this.metroPanel1.Controls.Add(this.tablePanelHives);
             this.metroPanel1.HorizontalScrollbar = true;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
@@ -197,6 +200,19 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
+            // progressSpinner
+            // 
+            this.progressSpinner.Location = new System.Drawing.Point(173, 161);
+            this.progressSpinner.Maximum = 100;
+            this.progressSpinner.Name = "progressSpinner";
+            this.progressSpinner.Size = new System.Drawing.Size(60, 60);
+            this.progressSpinner.Spinning = false;
+            this.progressSpinner.Style = MetroFramework.MetroColorStyle.Yellow;
+            this.progressSpinner.TabIndex = 3;
+            this.progressSpinner.UseSelectable = true;
+            this.progressSpinner.Value = 100;
+            this.progressSpinner.Visible = false;
+            // 
             // HiveView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,5 +246,6 @@
         private MetroFramework.Controls.MetroPanel panelHiveControls;
         private MetroFramework.Controls.MetroButton buttonAddData;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private MetroFramework.Controls.MetroProgressSpinner progressSpinner;
     }
 }

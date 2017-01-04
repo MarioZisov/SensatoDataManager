@@ -31,6 +31,8 @@
 
         OpenFileDialog FileDialog { get; }
 
+        MetroProgressSpinner Spinner { get; }
+
         bool IsEnabled { get; set; }
 
         void SubscibeHiveButtons(IEnumerable<Control> buttonsToSubscribe);

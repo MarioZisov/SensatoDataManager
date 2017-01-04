@@ -19,6 +19,10 @@ namespace SensatoClient.Contracts
 
         MetroDateTime EndDate { get; }
 
+        MetroProgressSpinner Spinner { get; }
+
+        MetroButton ShowButton { get; }
+
         void Show();
     }
 }

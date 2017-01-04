@@ -49,6 +49,22 @@ namespace SensatoClient.Views
             }
         }
 
+        public MetroProgressSpinner Spinner
+        {
+            get
+            {
+                return this.progressSpinner;
+            }
+        }
+
+        public MetroButton ShowButton
+        {
+            get
+            {
+                return this.buttonShow;
+            }
+        }
+
         private void SubscribeEvents()
         {
             this.buttonShow.Click += delegate

@@ -13,6 +13,7 @@
     using IO;
     using MetroFramework;
     using Views;
+    using System.Threading.Tasks;
 
     public class HivePresenter : AbstractPresenter
     {
@@ -98,9 +99,8 @@
             }
         }
 
-        private void OnAddDataFileClick(object sender, EventArgs e)
+        private async void OnAddDataFileClick(object sender, EventArgs e)
         {
-
             this.hiveView.FileDialog.Filter = "All files(*.txt) | *.txt";
             DialogResult fileOpenResult = this.hiveView.FileDialog.ShowDialog();
             if (fileOpenResult != DialogResult.Cancel)
@@ -119,18 +119,25 @@
 
                 if (confirmResult == DialogResult.Yes)
                 {
+                    this.hiveView.Spinner.Visible = true;
+                    this.hiveView.Spinner.Spinning = true;
+                    this.hiveView.IsEnabled = false;
+
                     IList<string> allLines = this.reader.ReadInput(addedFilePath);
                     IList<string> validLines = this.ParseValideLines(allLines);
-                    this.ProcessData(validLines);
+                    await Task.Factory.StartNew(() => this.ProcessData(validLines));
+
+                    this.hiveView.Spinner.Visible = false;
+                    this.hiveView.Spinner.Spinning = false;
+                    this.hiveView.IsEnabled = true;
                 }
             }
         }
 
         //TODO: Validation for input data
-        //TODO: Implement spinner while uploading data
         //TODO: This method should be moved in a separate class
         private void ProcessData(IList<string> validLines)
-        {
+        {            
             Dictionary<int, object[][]> dataTranferCollection = new Dictionary<int, object[][]>();
             int framesCount = this.serviceClient
                 .GetFramesByHive(this.User.Username, this.selectedHiveButton.Text)
@@ -174,6 +181,7 @@
             }
 
             this.serviceClient.UploadMeasurmentData(this.User.Username, this.selectedHiveButton.Text, dataTranferCollection);
+            
         }
 
         private void OnDataButtonClick(object sender, EventArgs e)
