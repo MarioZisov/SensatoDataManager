@@ -126,6 +126,8 @@
             }
         }
 
+        //TODO: Validation for input data
+        //TODO: Implement spinner while uploading data
         //Maybe this method should be moved in a separate class
         private void ProcessData(IList<string> validLines)
         {
@@ -148,28 +150,22 @@
                         .ToArray();
 
                 string dateTime = splittedDataByFrame[splittedDataByFrame.Length - 1];
-
                 int hour = int.Parse(dateTime.Split(',')[0].Substring(0, 2));
-                DateTime measurmentDate = DateTime.Parse(dateTime.Split(',')[1]);
-                measurmentDate = measurmentDate.AddHours(hour);
-
                 string outsideTemp = null;
 
+                DateTime measurmentDate = DateTime.Parse(dateTime.Split(',')[1]).AddHours(hour);                
+                
                 if (framesCount + 2 == splittedDataByFrame.Length)
                 {
                     outsideTemp = splittedDataByFrame[splittedDataByFrame.Length - 2];
                 }
 
-                string[] temps = splittedDataByFrame
-                    .Take(framesCount)
-                    .ToArray();
-
-                for (int index = 0; index < temps.Length; index++)
+                for (int index = 0; index < framesCount; index++)
                 {
                     object[] dataByFrame = new object[5];
-                    dataByFrame[0] = temps[index].Split(',')[0];
-                    dataByFrame[1] = temps[index].Split(',')[1];
-                    dataByFrame[2] = temps[index].Split(',')[2];
+                    dataByFrame[0] = splittedDataByFrame[index].Split(',')[0];
+                    dataByFrame[1] = splittedDataByFrame[index].Split(',')[1];
+                    dataByFrame[2] = splittedDataByFrame[index].Split(',')[2];
                     dataByFrame[3] = outsideTemp;
                     dataByFrame[4] = measurmentDate;
 
