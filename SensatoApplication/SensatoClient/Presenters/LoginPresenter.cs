@@ -5,9 +5,15 @@
     using Models;
     using SensatoServiceReference;
     using System.ServiceModel;
+    using MetroFramework;
+    using MetroFramework.Controls;
+    using System.Windows.Forms;
 
     public class LoginPresenter : AbstractPresenter
     {
+        private const string cantConnectMessage = "Could not connect to the server.";
+        private const string cantConnectTitle = "Connection problem";
+
         private ILoginView loginView;
         private HivePresenter hivePresenter;
         private SensatoServiceClient serviceClient;
@@ -35,13 +41,15 @@
 
             try
             {
+                //string hashedPassword = HashUtilities.HashPassword(password);
+
                 this.serviceClient.CheckUserExists(username);
                 this.serviceClient.CheckPassowrdMatch(password, username);
                 this.User = new UserModel(username);
                 this.hivePresenter.User = this.User;
                 this.loginView.Password = string.Empty;
 
-                this.hivePresenter.Initialize();;
+                this.hivePresenter.Initialize();
             }
             catch (FaultException<UsernameValidationFault> fex)
             {
@@ -50,6 +58,15 @@
             catch (FaultException<PasswordValidationFault> fex)
             {
                 this.loginView.ShowErrorMessage(fex.Detail.Message);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MetroMessageBox.Show(
+                    (MetroUserControl)this.loginView, 
+                    cantConnectMessage, 
+                    cantConnectTitle, 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error, 100);
             }
         }
 

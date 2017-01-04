@@ -5,12 +5,18 @@
     using Views;
     using System;
     using System.Windows.Forms;
+    using System.Globalization;
+    using System.Threading;
 
     static class Startup
     {
+        private static Mutex mutex = new Mutex(true, "mutex");
+
         [STAThread]
         static void Main()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -27,7 +33,16 @@
             LoginPresenter loginPres = new LoginPresenter(loginView, hivePres);
 
             MainForm mainForm = new MainForm(loginView, hiveView, nameView, frameView);
-            Application.Run(mainForm);
+            
+            if (mutex.WaitOne(TimeSpan.Zero, true))
+            {
+                Application.Run(mainForm);
+            }
+            else
+            {
+                MessageBox.Show("The program already running!", "Oops",
+                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
         }
     }
 }

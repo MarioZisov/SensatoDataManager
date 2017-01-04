@@ -128,7 +128,7 @@
 
         //TODO: Validation for input data
         //TODO: Implement spinner while uploading data
-        //Maybe this method should be moved in a separate class
+        //TODO: This method should be moved in a separate class
         private void ProcessData(IList<string> validLines)
         {
             Dictionary<int, object[][]> dataTranferCollection = new Dictionary<int, object[][]>();
