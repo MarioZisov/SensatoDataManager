@@ -82,7 +82,7 @@
             this.textBoxHiveName.MaxLength = 32767;
             this.textBoxHiveName.Name = "textBoxHiveName";
             this.textBoxHiveName.PasswordChar = '\0';
-            this.textBoxHiveName.PromptText = "type hive name";
+            this.textBoxHiveName.PromptText = "enter hive name";
             this.textBoxHiveName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.textBoxHiveName.SelectedText = "";
             this.textBoxHiveName.SelectionLength = 0;
@@ -91,7 +91,7 @@
             this.textBoxHiveName.Size = new System.Drawing.Size(207, 23);
             this.textBoxHiveName.TabIndex = 2;
             this.textBoxHiveName.UseSelectable = true;
-            this.textBoxHiveName.WaterMark = "type hive name";
+            this.textBoxHiveName.WaterMark = "enter hive name";
             this.textBoxHiveName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBoxHiveName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -188,7 +188,7 @@
             this.labelError.UseCustomForeColor = true;
             this.labelError.Visible = false;
             // 
-            // RenameView
+            // NameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -202,7 +202,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Location = new System.Drawing.Point(250, 214);
-            this.Name = "RenameView";
+            this.Name = "NameView";
             this.Size = new System.Drawing.Size(300, 120);
             this.panelLeftSide.ResumeLayout(false);
             this.panelLabelHolder.ResumeLayout(false);

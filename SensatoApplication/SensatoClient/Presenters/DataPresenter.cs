@@ -1,8 +1,7 @@
-﻿
-
-namespace SensatoClient.Presenters
+﻿namespace SensatoClient.Presenters
 {
     using Contracts;
+    using MetroFramework.Controls;
     using SensatoServiceReference;
     using System;
     using System.Diagnostics;
@@ -75,26 +74,21 @@ namespace SensatoClient.Presenters
             var startDate = this.dataView.StartDate.Value;
             var endDate = this.dataView.EndDate.Value;
 
-            this.dataView.Spinner.Visible = true;
-            this.dataView.Spinner.Spinning = true;
             this.dataView.ShowButton.Enabled = false;
             this.dataView.DataGrid.Enabled = false;
 
             await Task.Factory.StartNew(() => this.LoadData(startDate, endDate));
-            //this.LoadData(startDate, endDate);
 
-            this.dataView.Spinner.Visible = false;
-            this.dataView.Spinner.Spinning = false;
             this.dataView.ShowButton.Enabled = true;
             this.dataView.DataGrid.Enabled = true;
         }
 
         private void LoadData(DateTime startDate, DateTime endDate)
-        {
+        {           
             var framesWithMeasurments =
                 this.client.GetMeasurmentData(this.User.Username, this.hiveName, startDate, endDate);
-
-            this.ManageMeasurments(framesWithMeasurments);
+                        
+            this.ManageMeasurments(framesWithMeasurments);            
         }
 
         private void ManageMeasurments(FrameDTO[] framesWithMeasurments)
@@ -102,11 +96,13 @@ namespace SensatoClient.Presenters
             int frameCounter = 1;
 
             int maxMeasurments = framesWithMeasurments.Max(f => f.Measurments.Count());
+            
             for (int i = 1; i < maxMeasurments * NumberOfSensorsOnFrame; i++)
             {
-                this.dataView.DataGrid.Rows.Add();
+                this.dataView.Invoke(new MethodInvoker(()
+                    => this.dataView.DataGrid.Rows.Add()));
             }
-
+            
             foreach (var frameWithMeasurments in framesWithMeasurments)
             {
                 int measurmentCounter = 0;
