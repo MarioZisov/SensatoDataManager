@@ -6,6 +6,8 @@
     {
         event EventHandler LoginClick;
 
+        event EventHandler LabelClick;
+
         string Username { get; }
 
         string Password { get; set; }        

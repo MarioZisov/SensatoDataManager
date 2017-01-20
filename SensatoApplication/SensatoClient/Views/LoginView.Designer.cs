@@ -35,6 +35,7 @@
             this.buttonLogin = new MetroFramework.Controls.MetroButton();
             this.labelError = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.labelReport = new MetroFramework.Controls.MetroLink();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,6 +131,7 @@
             // 
             // labelError
             // 
+            this.labelError.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelError.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelError.FontSize = MetroFramework.MetroLabelSize.Small;
             this.labelError.ForeColor = System.Drawing.Color.Red;
@@ -156,10 +158,26 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // labelReport
+            // 
+            this.labelReport.BackColor = System.Drawing.Color.Transparent;
+            this.labelReport.ForeColor = System.Drawing.Color.Red;
+            this.labelReport.Location = new System.Drawing.Point(354, 345);
+            this.labelReport.Name = "labelReport";
+            this.labelReport.Size = new System.Drawing.Size(93, 23);
+            this.labelReport.TabIndex = 8;
+            this.labelReport.Text = "Report a bug";
+            this.labelReport.UseCustomBackColor = true;
+            this.labelReport.UseCustomForeColor = true;
+            this.labelReport.UseSelectable = true;
+            this.labelReport.MouseEnter += new System.EventHandler(this.labelReport_MouseEnter);
+            this.labelReport.MouseLeave += new System.EventHandler(this.labelReport_MouseLeave);
+            // 
             // LoginView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelReport);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.labelPassword);
@@ -184,5 +202,6 @@
         private MetroFramework.Controls.MetroButton buttonLogin;
         private MetroFramework.Controls.MetroLabel labelError;
         private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroLink labelReport;
     }
 }

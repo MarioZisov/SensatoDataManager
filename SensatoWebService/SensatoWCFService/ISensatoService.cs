@@ -5,10 +5,11 @@
     using System.ServiceModel;
     using DataTransferObjects;
     using System;
+    using System.ServiceModel.Web;
 
     [ServiceContract]
     public interface ISensatoService
-    {
+    {         
         [OperationContract]
         [FaultContract(typeof(UsernameValidationFault))]
         bool CheckUserExists(string username);
@@ -42,5 +43,8 @@
 
         [OperationContract]
         void UploadMeasurmentData(string usernama, string hiveName, IDictionary<int, object[][]> measurmentsData);
+
+        [OperationContract]
+        bool SendEmail(string emailTo, string subject, string body, bool isBodyHtml);
     }
 }

@@ -81,6 +81,18 @@
   <wsdl:message name="ISensatoService_UploadMeasurmentData_OutputMessage">
     <wsdl:part name="parameters" element="tns:UploadMeasurmentDataResponse" />
   </wsdl:message>
+  <wsdl:message name="ISensatoService_SendEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmail" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_SendEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHardwareCommunication_TestAddData_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestAddData" />
+  </wsdl:message>
+  <wsdl:message name="IHardwareCommunication_TestAddData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestAddDataResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISensatoService">
     <wsdl:operation name="CheckUserExists">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/CheckUserExists" message="tns:ISensatoService_CheckUserExists_InputMessage" />
@@ -125,6 +137,16 @@
     <wsdl:operation name="UploadMeasurmentData">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/UploadMeasurmentData" message="tns:ISensatoService_UploadMeasurmentData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/UploadMeasurmentDataResponse" message="tns:ISensatoService_UploadMeasurmentData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/SendEmail" message="tns:ISensatoService_SendEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/SendEmailResponse" message="tns:ISensatoService_SendEmail_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IHardwareCommunication">
+    <wsdl:operation name="TestAddData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHardwareCommunication/TestAddData" message="tns:IHardwareCommunication_TestAddData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHardwareCommunication/TestAddDataResponse" message="tns:IHardwareCommunication_TestAddData_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISensatoService" type="tns:ISensatoService">
@@ -231,10 +253,19 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="SensatoService">
     <wsdl:port name="BasicHttpBinding_ISensatoService" binding="tns:BasicHttpBinding_ISensatoService">
-      <soap:address location="http://localhost:50589/SensatoService.svc" />
+      <soap:address location="http://localhost:50589/SensatoService.svc/SOAP" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

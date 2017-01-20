@@ -66,6 +66,7 @@
     <Compile Include="Contracts\IHiveView.cs" />
     <Compile Include="Contracts\ILoginView.cs" />
     <Compile Include="Contracts\INameView.cs" />
+    <Compile Include="Contracts\IReportView.cs" />
     <Compile Include="Contracts\IView.cs" />
     <Compile Include="HashUtilities.cs" />
     <Compile Include="IO\FileInputReader.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Presenters\HivePresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\NamePresenter.cs" />
+    <Compile Include="Presenters\ReportPresenter.cs" />
     <Compile Include="Service References\SensatoServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,6 +123,12 @@
     <Compile Include="Views\NameView.Designer.cs">
       <DependentUpon>NameView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ReportView.Designer.cs">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NameView.resx">
       <DependentUpon>NameView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ReportView.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -179,7 +190,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

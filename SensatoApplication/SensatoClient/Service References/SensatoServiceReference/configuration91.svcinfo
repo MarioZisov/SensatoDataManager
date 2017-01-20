@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="tAKHA3mKJTP7bArBneWqWnPJ/hc=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="EsxSsdBwBf69UXk/8YnbSBfihIU=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_ISensatoService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_ISensatoService" contract="SensatoServiceReference.ISensatoService" bindingType="basicHttpBinding" address="http://localhost:50589/SensatoService.svc" bindingConfiguration="BasicHttpBinding_ISensatoService">
+    <endpoint name="BasicHttpBinding_ISensatoService" contract="SensatoServiceReference.ISensatoService" bindingType="basicHttpBinding" address="http://localhost:50589/SensatoService.svc/SOAP" bindingConfiguration="BasicHttpBinding_ISensatoService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:50589/SensatoService.svc</serializedValue>
+          <serializedValue>http://localhost:50589/SensatoService.svc/SOAP</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -8,6 +8,7 @@
     using MetroFramework;
     using MetroFramework.Controls;
     using System.Windows.Forms;
+    using Views;
 
     public class LoginPresenter : AbstractPresenter
     {
@@ -30,7 +31,8 @@
         {
             this.loginView.LoginClick += OnLoginClick;
             this.hivePresenter.LogoutClick += OnLogoutClick;
-        }
+            this.loginView.LabelClick += OnLabelClick;
+        }        
 
         private void OnLoginClick(object sender, EventArgs e)
         {
@@ -62,12 +64,19 @@
             catch (EndpointNotFoundException)
             {
                 MetroMessageBox.Show(
-                    (MetroUserControl)this.loginView, 
-                    cantConnectMessage, 
-                    cantConnectTitle, 
-                    MessageBoxButtons.OK, 
+                    (MetroUserControl)this.loginView,
+                    cantConnectMessage,
+                    cantConnectTitle,
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error, 100);
             }
+        }
+
+        private void OnLabelClick(object sender, EventArgs e)
+        {
+            IReportView reportView = new ReportView();
+            ReportPresenter reportPresenter = new ReportPresenter(reportView);
+            reportPresenter.Initialize();
         }
 
         private void OnLogoutClick(object sender, EventArgs e)

@@ -9,10 +9,11 @@
     using System;
     using SensatoWebService.Data;
     using DataTransferObjects;
+    using System.Net.Mail;
 
-    public class SensatoService : ISensatoService
+    public class SensatoService : ISensatoService, IHardwareCommunication
     {
-        private SensatoContext context;
+        private SensatoContext context;       
 
         public SensatoService()
         {
@@ -253,6 +254,44 @@
             {
                 frame.IsRemoved = true;
             }
+        }
+
+        public bool SendEmail(string emailTo, string subject, string body, bool isBodyHtml)
+        {
+            if (string.IsNullOrEmpty(emailTo))
+            {
+                return false;
+            }
+            using (SmtpClient smtpClient = new SmtpClient())
+            {
+                using (MailMessage message = new MailMessage())
+                {
+                    message.Subject = subject == null ? string.Empty : subject;
+                    message.Body = body == null ? string.Empty : body;
+                    message.IsBodyHtml = isBodyHtml;
+                    message.To.Add(new MailAddress(emailTo));
+                    try
+                    {
+                        smtpClient.Send(message);
+                        return true;
+                    }
+                    catch (Exception exception)
+                    {
+                        //Log the exception to DB
+                        throw new FaultException(exception.Message);
+                    }
+                }
+            }
+        }
+
+        public string TestRenameHive(string data)
+        {
+            var hive = context.Hives.Find(2);
+            hive.Name = data;
+
+            context.SaveChanges();
+
+            return "OK";
         }
     }
 }

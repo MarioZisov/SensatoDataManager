@@ -3,10 +3,13 @@
     using System;
     using Contracts;
     using MetroFramework.Controls;
+    using SensatoServiceReference;
+    using System.Drawing;
 
     public partial class LoginView : MetroUserControl, ILoginView
     {
         public event EventHandler LoginClick;
+        public event EventHandler LabelClick;
 
         public LoginView()
         {
@@ -55,6 +58,21 @@
             {
                 this.LoginClick?.Invoke(this, EventArgs.Empty);
             };
-        }        
+
+            this.labelReport.Click += delegate
+            {
+                this.LabelClick?.Invoke(this, EventArgs.Empty);
+            };
+        }
+
+        private void labelReport_MouseEnter(object sender, EventArgs e)
+        {
+            this.labelReport.ForeColor = Color.DarkRed;
+        }
+
+        private void labelReport_MouseLeave(object sender, EventArgs e)
+        {
+            this.labelReport.ForeColor = Color.Red;
+        }
     }
 }

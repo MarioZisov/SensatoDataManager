@@ -386,6 +386,12 @@ namespace SensatoClient.SensatoServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/UploadMeasurmentData", ReplyAction="http://tempuri.org/ISensatoService/UploadMeasurmentDataResponse")]
         System.Threading.Tasks.Task UploadMeasurmentDataAsync(string usernama, string hiveName, System.Collections.Generic.Dictionary<int, object[][]> measurmentsData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/SendEmail", ReplyAction="http://tempuri.org/ISensatoService/SendEmailResponse")]
+        bool SendEmail(string emailTo, string subject, string body, bool isBodyHtml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/SendEmail", ReplyAction="http://tempuri.org/ISensatoService/SendEmailResponse")]
+        System.Threading.Tasks.Task<bool> SendEmailAsync(string emailTo, string subject, string body, bool isBodyHtml);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -493,6 +499,61 @@ namespace SensatoClient.SensatoServiceReference {
         
         public System.Threading.Tasks.Task UploadMeasurmentDataAsync(string usernama, string hiveName, System.Collections.Generic.Dictionary<int, object[][]> measurmentsData) {
             return base.Channel.UploadMeasurmentDataAsync(usernama, hiveName, measurmentsData);
+        }
+        
+        public bool SendEmail(string emailTo, string subject, string body, bool isBodyHtml) {
+            return base.Channel.SendEmail(emailTo, subject, body, isBodyHtml);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SendEmailAsync(string emailTo, string subject, string body, bool isBodyHtml) {
+            return base.Channel.SendEmailAsync(emailTo, subject, body, isBodyHtml);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SensatoServiceReference.IHardwareCommunication")]
+    public interface IHardwareCommunication {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHardwareCommunication/TestAddData", ReplyAction="http://tempuri.org/IHardwareCommunication/TestAddDataResponse")]
+        string TestAddData(string testData);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHardwareCommunication/TestAddData", ReplyAction="http://tempuri.org/IHardwareCommunication/TestAddDataResponse")]
+        System.Threading.Tasks.Task<string> TestAddDataAsync(string testData);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IHardwareCommunicationChannel : SensatoClient.SensatoServiceReference.IHardwareCommunication, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class HardwareCommunicationClient : System.ServiceModel.ClientBase<SensatoClient.SensatoServiceReference.IHardwareCommunication>, SensatoClient.SensatoServiceReference.IHardwareCommunication {
+        
+        public HardwareCommunicationClient() {
+        }
+        
+        public HardwareCommunicationClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public HardwareCommunicationClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public HardwareCommunicationClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public HardwareCommunicationClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public string TestAddData(string testData) {
+            return base.Channel.TestAddData(testData);
+        }
+        
+        public System.Threading.Tasks.Task<string> TestAddDataAsync(string testData) {
+            return base.Channel.TestAddDataAsync(testData);
         }
     }
 }
