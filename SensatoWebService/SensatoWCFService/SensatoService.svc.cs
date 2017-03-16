@@ -10,11 +10,7 @@
     using SensatoWebService.Data;
     using DataTransferObjects;
     using System.Net.Mail;
-    using System.Threading;
     using System.Web.Script.Serialization;
-    using System.IO;
-    using System.ServiceModel.Web;
-    using System.Text;
 
     public class SensatoService : ISensatoService, IHardwareCommunication
     {
@@ -287,6 +283,15 @@
                     }
                 }
             }
+        }
+
+        public DateTime GetLastEntryDate(string username, string hiveName)
+        {
+            var user = GetUserByUsername(username);
+            var hive = GetHive(user, hiveName);
+            DateTime lastDate = hive.Frames.Where(f => f.IsActive).Select(f => f.Measurments.Max(m => m.DateTimeOfMeasurment)).Max();
+
+            return lastDate;
         }
 
         public string TestRenameHive(string data)
