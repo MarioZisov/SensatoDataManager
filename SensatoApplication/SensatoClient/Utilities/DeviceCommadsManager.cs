@@ -4,18 +4,19 @@
 
     public class DeviceCommadsManager
     {
-        private const string CheckTimeCommand = "TIME?";
-        private const string SetTimeCommand = "SET{0}";
-        private const string GetDataCommand = "GET{0}";
-        private const string GetTodayDataCommand = "TODAY";
-        private const string SetNumberCommand = "NUM{0}";
-        private const string CheckNumberCommand = "NUM?";
+        private const string CheckTimeCommand = "TIME?\r\n";
+        private const string SetTimeCommand = "SET{0}\r\n";
+        private const string GetDataCommand = "GET{0}\r\n";
+        private const string GetTodayDataCommand = "TODAY\r\n";
+        private const string SetNumberCommand = "NUM{0}\r\n";
+        private const string CheckNumberCommand = "NUM?\r\n";
 
         private CommandReader commandReader;
 
         public DeviceCommadsManager()
         {
             this.commandReader = new CommandReader();
+            this.commandReader.OpenPort();
         }
 
         public string CheckTime()
@@ -59,6 +60,8 @@
                                 $"{lastDatePossible.Day}.{lastDatePossible.Month}-{currentDate.Day}.{currentDate.Month}");
 
             result = this.commandReader.ReadCommand(command);
+            string todayData = this.commandReader.ReadCommand(GetTodayDataCommand).Trim();
+            result = $"{result}{Environment.NewLine}{todayData}";
 
             return result;
         }
@@ -82,7 +85,7 @@
         {
             if (this.commandReader.IsDeviceAvalible())
             {
-                this.commandReader.SetPort();
+                this.commandReader.OpenPort();
                 return true;
             }
 

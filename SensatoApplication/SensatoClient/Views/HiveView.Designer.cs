@@ -33,9 +33,14 @@
             this.textBoxSearch = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.tablePanelHives = new System.Windows.Forms.TableLayoutPanel();
-            this.progressSpinner = new MetroFramework.Controls.MetroProgressSpinner();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.tabControl = new MetroFramework.Controls.MetroTabControl();
+            this.progressSpinner = new MetroFramework.Controls.MetroProgressSpinner();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.buttonSetTime = new MetroFramework.Controls.MetroButton();
+            this.buttonGetData = new MetroFramework.Controls.MetroButton();
+            this.buttonShowNumber = new MetroFramework.Controls.MetroButton();
+            this.buttonSetNumber = new MetroFramework.Controls.MetroButton();
+            this.buttonCheckTime = new MetroFramework.Controls.MetroButton();
             this.tabPage = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.buttonAddData = new MetroFramework.Controls.MetroButton();
@@ -43,16 +48,17 @@
             this.buttonFrame = new MetroFramework.Controls.MetroButton();
             this.buttonRename = new MetroFramework.Controls.MetroButton();
             this.buttonRemove = new MetroFramework.Controls.MetroButton();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.tabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroPanel1.SuspendLayout();
-            this.tabControl.SuspendLayout();
+            this.metroTabPage2.SuspendLayout();
             this.tabPage.SuspendLayout();
             this.metroPanel2.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAddHive
             // 
-            this.buttonAddHive.Location = new System.Drawing.Point(10, 291);
+            this.buttonAddHive.Location = new System.Drawing.Point(10, 281);
             this.buttonAddHive.Name = "buttonAddHive";
             this.buttonAddHive.Size = new System.Drawing.Size(129, 31);
             this.buttonAddHive.TabIndex = 6;
@@ -61,7 +67,7 @@
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(10, 374);
+            this.buttonLogout.Location = new System.Drawing.Point(10, 364);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(132, 31);
             this.buttonLogout.TabIndex = 7;
@@ -84,7 +90,7 @@
             this.textBoxSearch.CustomButton.UseSelectable = true;
             this.textBoxSearch.CustomButton.Visible = false;
             this.textBoxSearch.Lines = new string[0];
-            this.textBoxSearch.Location = new System.Drawing.Point(10, 328);
+            this.textBoxSearch.Location = new System.Drawing.Point(10, 318);
             this.textBoxSearch.MaxLength = 32767;
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.PasswordChar = '\0';
@@ -136,6 +142,10 @@
             this.tablePanelHives.Size = new System.Drawing.Size(560, 0);
             this.tablePanelHives.TabIndex = 2;
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
             // progressSpinner
             // 
             this.progressSpinner.Location = new System.Drawing.Point(49, 113);
@@ -149,20 +159,69 @@
             this.progressSpinner.Value = 100;
             this.progressSpinner.Visible = false;
             // 
-            // openFileDialog
+            // metroTabPage2
             // 
-            this.openFileDialog.FileName = "openFileDialog";
+            this.metroTabPage2.Controls.Add(this.buttonSetTime);
+            this.metroTabPage2.Controls.Add(this.buttonGetData);
+            this.metroTabPage2.Controls.Add(this.buttonShowNumber);
+            this.metroTabPage2.Controls.Add(this.buttonSetNumber);
+            this.metroTabPage2.Controls.Add(this.buttonCheckTime);
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.HorizontalScrollbarSize = 10;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(146, 230);
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "Device";
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // tabControl
+            // buttonSetTime
             // 
-            this.tabControl.Controls.Add(this.tabPage);
-            this.tabControl.Controls.Add(this.metroTabPage2);
-            this.tabControl.Location = new System.Drawing.Point(3, 3);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 1;
-            this.tabControl.Size = new System.Drawing.Size(154, 268);
-            this.tabControl.TabIndex = 2;
-            this.tabControl.UseSelectable = true;
+            this.buttonSetTime.Location = new System.Drawing.Point(3, 62);
+            this.buttonSetTime.Name = "buttonSetTime";
+            this.buttonSetTime.Size = new System.Drawing.Size(132, 31);
+            this.buttonSetTime.TabIndex = 10;
+            this.buttonSetTime.Text = "Set Device Time";
+            this.buttonSetTime.UseSelectable = true;
+            // 
+            // buttonGetData
+            // 
+            this.buttonGetData.Location = new System.Drawing.Point(3, 99);
+            this.buttonGetData.Name = "buttonGetData";
+            this.buttonGetData.Size = new System.Drawing.Size(132, 31);
+            this.buttonGetData.TabIndex = 9;
+            this.buttonGetData.Text = "Get Data";
+            this.buttonGetData.UseSelectable = true;
+            // 
+            // buttonShowNumber
+            // 
+            this.buttonShowNumber.Location = new System.Drawing.Point(3, 173);
+            this.buttonShowNumber.Name = "buttonShowNumber";
+            this.buttonShowNumber.Size = new System.Drawing.Size(132, 31);
+            this.buttonShowNumber.TabIndex = 8;
+            this.buttonShowNumber.Text = "Show Hive Number";
+            this.buttonShowNumber.UseSelectable = true;
+            // 
+            // buttonSetNumber
+            // 
+            this.buttonSetNumber.Location = new System.Drawing.Point(3, 136);
+            this.buttonSetNumber.Name = "buttonSetNumber";
+            this.buttonSetNumber.Size = new System.Drawing.Size(132, 31);
+            this.buttonSetNumber.TabIndex = 7;
+            this.buttonSetNumber.Text = "Set Hive Number";
+            this.buttonSetNumber.UseSelectable = true;
+            // 
+            // buttonCheckTime
+            // 
+            this.buttonCheckTime.Location = new System.Drawing.Point(3, 28);
+            this.buttonCheckTime.Name = "buttonCheckTime";
+            this.buttonCheckTime.Size = new System.Drawing.Size(132, 31);
+            this.buttonCheckTime.TabIndex = 6;
+            this.buttonCheckTime.Text = "Check Device Time";
+            this.buttonCheckTime.UseSelectable = true;
             // 
             // tabPage
             // 
@@ -172,7 +231,7 @@
             this.tabPage.HorizontalScrollbarSize = 10;
             this.tabPage.Location = new System.Drawing.Point(4, 38);
             this.tabPage.Name = "tabPage";
-            this.tabPage.Size = new System.Drawing.Size(146, 226);
+            this.tabPage.Size = new System.Drawing.Size(146, 230);
             this.tabPage.TabIndex = 0;
             this.tabPage.Text = "Hive";
             this.tabPage.VerticalScrollbarBarColor = true;
@@ -243,19 +302,16 @@
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseSelectable = true;
             // 
-            // metroTabPage2
+            // tabControl
             // 
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(146, 226);
-            this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "Device";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 10;
+            this.tabControl.Controls.Add(this.tabPage);
+            this.tabControl.Controls.Add(this.metroTabPage2);
+            this.tabControl.Location = new System.Drawing.Point(3, 3);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 1;
+            this.tabControl.Size = new System.Drawing.Size(154, 272);
+            this.tabControl.TabIndex = 2;
+            this.tabControl.UseSelectable = true;
             // 
             // HiveView
             // 
@@ -269,12 +325,13 @@
             this.Controls.Add(this.buttonAddHive);
             this.Location = new System.Drawing.Point(0, 72);
             this.Name = "HiveView";
-            this.Size = new System.Drawing.Size(948, 503);
+            this.Size = new System.Drawing.Size(800, 428);
             this.UseSelectable = false;
             this.metroPanel1.ResumeLayout(false);
-            this.tabControl.ResumeLayout(false);
+            this.metroTabPage2.ResumeLayout(false);
             this.tabPage.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -287,7 +344,12 @@
         private System.Windows.Forms.TableLayoutPanel tablePanelHives;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private MetroFramework.Controls.MetroProgressSpinner progressSpinner;
-        private MetroFramework.Controls.MetroTabControl tabControl;
+        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private MetroFramework.Controls.MetroButton buttonSetTime;
+        private MetroFramework.Controls.MetroButton buttonGetData;
+        private MetroFramework.Controls.MetroButton buttonShowNumber;
+        private MetroFramework.Controls.MetroButton buttonSetNumber;
+        private MetroFramework.Controls.MetroButton buttonCheckTime;
         private MetroFramework.Controls.MetroTabPage tabPage;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroButton buttonAddData;
@@ -295,6 +357,6 @@
         private MetroFramework.Controls.MetroButton buttonFrame;
         private MetroFramework.Controls.MetroButton buttonRename;
         private MetroFramework.Controls.MetroButton buttonRemove;
-        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private MetroFramework.Controls.MetroTabControl tabControl;
     }
 }

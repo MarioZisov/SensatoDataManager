@@ -25,6 +25,16 @@
 
         event EventHandler SearchTextChanged;
 
+        event EventHandler CheckTimeClick;
+
+        event EventHandler SetTimeClick;
+
+        event EventHandler GetDataClick;
+
+        event EventHandler SetNumberClick;
+
+        event EventHandler ShowNumberClick;
+
         TableLayoutPanel HivesTable { get; }
 
         MetroPanel HiveControls { get; }

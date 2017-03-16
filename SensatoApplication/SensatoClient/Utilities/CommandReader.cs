@@ -15,7 +15,7 @@ namespace SensatoClient.Utilities
 
         private byte[] data;
         private SerialPort port;
-        private StringBuilder commandResult = new StringBuilder();
+        private StringBuilder commandResult;
 
         public bool IsDeviceAvalible()
         {
@@ -23,13 +23,9 @@ namespace SensatoClient.Utilities
             return isAvalible;
         }
 
-        public void SetPort()
+        public void OpenPort()
         {
             this.port = new SerialPort(PortName, 19200, Parity.None, 8, StopBits.One);
-        }
-
-        public string ReadCommand(string command)
-        {
             try
             {
                 this.port.Open();
@@ -38,6 +34,11 @@ namespace SensatoClient.Utilities
             {
                 throw new NoPortFoundException();
             }
+        }
+
+        public string ReadCommand(string command)
+        {
+            this.commandResult = new StringBuilder();
 
             var commandBytes = Encoding.ASCII.GetBytes(command);
 
@@ -62,14 +63,14 @@ namespace SensatoClient.Utilities
                         break;
                     }
 
-                    commandResult.Append("@");
+                    //this.commandResult.Append("@");
                 }
 
                 @byte = port.ReadByte();
-                commandResult.Append((char)@byte);
+                this.commandResult.Append((char)@byte);
             }
 
-            return commandResult.ToString();
+            return this.commandResult.ToString();
         }
     }
 }

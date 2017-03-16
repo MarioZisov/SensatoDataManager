@@ -25,14 +25,16 @@
             INameView nameView = new NameView();
             IFrameView frameView = new FrameView();
             //IDataView dataView = new DataView();
+            SetTimeView timeView = new SetTimeView();
 
             //DataPresenter dataPres = new DataPresenter(/*dataView*/);
             FramePresenter framePres = new FramePresenter(frameView);
             NamePresenter namePres = new NamePresenter(nameView);
-            HivePresenter hivePres = new HivePresenter(hiveView, namePres, framePres/*, dataPres*/);
+            SetTimePresenter timePresenter = new SetTimePresenter(timeView);
+            HivePresenter hivePres = new HivePresenter(hiveView, namePres, framePres, timePresenter/*, dataPres*/);
             LoginPresenter loginPres = new LoginPresenter(loginView, hivePres);
 
-            MainForm mainForm = new MainForm(loginView, hiveView, nameView, frameView);
+            MainForm mainForm = new MainForm(loginView, hiveView, nameView, frameView, timeView);
             
             if (mutex.WaitOne(TimeSpan.Zero, true))
             {

@@ -12,6 +12,8 @@
     using MetroFramework;
     using Views;
     using System.Threading.Tasks;
+    using Utilities;
+    using Exceptions;
 
     public class HivePresenter : AbstractPresenter
     {
@@ -26,18 +28,23 @@
         private MetroButton selectedHiveButton;
         private FramePresenter framePresenter;
         private FileInputReader reader;
+        private DeviceCommadsManager commandsManager;
+
+        private SetTimePresenter timePresenter;
 
         public event EventHandler LogoutClick;
 
-        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter)
+        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter, SetTimePresenter timePresenter)
         {
             this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
             this.reader = new FileInputReader();
             this.namePresenter = namePresenter;
             this.framePresenter = framePresenter;
+            this.timePresenter = timePresenter;
             //this.dataPresenter = dataPresenter;
             this.SubscribeEvents();
+            this.commandsManager = new DeviceCommadsManager();
         }
 
         public void Initialize()
@@ -58,10 +65,60 @@
             this.hiveView.AddDataFileClick += OnAddDataFileClick;
             this.hiveView.FrameClick += OnFrameClick;
             this.hiveView.SearchTextChanged += OnSearchTextChange;
+
+            this.hiveView.CheckTimeClick += OnCheckTimeClick;
+            this.hiveView.SetTimeClick += OnSetTimeClick;
+            this.hiveView.ShowNumberClick += OnShowNumberClick;
+            this.hiveView.SetNumberClick += OnSetNumberClick;
+            this.hiveView.GetDataClick += OnGetDataClick;
+
             this.namePresenter.RenameSaveComplete += OnRenameComplete;
             this.namePresenter.AddSaveComplete += OnAddComplete;
             this.namePresenter.Cancel += OnCancel;
             this.framePresenter.ViewBackButtonClick += OnFrameViewBackButtonClick;
+        }
+
+        private void OnGetDataClick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnSetNumberClick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnShowNumberClick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OnSetTimeClick(object sender, EventArgs e)
+        {
+            this.timePresenter.Initialize();
+        }
+
+        private void OnCheckTimeClick(object sender, EventArgs e)
+        {
+            try
+            {
+                string time = this.commandsManager.CheckTime();
+                MetroMessageBox.Show(
+                    (MetroUserControl)sender,
+                    time,
+                    "Device Time",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information, 100);
+            }
+            catch (NoPortFoundException)
+            {                
+                MetroMessageBox.Show(
+                    (MetroUserControl)sender,
+                    "Ensure that device is connected",
+                    "No Device Found",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error, 100);
+            }
         }
 
         private void OnSearchTextChange(object sender, EventArgs e)
@@ -73,7 +130,7 @@
                 .OfType<MetroButton>();
 
             if (string.IsNullOrEmpty(text))
-            {               
+            {
                 foreach (var button in buttons)
                 {
                     button.Visible = true;
@@ -135,7 +192,7 @@
         //TODO: Validation for input data
         //TODO: This method should be moved in a separate class
         private void ProcessData(IList<string> validLines)
-        {            
+        {
             Dictionary<int, object[][]> dataTranferCollection = new Dictionary<int, object[][]>();
             int framesCount = this.serviceClient
                 .GetFramesByHive(this.User.Username, this.selectedHiveButton.Text)
@@ -158,8 +215,8 @@
                 int hour = int.Parse(dateTime.Split(',')[0].Substring(0, 2));
                 string outsideTemp = null;
 
-                DateTime measurmentDate = DateTime.Parse(dateTime.Split(',')[1]).AddHours(hour);                
-                
+                DateTime measurmentDate = DateTime.Parse(dateTime.Split(',')[1]).AddHours(hour);
+
                 if (framesCount + 2 == splittedDataByFrame.Length)
                 {
                     outsideTemp = splittedDataByFrame[splittedDataByFrame.Length - 2];
@@ -179,7 +236,7 @@
             }
 
             this.serviceClient.UploadMeasurmentData(this.User.Username, this.selectedHiveButton.Text, dataTranferCollection);
-            
+
         }
 
         private void OnDataButtonClick(object sender, EventArgs e)

@@ -19,6 +19,13 @@
         public event EventHandler AddDataFileClick;
         public event EventHandler SearchTextChanged;
 
+        public event EventHandler CheckTimeClick;
+        public event EventHandler SetTimeClick;
+        public event EventHandler GetDataClick;
+        public event EventHandler SetNumberClick;
+        public event EventHandler ShowNumberClick;
+
+
         public HiveView()
         {
             this.InitializeComponent();
@@ -37,7 +44,6 @@
         {
             get
             {
-                //this.tabb1.Controls
                 return this.metroPanel2;
             }
         }
@@ -135,6 +141,31 @@
             this.textBoxSearch.TextChanged += delegate
             {
                 this.SearchTextChanged?.Invoke(textBoxSearch, EventArgs.Empty);
+            };
+
+            this.buttonCheckTime.Click += delegate
+            {
+                this.CheckTimeClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.buttonSetTime.Click += delegate
+            {
+                this.SetTimeClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.buttonShowNumber.Click += delegate
+            {
+                this.ShowNumberClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.buttonSetNumber.Click += delegate
+            {
+                this.SetNumberClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.buttonGetData.Click += delegate
+            {
+                this.GetDataClick?.Invoke(this, EventArgs.Empty);
             };
         }
     }
