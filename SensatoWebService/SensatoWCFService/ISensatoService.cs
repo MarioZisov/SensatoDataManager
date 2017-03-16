@@ -47,6 +47,9 @@
         [OperationContract]
         bool SendEmail(string emailTo, string subject, string body, bool isBodyHtml);
 
+        [OperationContract]
+        DateTime GetLastEntryDate(string username, string hiveName);
+
         //[OperationContract]
         //string GetMeasurments(string strHiveId);
     }
