@@ -1,19 +1,14 @@
-﻿using MetroFramework;
-using MetroFramework.Controls;
-using MetroFramework.Forms;
-using SensatoClient.Contracts;
-using SensatoClient.SensatoServiceReference;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO.Ports;
-
-namespace SensatoClient.Presenters
+﻿namespace SensatoClient.Presenters
 {
+    using System;
+    using System.IO.Ports;
+    using System.ServiceModel;
+    using System.Windows.Forms;
+    using Contracts;
+    using MetroFramework;
+    using MetroFramework.Forms;
+    using SensatoServiceReference;
+
     public class ReportPresenter : AbstractPresenter
     {
         private const string cantConnectMessage = "Could not connect to the server";

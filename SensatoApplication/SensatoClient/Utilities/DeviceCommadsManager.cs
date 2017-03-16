@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensatoClient.Utilities
+﻿namespace SensatoClient.Utilities
 {
+    using System;
+
     public class DeviceCommadsManager
     {
         private const string CheckTimeCommand = "TIME?";
@@ -30,14 +26,57 @@ namespace SensatoClient.Utilities
 
         public string SetTime(DateTime date)
         {
-            string dateString = $"{date.TimeOfDay},{date.Date}";
+            string dateString = $"{date.TimeOfDay.ToString("hh:mm")},{date.Date.ToString("dd.MM.yy")}";
             string command = string.Format(SetTimeCommand, dateString);
             string result = this.commandReader.ReadCommand(command).Trim();
 
             return result;
         }
 
+        public string GetTodayData()
+        {
+            string todayData = this.commandReader.ReadCommand(GetTodayDataCommand).Trim();
+            return todayData;
+        }
 
+        public string GetData(DateTime lastEntryDateTime)
+        {
+            var currentDate = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day - 1);
+            var lastDatePossible = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
+            string command;
+            string result;
+            if (lastEntryDateTime > lastDatePossible)
+            {
+                command = string.Format(GetDataCommand,
+                    $"{lastEntryDateTime.Day}.{lastEntryDateTime.Month}-{currentDate.Day}.{currentDate.Month}");
+
+                result = this.commandReader.ReadCommand(command);
+
+                return result;
+            }
+
+            command = string.Format(GetDataCommand,
+                                $"{lastDatePossible.Day}.{lastDatePossible.Month}-{currentDate.Day}.{currentDate.Month}");
+
+            result = this.commandReader.ReadCommand(command);
+
+            return result;
+        }
+
+        public string SetDeviceNumber(int deviceNum)
+        {
+            string command = string.Format(SetNumberCommand, deviceNum.ToString().PadLeft(3,'0'));
+            string result = this.commandReader.ReadCommand(command).Trim();
+
+            return result;
+        }
+
+        public string CheckDeviceNumber()
+        {
+            string deviceNumber = this.commandReader.ReadCommand(CheckNumberCommand);
+
+            return deviceNumber;
+        }
 
         public bool InitilizePort()
         {

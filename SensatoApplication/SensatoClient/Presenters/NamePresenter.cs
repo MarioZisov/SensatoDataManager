@@ -1,16 +1,13 @@
-﻿using MetroFramework.Controls;
-using SensatoClient.Contracts;
-using SensatoClient.Models;
-using SensatoClient.SensatoServiceReference;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensatoClient.Presenters
+﻿namespace SensatoClient.Presenters
 {
+    using System;
+    using System.Linq;
+    using System.ServiceModel;
+    using Contracts;
+    using MetroFramework.Controls;
+    using Models;
+    using SensatoServiceReference;
+
     public class NamePresenter : AbstractPresenter
     {
         private INameView nameView;

@@ -1,15 +1,12 @@
 ﻿namespace SensatoClient.Presenters
 {
     using Contracts;
-    using MetroFramework.Controls;
     using SensatoServiceReference;
     using System;
-    using System.Diagnostics;
     using System.Drawing;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Forms;
-    using Views;
 
     public class DataPresenter : AbstractPresenter
     {

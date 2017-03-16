@@ -2,10 +2,8 @@
 {
     using Contracts;
     using MetroFramework.Controls;
-    using Models;
     using SensatoServiceReference;
     using System;
-    using System.Collections;
     using System.Windows.Forms;
     using System.Linq;
     using System.Collections.Generic;

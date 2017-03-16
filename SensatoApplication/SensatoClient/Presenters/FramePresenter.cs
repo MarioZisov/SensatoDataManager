@@ -1,14 +1,12 @@
-﻿using MetroFramework.Controls;
-using SensatoClient.Contracts;
-using SensatoClient.SensatoServiceReference;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SensatoClient.Presenters
+﻿namespace SensatoClient.Presenters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Contracts;
+    using MetroFramework.Controls;
+    using SensatoServiceReference;
+
     public class FramePresenter : AbstractPresenter
     {
         private IFrameView frameView;
