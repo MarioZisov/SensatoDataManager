@@ -117,7 +117,7 @@
             this.labelPassword.AutoSize = true;
             this.labelPassword.Location = new System.Drawing.Point(367, 204);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(64, 19);
+            this.labelPassword.Size = new System.Drawing.Size(63, 19);
             this.labelPassword.TabIndex = 3;
             this.labelPassword.Text = "Password";
             // 
@@ -176,7 +176,7 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(342, 87);
+            this.metroButton1.Location = new System.Drawing.Point(342, 386);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(116, 23);
             this.metroButton1.TabIndex = 9;

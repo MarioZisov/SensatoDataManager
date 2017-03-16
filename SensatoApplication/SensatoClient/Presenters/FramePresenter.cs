@@ -63,6 +63,7 @@ namespace SensatoClient.Presenters
             this.frameView.BringToFront();
         }
 
+
         public void SetCurrentHiveName(string hiveName)
         {
             this.frameView.HiveName = hiveName;

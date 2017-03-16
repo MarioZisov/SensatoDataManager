@@ -63,6 +63,9 @@ namespace SensatoClient.Views
             this.buttonSave = new MetroFramework.Controls.MetroButton();
             this.buttonBack = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.buttonData = new MetroFramework.Controls.MetroButton();
+            this.buttonRename = new MetroFramework.Controls.MetroButton();
+            this.buttonRemove = new MetroFramework.Controls.MetroButton();
             this.panelFrames.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -100,7 +103,7 @@ namespace SensatoClient.Views
             this.panelFrames.HorizontalScrollbarBarColor = true;
             this.panelFrames.HorizontalScrollbarHighlightOnWheel = false;
             this.panelFrames.HorizontalScrollbarSize = 10;
-            this.panelFrames.Location = new System.Drawing.Point(92, 79);
+            this.panelFrames.Location = new System.Drawing.Point(164, 79);
             this.panelFrames.Name = "panelFrames";
             this.panelFrames.Size = new System.Drawing.Size(616, 270);
             this.panelFrames.TabIndex = 0;
@@ -117,6 +120,7 @@ namespace SensatoClient.Views
             this.metroButton28.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton28.TabIndex = 29;
             this.metroButton28.Text = "27";
+            this.metroButton28.UseSelectable = true;
             // 
             // metroButton27
             // 
@@ -127,6 +131,7 @@ namespace SensatoClient.Views
             this.metroButton27.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton27.TabIndex = 28;
             this.metroButton27.Text = "28";
+            this.metroButton27.UseSelectable = true;
             // 
             // metroButton26
             // 
@@ -137,6 +142,7 @@ namespace SensatoClient.Views
             this.metroButton26.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton26.TabIndex = 27;
             this.metroButton26.Text = "26";
+            this.metroButton26.UseSelectable = true;
             // 
             // metroButton25
             // 
@@ -147,6 +153,7 @@ namespace SensatoClient.Views
             this.metroButton25.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton25.TabIndex = 26;
             this.metroButton25.Text = "25";
+            this.metroButton25.UseSelectable = true;
             // 
             // metroButton17
             // 
@@ -157,6 +164,7 @@ namespace SensatoClient.Views
             this.metroButton17.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton17.TabIndex = 25;
             this.metroButton17.Text = "24";
+            this.metroButton17.UseSelectable = true;
             // 
             // metroButton18
             // 
@@ -167,6 +175,7 @@ namespace SensatoClient.Views
             this.metroButton18.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton18.TabIndex = 24;
             this.metroButton18.Text = "23";
+            this.metroButton18.UseSelectable = true;
             // 
             // metroButton19
             // 
@@ -177,6 +186,7 @@ namespace SensatoClient.Views
             this.metroButton19.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton19.TabIndex = 23;
             this.metroButton19.Text = "22";
+            this.metroButton19.UseSelectable = true;
             // 
             // metroButton20
             // 
@@ -187,6 +197,7 @@ namespace SensatoClient.Views
             this.metroButton20.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton20.TabIndex = 22;
             this.metroButton20.Text = "21";
+            this.metroButton20.UseSelectable = true;
             // 
             // metroButton21
             // 
@@ -197,6 +208,7 @@ namespace SensatoClient.Views
             this.metroButton21.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton21.TabIndex = 21;
             this.metroButton21.Text = "20";
+            this.metroButton21.UseSelectable = true;
             // 
             // metroButton22
             // 
@@ -207,6 +219,7 @@ namespace SensatoClient.Views
             this.metroButton22.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton22.TabIndex = 20;
             this.metroButton22.Text = "19";
+            this.metroButton22.UseSelectable = true;
             // 
             // metroButton23
             // 
@@ -217,6 +230,7 @@ namespace SensatoClient.Views
             this.metroButton23.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton23.TabIndex = 19;
             this.metroButton23.Text = "18";
+            this.metroButton23.UseSelectable = true;
             // 
             // metroButton24
             // 
@@ -227,6 +241,7 @@ namespace SensatoClient.Views
             this.metroButton24.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton24.TabIndex = 18;
             this.metroButton24.Text = "17";
+            this.metroButton24.UseSelectable = true;
             // 
             // metroButton9
             // 
@@ -237,6 +252,7 @@ namespace SensatoClient.Views
             this.metroButton9.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton9.TabIndex = 17;
             this.metroButton9.Text = "16";
+            this.metroButton9.UseSelectable = true;
             // 
             // metroButton10
             // 
@@ -247,6 +263,7 @@ namespace SensatoClient.Views
             this.metroButton10.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton10.TabIndex = 16;
             this.metroButton10.Text = "15";
+            this.metroButton10.UseSelectable = true;
             // 
             // metroButton11
             // 
@@ -257,6 +274,7 @@ namespace SensatoClient.Views
             this.metroButton11.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton11.TabIndex = 15;
             this.metroButton11.Text = "14";
+            this.metroButton11.UseSelectable = true;
             // 
             // metroButton12
             // 
@@ -267,6 +285,7 @@ namespace SensatoClient.Views
             this.metroButton12.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton12.TabIndex = 14;
             this.metroButton12.Text = "13";
+            this.metroButton12.UseSelectable = true;
             // 
             // metroButton13
             // 
@@ -277,6 +296,7 @@ namespace SensatoClient.Views
             this.metroButton13.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton13.TabIndex = 13;
             this.metroButton13.Text = "12";
+            this.metroButton13.UseSelectable = true;
             // 
             // metroButton14
             // 
@@ -287,6 +307,7 @@ namespace SensatoClient.Views
             this.metroButton14.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton14.TabIndex = 12;
             this.metroButton14.Text = "11";
+            this.metroButton14.UseSelectable = true;
             // 
             // metroButton15
             // 
@@ -297,6 +318,7 @@ namespace SensatoClient.Views
             this.metroButton15.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton15.TabIndex = 11;
             this.metroButton15.Text = "10";
+            this.metroButton15.UseSelectable = true;
             // 
             // metroButton16
             // 
@@ -307,6 +329,7 @@ namespace SensatoClient.Views
             this.metroButton16.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton16.TabIndex = 10;
             this.metroButton16.Text = "9";
+            this.metroButton16.UseSelectable = true;
             // 
             // metroButton8
             // 
@@ -317,6 +340,7 @@ namespace SensatoClient.Views
             this.metroButton8.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton8.TabIndex = 9;
             this.metroButton8.Text = "8";
+            this.metroButton8.UseSelectable = true;
             // 
             // metroButton7
             // 
@@ -327,6 +351,7 @@ namespace SensatoClient.Views
             this.metroButton7.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton7.TabIndex = 8;
             this.metroButton7.Text = "7";
+            this.metroButton7.UseSelectable = true;
             // 
             // metroButton6
             // 
@@ -337,6 +362,7 @@ namespace SensatoClient.Views
             this.metroButton6.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton6.TabIndex = 7;
             this.metroButton6.Text = "6";
+            this.metroButton6.UseSelectable = true;
             // 
             // metroButton5
             // 
@@ -347,6 +373,7 @@ namespace SensatoClient.Views
             this.metroButton5.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton5.TabIndex = 6;
             this.metroButton5.Text = "5";
+            this.metroButton5.UseSelectable = true;
             // 
             // metroButton4
             // 
@@ -357,6 +384,7 @@ namespace SensatoClient.Views
             this.metroButton4.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton4.TabIndex = 5;
             this.metroButton4.Text = "4";
+            this.metroButton4.UseSelectable = true;
             // 
             // metroButton3
             // 
@@ -367,6 +395,7 @@ namespace SensatoClient.Views
             this.metroButton3.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton3.TabIndex = 4;
             this.metroButton3.Text = "3";
+            this.metroButton3.UseSelectable = true;
             // 
             // metroButton2
             // 
@@ -377,6 +406,7 @@ namespace SensatoClient.Views
             this.metroButton2.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton2.TabIndex = 3;
             this.metroButton2.Text = "2";
+            this.metroButton2.UseSelectable = true;
             // 
             // metroButton1
             // 
@@ -387,6 +417,7 @@ namespace SensatoClient.Views
             this.metroButton1.Style = MetroFramework.MetroColorStyle.Yellow;
             this.metroButton1.TabIndex = 2;
             this.metroButton1.Text = "1";
+            this.metroButton1.UseSelectable = true;
             // 
             // labelHiveName
             // 
@@ -402,7 +433,7 @@ namespace SensatoClient.Views
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(576, 369);
+            this.buttonSave.Location = new System.Drawing.Point(648, 369);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(132, 39);
             this.buttonSave.TabIndex = 2;
@@ -411,7 +442,7 @@ namespace SensatoClient.Views
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(92, 369);
+            this.buttonBack.Location = new System.Drawing.Point(164, 369);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(132, 39);
             this.buttonBack.TabIndex = 3;
@@ -432,10 +463,40 @@ namespace SensatoClient.Views
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // buttonData
+            // 
+            this.buttonData.Location = new System.Drawing.Point(3, 79);
+            this.buttonData.Name = "buttonData";
+            this.buttonData.Size = new System.Drawing.Size(132, 31);
+            this.buttonData.TabIndex = 6;
+            this.buttonData.Text = "Data";
+            this.buttonData.UseSelectable = true;
+            // 
+            // buttonRename
+            // 
+            this.buttonRename.Location = new System.Drawing.Point(3, 116);
+            this.buttonRename.Name = "buttonRename";
+            this.buttonRename.Size = new System.Drawing.Size(132, 31);
+            this.buttonRename.TabIndex = 7;
+            this.buttonRename.Text = "Rename";
+            this.buttonRename.UseSelectable = true;
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(3, 153);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(132, 31);
+            this.buttonRemove.TabIndex = 8;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseSelectable = true;
+            // 
             // FrameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonData);
+            this.Controls.Add(this.buttonRename);
+            this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonSave);
@@ -484,5 +545,8 @@ namespace SensatoClient.Views
         private MetroFramework.Controls.MetroButton buttonSave;
         private MetroFramework.Controls.MetroButton buttonBack;
         private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroButton buttonData;
+        private MetroFramework.Controls.MetroButton buttonRename;
+        private MetroFramework.Controls.MetroButton buttonRemove;
     }
 }

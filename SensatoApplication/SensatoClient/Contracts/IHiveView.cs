@@ -33,6 +33,8 @@
 
         MetroProgressSpinner Spinner { get; }
 
+        MetroTabControl TabControl { get; }
+
         bool IsEnabled { get; set; }
 
         void SubscibeHiveButtons(IEnumerable<Control> buttonsToSubscribe);

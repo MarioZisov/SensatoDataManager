@@ -37,7 +37,8 @@
         {
             get
             {
-                return this.panelHiveControls;
+                //this.tabb1.Controls
+                return this.metroPanel2;
             }
         }
 
@@ -64,6 +65,14 @@
             get
             {
                 return this.progressSpinner;
+            }
+        }
+
+        MetroTabControl IHiveView.TabControl
+        {
+            get
+            {
+                throw new NotImplementedException();
             }
         }
 

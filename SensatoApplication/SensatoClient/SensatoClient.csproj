@@ -68,6 +68,7 @@
     <Compile Include="Contracts\INameView.cs" />
     <Compile Include="Contracts\IReportView.cs" />
     <Compile Include="Contracts\IView.cs" />
+    <Compile Include="Exceptions\NoPortFoundException.cs" />
     <Compile Include="HashUtilities.cs" />
     <Compile Include="IO\FileInputReader.cs" />
     <Compile Include="MainForm.cs">
@@ -93,6 +94,8 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CommandReader.cs" />
+    <Compile Include="Utilities\DeviceCommadsManager.cs" />
     <Compile Include="Views\DataView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,9 +218,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

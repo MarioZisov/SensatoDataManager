@@ -58,6 +58,8 @@ namespace SensatoClient.Views
             {
                 this.BackButtonClick?.Invoke(this, EventArgs.Empty);
             };
+
+
         }
     }
 }
