@@ -46,5 +46,8 @@
 
         [OperationContract]
         bool SendEmail(string emailTo, string subject, string body, bool isBodyHtml);
+
+        //[OperationContract]
+        //string GetMeasurments(string strHiveId);
     }
 }

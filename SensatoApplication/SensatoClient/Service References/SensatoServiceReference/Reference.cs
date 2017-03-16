@@ -392,6 +392,12 @@ namespace SensatoClient.SensatoServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/SendEmail", ReplyAction="http://tempuri.org/ISensatoService/SendEmailResponse")]
         System.Threading.Tasks.Task<bool> SendEmailAsync(string emailTo, string subject, string body, bool isBodyHtml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetMeasurments", ReplyAction="http://tempuri.org/ISensatoService/GetMeasurmentsResponse")]
+        string GetMeasurments(string strHiveId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISensatoService/GetMeasurments", ReplyAction="http://tempuri.org/ISensatoService/GetMeasurmentsResponse")]
+        System.Threading.Tasks.Task<string> GetMeasurmentsAsync(string strHiveId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -508,17 +514,25 @@ namespace SensatoClient.SensatoServiceReference {
         public System.Threading.Tasks.Task<bool> SendEmailAsync(string emailTo, string subject, string body, bool isBodyHtml) {
             return base.Channel.SendEmailAsync(emailTo, subject, body, isBodyHtml);
         }
+        
+        public string GetMeasurments(string strHiveId) {
+            return base.Channel.GetMeasurments(strHiveId);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetMeasurmentsAsync(string strHiveId) {
+            return base.Channel.GetMeasurmentsAsync(strHiveId);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SensatoServiceReference.IHardwareCommunication")]
     public interface IHardwareCommunication {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHardwareCommunication/TestAddData", ReplyAction="http://tempuri.org/IHardwareCommunication/TestAddDataResponse")]
-        string TestAddData(string testData);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHardwareCommunication/TestRenameHive", ReplyAction="http://tempuri.org/IHardwareCommunication/TestRenameHiveResponse")]
+        string TestRenameHive(string testData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHardwareCommunication/TestAddData", ReplyAction="http://tempuri.org/IHardwareCommunication/TestAddDataResponse")]
-        System.Threading.Tasks.Task<string> TestAddDataAsync(string testData);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHardwareCommunication/TestRenameHive", ReplyAction="http://tempuri.org/IHardwareCommunication/TestRenameHiveResponse")]
+        System.Threading.Tasks.Task<string> TestRenameHiveAsync(string testData);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -548,12 +562,12 @@ namespace SensatoClient.SensatoServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public string TestAddData(string testData) {
-            return base.Channel.TestAddData(testData);
+        public string TestRenameHive(string testData) {
+            return base.Channel.TestRenameHive(testData);
         }
         
-        public System.Threading.Tasks.Task<string> TestAddDataAsync(string testData) {
-            return base.Channel.TestAddDataAsync(testData);
+        public System.Threading.Tasks.Task<string> TestRenameHiveAsync(string testData) {
+            return base.Channel.TestRenameHiveAsync(testData);
         }
     }
 }

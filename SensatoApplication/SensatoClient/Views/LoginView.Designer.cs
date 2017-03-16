@@ -36,6 +36,7 @@
             this.labelError = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.labelReport = new MetroFramework.Controls.MetroLink();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,10 +174,21 @@
             this.labelReport.MouseEnter += new System.EventHandler(this.labelReport_MouseEnter);
             this.labelReport.MouseLeave += new System.EventHandler(this.labelReport_MouseLeave);
             // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(342, 87);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(116, 23);
+            this.metroButton1.TabIndex = 9;
+            this.metroButton1.Text = "metroButton1";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
             // LoginView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.labelReport);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.buttonLogin);
@@ -203,5 +215,6 @@
         private MetroFramework.Controls.MetroLabel labelError;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroLink labelReport;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

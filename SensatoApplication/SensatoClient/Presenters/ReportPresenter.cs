@@ -10,6 +10,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace SensatoClient.Presenters
 {
@@ -20,6 +21,8 @@ namespace SensatoClient.Presenters
         private const string successMessage = "Message send successfully";
         private const string successTitle = "Success";
 
+        
+
         private IReportView reportView;
         private SensatoServiceClient client;
 
@@ -28,6 +31,9 @@ namespace SensatoClient.Presenters
             this.reportView = reportView;
             this.client = new SensatoServiceClient();
             this.SubscribeEvents();
+
+            var portsNames = SerialPort.GetPortNames();
+
         }
 
         public void Initialize()

@@ -5,6 +5,8 @@
     using MetroFramework.Controls;
     using SensatoServiceReference;
     using System.Drawing;
+    using System.Diagnostics;
+    using System.Net;
 
     public partial class LoginView : MetroUserControl, ILoginView
     {
@@ -73,6 +75,13 @@
         private void labelReport_MouseLeave(object sender, EventArgs e)
         {
             this.labelReport.ForeColor = Color.Red;
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            SensatoServiceClient client = new SensatoServiceClient();
+            var msmts = client.GetMeasurments("6");
+            int x = 6;
         }
     }
 }

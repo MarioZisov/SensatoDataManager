@@ -10,10 +10,15 @@
     using SensatoWebService.Data;
     using DataTransferObjects;
     using System.Net.Mail;
+    using System.Threading;
+    using System.Web.Script.Serialization;
+    using System.IO;
+    using System.ServiceModel.Web;
+    using System.Text;
 
     public class SensatoService : ISensatoService, IHardwareCommunication
     {
-        private SensatoContext context;       
+        private SensatoContext context;
 
         public SensatoService()
         {
@@ -286,12 +291,75 @@
 
         public string TestRenameHive(string data)
         {
-            var hive = context.Hives.Find(2);
-            hive.Name = data;
+            //var hive = context.Hives.Find(2);
+            //hive.Name = data;
 
-            context.SaveChanges();
+            //context.SaveChanges();
+            //Thread.Sleep(60000);
 
             return "OK";
+        }
+
+        public string GetMeasurments()
+        {
+            var hiveData = context.Hives
+                .Find(9)
+                .Frames
+                .Where(f => f.IsActive)
+                .Select(f => new
+                {
+                    FrameId = f.Id,
+                    Measurments = f.Measurments.Select(m => new
+                    {
+                        m.FirstSensorTemp,
+                        m.SecondSensorTemp,
+                        m.ThirdSensorTemp,
+                        DateTime = m.DateTimeOfMeasurment.ToString("HH:mm dd-MMM-yyyy")
+                    })
+                });
+
+            var serializer = new JavaScriptSerializer();
+            var serializedResult = serializer.Serialize(hiveData);
+
+            return serializedResult;
+        }
+
+        public void SetMeasurments(string measurmentsData)
+        {
+            int hiveId = 9;
+            //deviceId,framePos,t1,t2,t3,date,Time&
+            var user = GetUserByUsername("FirstUser");
+            var hive = GetHive(user, "TestHive");
+
+            var measurments = measurmentsData.Split('&');
+            foreach (var measurment in measurments)
+            {
+                var measurmentsParams = measurment.Split(',');
+                int framePos = int.Parse(measurmentsParams[1]);
+                float t1 = float.Parse(measurmentsParams[2]);
+                float t2 = float.Parse(measurmentsParams[3]);
+                float t3 = float.Parse(measurmentsParams[4]);
+                DateTime date = DateTime.Parse(measurmentsParams[5]);
+                int time = int.Parse(measurmentsParams[6].Split(':')[0]);
+
+                date = date.AddHours(time);
+
+                var frame = hive.Frames.Where(f => f.Position == framePos).FirstOrDefault();
+                frame.Measurments.Add(new Measurment
+                {
+                    FirstSensorTemp = t1,
+                    SecondSensorTemp = t2,
+                    ThirdSensorTemp = t3,
+                    DateTimeOfMeasurment = date
+                });
+
+                context.SaveChanges();
+            }
+        }
+
+        public string PostTest(string model)
+        {
+            return "The status is " + model;
         }
     }
 }

@@ -166,17 +166,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="TestAddData">
+  <xs:element name="GetMeasurments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strHiveId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMeasurmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMeasurmentsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestRenameHive">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="testData" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="TestAddDataResponse">
+  <xs:element name="TestRenameHiveResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="TestAddDataResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TestRenameHiveResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
