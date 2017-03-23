@@ -14,8 +14,8 @@ namespace SensatoClient.Views
 {
     public partial class SetTimeView : MetroUserControl, IView
     {
-        public EventHandler SetClick;
-        public EventHandler CancelClick;
+        public event EventHandler SetClick;
+        public event EventHandler CancelClick;
 
         public SetTimeView()
         {
