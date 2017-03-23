@@ -44,7 +44,7 @@
             this.timePresenter = timePresenter;
             //this.dataPresenter = dataPresenter;
             this.SubscribeEvents();
-            this.commandsManager = new DeviceCommadsManager();
+            //this.commandsManager = new DeviceCommadsManager();
         }
 
         public void Initialize()
@@ -75,8 +75,14 @@
             this.namePresenter.RenameSaveComplete += OnRenameComplete;
             this.namePresenter.AddSaveComplete += OnAddComplete;
             this.namePresenter.Cancel += OnCancel;
+
             this.framePresenter.ViewBackButtonClick += OnFrameViewBackButtonClick;
+
+            this.timePresenter.ViewCancelButtonClick += OnViewCancelButtonClick;
         }
+
+        private void OnViewCancelButtonClick(object sender, EventArgs e)
+            => this.hiveView.BringToFront();
 
         private void OnGetDataClick(object sender, EventArgs e)
         {
@@ -102,6 +108,7 @@
         {
             try
             {
+                this.commandsManager = new DeviceCommadsManager();
                 string time = this.commandsManager.CheckTime();
                 MetroMessageBox.Show(
                     (MetroUserControl)sender,

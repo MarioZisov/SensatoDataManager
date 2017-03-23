@@ -11,19 +11,31 @@ namespace SensatoClient.Presenters
     {
         private SetTimeView timeView;
 
+        public event EventHandler ViewCancelButtonClick;
+
         public SetTimePresenter(SetTimeView timeView)
         {
             this.timeView = timeView;
         }
 
-        protected override void SubscribeEvents()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Initialize()
         {
             this.timeView.BringToFront();
+            this.SubscribeEvents();
+        }
+
+        protected override void SubscribeEvents()
+        {
+            this.timeView.SetClick += OnSetClick;
+            this.timeView.CancelClick += delegate
+            {
+                this.ViewCancelButtonClick.Invoke(this, EventArgs.Empty);
+            };
+        }
+
+        private void OnSetClick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
