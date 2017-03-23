@@ -46,17 +46,17 @@
             // radioAutomatic
             // 
             this.radioAutomatic.AutoSize = true;
-            this.radioAutomatic.Location = new System.Drawing.Point(31, 32);
+            this.radioAutomatic.Location = new System.Drawing.Point(31, 28);
             this.radioAutomatic.Name = "radioAutomatic";
-            this.radioAutomatic.Size = new System.Drawing.Size(265, 15);
+            this.radioAutomatic.Size = new System.Drawing.Size(268, 15);
             this.radioAutomatic.TabIndex = 0;
-            this.radioAutomatic.Text = "Set date and time automatically (recomendet)";
+            this.radioAutomatic.Text = "Set date and time automatically (recomended)";
             this.radioAutomatic.UseSelectable = true;
             // 
             // radioManually
             // 
             this.radioManually.AutoSize = true;
-            this.radioManually.Location = new System.Drawing.Point(31, 82);
+            this.radioManually.Location = new System.Drawing.Point(31, 72);
             this.radioManually.Name = "radioManually";
             this.radioManually.Size = new System.Drawing.Size(167, 15);
             this.radioManually.TabIndex = 1;
@@ -82,7 +82,10 @@
             // 
             // dropMinutes
             // 
+            this.dropMinutes.DropDownHeight = 160;
+            this.dropMinutes.DropDownWidth = 50;
             this.dropMinutes.FormattingEnabled = true;
+            this.dropMinutes.IntegralHeight = false;
             this.dropMinutes.ItemHeight = 23;
             this.dropMinutes.Items.AddRange(new object[] {
             "00",
@@ -150,10 +153,16 @@
             this.dropMinutes.Size = new System.Drawing.Size(59, 29);
             this.dropMinutes.TabIndex = 4;
             this.dropMinutes.UseSelectable = true;
+            this.dropMinutes.UseStyleColors = true;
             // 
             // dropHours
             // 
+            this.dropHours.DisplayFocus = true;
+            this.dropHours.DropDownHeight = 160;
+            this.dropHours.DropDownWidth = 5;
             this.dropHours.FormattingEnabled = true;
+            this.dropHours.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dropHours.IntegralHeight = false;
             this.dropHours.ItemHeight = 23;
             this.dropHours.Items.AddRange(new object[] {
             "00",
@@ -185,6 +194,7 @@
             this.dropHours.Size = new System.Drawing.Size(59, 29);
             this.dropHours.TabIndex = 3;
             this.dropHours.UseSelectable = true;
+            this.dropHours.UseStyleColors = true;
             // 
             // dateTime
             // 
@@ -257,7 +267,7 @@
             this.Controls.Add(this.panelDateTime);
             this.Controls.Add(this.radioManually);
             this.Controls.Add(this.radioAutomatic);
-            this.Location = new System.Drawing.Point(250, 214);
+            this.Location = new System.Drawing.Point(200, 200);
             this.Name = "SetTimeView";
             this.Size = new System.Drawing.Size(427, 251);
             this.panelDateTime.ResumeLayout(false);

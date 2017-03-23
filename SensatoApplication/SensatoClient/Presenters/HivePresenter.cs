@@ -100,9 +100,9 @@
         }
 
         private void OnSetTimeClick(object sender, EventArgs e)
-        {
-            this.timePresenter.Initialize();
-        }
+            => this.timePresenter.Initialize();
+
+    
 
         private void OnCheckTimeClick(object sender, EventArgs e)
         {

@@ -16,12 +16,26 @@ namespace SensatoClient.Views
     {
         public event EventHandler SetClick;
         public event EventHandler CancelClick;
+        public event EventHandler CheckedManually;
+        public event EventHandler CheckedAutomatic;
 
         public SetTimeView()
         {
             this.InitializeComponent();
             this.SubscribeViewButtons();
         }
+
+        public MetroRadioButton RadioManually => this.radioManually;
+
+        public MetroRadioButton RadioAutomatic => this.radioAutomatic;
+
+        public MetroDateTime DateTime => this.dateTime;
+
+        public MetroComboBox Minutes => this.dropMinutes;
+
+        public MetroComboBox Hours => this.dropHours;
+
+        public MetroPanel DateTimePanel => this.panelDateTime;
 
         private void SubscribeViewButtons()
         {
@@ -33,6 +47,16 @@ namespace SensatoClient.Views
             this.buttonCancel.Click += delegate
             {
                 this.CancelClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.radioManually.CheckedChanged += delegate
+            {
+                this.CheckedManually?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.RadioAutomatic.CheckedChanged += delegate
+            {
+                this.CheckedAutomatic?.Invoke(this, EventArgs.Empty);
             };
         }
     }
