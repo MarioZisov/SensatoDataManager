@@ -40,17 +40,24 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.panelDateTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioAutomatic
             // 
             this.radioAutomatic.AutoSize = true;
+            this.radioAutomatic.BackColor = System.Drawing.Color.Transparent;
+            this.radioAutomatic.Checked = true;
             this.radioAutomatic.Location = new System.Drawing.Point(31, 28);
             this.radioAutomatic.Name = "radioAutomatic";
             this.radioAutomatic.Size = new System.Drawing.Size(268, 15);
             this.radioAutomatic.TabIndex = 0;
+            this.radioAutomatic.TabStop = true;
             this.radioAutomatic.Text = "Set date and time automatically (recomended)";
+            this.radioAutomatic.UseCustomBackColor = true;
             this.radioAutomatic.UseSelectable = true;
             // 
             // radioManually
@@ -65,6 +72,9 @@
             // 
             // panelDateTime
             // 
+            this.panelDateTime.Controls.Add(this.metroLabel3);
+            this.panelDateTime.Controls.Add(this.metroLabel2);
+            this.panelDateTime.Controls.Add(this.metroLabel1);
             this.panelDateTime.Controls.Add(this.dropMinutes);
             this.panelDateTime.Controls.Add(this.dropHours);
             this.panelDateTime.Controls.Add(this.dateTime);
@@ -72,9 +82,9 @@
             this.panelDateTime.HorizontalScrollbarBarColor = true;
             this.panelDateTime.HorizontalScrollbarHighlightOnWheel = false;
             this.panelDateTime.HorizontalScrollbarSize = 10;
-            this.panelDateTime.Location = new System.Drawing.Point(31, 103);
+            this.panelDateTime.Location = new System.Drawing.Point(8, 103);
             this.panelDateTime.Name = "panelDateTime";
-            this.panelDateTime.Size = new System.Drawing.Size(365, 71);
+            this.panelDateTime.Size = new System.Drawing.Size(411, 71);
             this.panelDateTime.TabIndex = 2;
             this.panelDateTime.VerticalScrollbarBarColor = true;
             this.panelDateTime.VerticalScrollbarHighlightOnWheel = false;
@@ -148,7 +158,7 @@
             "57",
             "58",
             "59"});
-            this.dropMinutes.Location = new System.Drawing.Point(294, 17);
+            this.dropMinutes.Location = new System.Drawing.Point(333, 30);
             this.dropMinutes.Name = "dropMinutes";
             this.dropMinutes.Size = new System.Drawing.Size(59, 29);
             this.dropMinutes.TabIndex = 4;
@@ -189,7 +199,7 @@
             "21",
             "22",
             "23"});
-            this.dropHours.Location = new System.Drawing.Point(229, 17);
+            this.dropHours.Location = new System.Drawing.Point(249, 30);
             this.dropHours.Name = "dropHours";
             this.dropHours.Size = new System.Drawing.Size(59, 29);
             this.dropHours.TabIndex = 3;
@@ -198,7 +208,7 @@
             // 
             // dateTime
             // 
-            this.dateTime.Location = new System.Drawing.Point(13, 17);
+            this.dateTime.Location = new System.Drawing.Point(32, 30);
             this.dateTime.MinimumSize = new System.Drawing.Size(0, 29);
             this.dateTime.Name = "dateTime";
             this.dateTime.Size = new System.Drawing.Size(200, 29);
@@ -254,6 +264,36 @@
             this.panel4.Size = new System.Drawing.Size(2, 251);
             this.panel4.TabIndex = 8;
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel1.Location = new System.Drawing.Point(32, 8);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(38, 19);
+            this.metroLabel1.TabIndex = 9;
+            this.metroLabel1.Text = "Date";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel2.Location = new System.Drawing.Point(248, 8);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(46, 19);
+            this.metroLabel2.TabIndex = 10;
+            this.metroLabel2.Text = "Hours";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel3.Location = new System.Drawing.Point(333, 8);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(59, 19);
+            this.metroLabel3.TabIndex = 11;
+            this.metroLabel3.Text = "Minutes";
+            // 
             // SetTimeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,10 +307,11 @@
             this.Controls.Add(this.panelDateTime);
             this.Controls.Add(this.radioManually);
             this.Controls.Add(this.radioAutomatic);
-            this.Location = new System.Drawing.Point(200, 200);
+            this.Location = new System.Drawing.Point(200, 150);
             this.Name = "SetTimeView";
             this.Size = new System.Drawing.Size(427, 251);
             this.panelDateTime.ResumeLayout(false);
+            this.panelDateTime.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,5 +331,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }

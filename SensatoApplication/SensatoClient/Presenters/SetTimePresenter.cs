@@ -37,10 +37,18 @@ namespace SensatoClient.Presenters
             this.timeView.SetClick += OnSetClick;
             this.timeView.CheckedManually += OnCheckedManually;
             this.timeView.CheckedAutomatic += OnCheckedAutomatic;
+            this.timeView.CancelClick += OnCancelClick;
             this.timeView.CancelClick += delegate
             {
                 this.ViewCancelButtonClick.Invoke(this, EventArgs.Empty);
             };
+        }
+
+        private void OnCancelClick(object sender, EventArgs e)
+        {
+            this.timeView.SetClick -= OnSetClick;
+            this.timeView.CheckedManually -= OnCheckedManually;
+            this.timeView.CheckedAutomatic -= OnCheckedAutomatic;
         }
 
         private void OnCheckedAutomatic(object sender, EventArgs e)

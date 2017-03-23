@@ -87,6 +87,7 @@
     <Compile Include="Presenters\LoginPresenter.cs" />
     <Compile Include="Presenters\NamePresenter.cs" />
     <Compile Include="Presenters\ReportPresenter.cs" />
+    <Compile Include="Presenters\SetNumberPresenter.cs" />
     <Compile Include="Presenters\SetTimePresenter.cs" />
     <Compile Include="Service References\SensatoServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -133,6 +134,12 @@
     <Compile Include="Views\ReportView.Designer.cs">
       <DependentUpon>ReportView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\SetNumberView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\SetNumberView.Designer.cs">
+      <DependentUpon>SetNumberView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SetTimeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ReportView.resx">
       <DependentUpon>ReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetNumberView.resx">
+      <DependentUpon>SetNumberView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SetTimeView.resx">
       <DependentUpon>SetTimeView.cs</DependentUpon>

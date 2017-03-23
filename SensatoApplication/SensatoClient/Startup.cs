@@ -26,15 +26,17 @@
             IFrameView frameView = new FrameView();
             //IDataView dataView = new DataView();
             SetTimeView timeView = new SetTimeView();
+            SetNumberView numberView = new SetNumberView();
 
             //DataPresenter dataPres = new DataPresenter(/*dataView*/);
             FramePresenter framePres = new FramePresenter(frameView);
             NamePresenter namePres = new NamePresenter(nameView);
             SetTimePresenter timePresenter = new SetTimePresenter(timeView);
-            HivePresenter hivePres = new HivePresenter(hiveView, namePres, framePres, timePresenter/*, dataPres*/);
+            SetNumberPresenter numberPresenter = new SetNumberPresenter(numberView);
+            HivePresenter hivePres = new HivePresenter(hiveView, namePres, framePres, timePresenter, numberPresenter);
             LoginPresenter loginPres = new LoginPresenter(loginView, hivePres);
 
-            MainForm mainForm = new MainForm(loginView, hiveView, nameView, frameView, timeView);
+            MainForm mainForm = new MainForm(loginView, hiveView, nameView, frameView, timeView, numberView);
             
             if (mutex.WaitOne(TimeSpan.Zero, true))
             {

@@ -29,12 +29,12 @@
         private FramePresenter framePresenter;
         private FileInputReader reader;
         private DeviceCommadsManager commandsManager;
-
         private SetTimePresenter timePresenter;
+        private SetNumberPresenter numberPresetner;
 
         public event EventHandler LogoutClick;
 
-        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter, SetTimePresenter timePresenter)
+        public HivePresenter(IHiveView hiveView, NamePresenter namePresenter, FramePresenter framePresenter, SetTimePresenter timePresenter, SetNumberPresenter numberPresenter)
         {
             this.hiveView = hiveView;
             this.serviceClient = new SensatoServiceClient();
@@ -42,6 +42,7 @@
             this.namePresenter = namePresenter;
             this.framePresenter = framePresenter;
             this.timePresenter = timePresenter;
+            this.numberPresetner = numberPresenter;
             //this.dataPresenter = dataPresenter;
             this.SubscribeEvents();
             //this.commandsManager = new DeviceCommadsManager();
@@ -74,15 +75,26 @@
 
             this.namePresenter.RenameSaveComplete += OnRenameComplete;
             this.namePresenter.AddSaveComplete += OnAddComplete;
-            this.namePresenter.Cancel += OnCancel;
+            this.namePresenter.Cancel += OnRenameCancel;
 
             this.framePresenter.ViewBackButtonClick += OnFrameViewBackButtonClick;
 
             this.timePresenter.ViewCancelButtonClick += OnViewCancelButtonClick;
+
+            this.numberPresetner.ViewCancelClick += OnViewCancelClick;
+        }
+
+        private void OnViewCancelClick(object sender, EventArgs e)
+        {
+            this.hiveView.IsEnabled = true;
+            this.hiveView.BringToFront();
         }
 
         private void OnViewCancelButtonClick(object sender, EventArgs e)
-            => this.hiveView.BringToFront();
+        {
+            this.hiveView.IsEnabled = true;
+            this.hiveView.BringToFront();
+        }
 
         private void OnGetDataClick(object sender, EventArgs e)
         {
@@ -91,7 +103,8 @@
 
         private void OnSetNumberClick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            this.hiveView.IsEnabled = false;
+            this.numberPresetner.Initialize();
         }
 
         private void OnShowNumberClick(object sender, EventArgs e)
@@ -100,8 +113,10 @@
         }
 
         private void OnSetTimeClick(object sender, EventArgs e)
-            => this.timePresenter.Initialize();
-
+        {
+            this.hiveView.IsEnabled = false;
+            this.timePresenter.Initialize();
+        }
     
 
         private void OnCheckTimeClick(object sender, EventArgs e)
@@ -323,7 +338,7 @@
             this.hiveView.BringToFront();
         }
 
-        private void OnCancel(object sender, EventArgs e)
+        private void OnRenameCancel(object sender, EventArgs e)
         {
             this.hiveView.IsEnabled = true;
             this.hiveView.BringToFront();
