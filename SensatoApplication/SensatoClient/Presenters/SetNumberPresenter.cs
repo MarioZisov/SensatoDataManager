@@ -18,6 +18,7 @@ namespace SensatoClient.Presenters
         private SetNumberView numberView;
 
         public event EventHandler ViewCancelClick;
+        public event EventHandler ViewSetClick;
 
         public SetNumberPresenter(SetNumberView numberView)
         {
@@ -38,6 +39,11 @@ namespace SensatoClient.Presenters
             this.numberView.CancelClick += delegate
             {
                 this.ViewCancelClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.numberView.SetClick += delegate
+            {
+                this.ViewSetClick?.Invoke(this, EventArgs.Empty);
             };
         }
 
