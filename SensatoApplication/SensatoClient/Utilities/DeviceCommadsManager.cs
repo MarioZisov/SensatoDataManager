@@ -23,11 +23,13 @@
         {
             string date = this.commandReader.ReadCommand(CheckTimeCommand).Trim();
             return date;
+
         }
 
         public string SetTime(DateTime date)
         {
-            string dateString = $"{date.TimeOfDay.ToString("hh:mm")},{date.Date.ToString("dd.MM.yy")}";
+            string dateString = date.ToString("HH:mm,dd.MM.yy");
+                //$"{date.TimeOfDay.ToString("hh:mm")},{date.Date.ToString("dd.MM.yy")}";
             string command = string.Format(SetTimeCommand, dateString);
             string result = this.commandReader.ReadCommand(command).Trim();
 

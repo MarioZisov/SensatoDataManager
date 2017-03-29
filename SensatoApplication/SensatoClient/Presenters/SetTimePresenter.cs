@@ -18,6 +18,7 @@ namespace SensatoClient.Presenters
         private DeviceCommadsManager commandsManager;
 
         public event EventHandler ViewCancelButtonClick;
+        public event EventHandler ViewSetButtonClick;
 
         public SetTimePresenter(SetTimeView timeView)
         {
@@ -40,7 +41,12 @@ namespace SensatoClient.Presenters
             this.timeView.CancelClick += OnCancelClick;
             this.timeView.CancelClick += delegate
             {
-                this.ViewCancelButtonClick.Invoke(this, EventArgs.Empty);
+                this.ViewCancelButtonClick?.Invoke(this, EventArgs.Empty);
+            };
+
+            this.timeView.SetClick += delegate
+            {
+                this.ViewSetButtonClick?.Invoke(this, EventArgs.Empty);
             };
         }
 
@@ -93,7 +99,7 @@ namespace SensatoClient.Presenters
 
                 if (result == "OK!")
                 {
-                    string dateTime = date.ToString("dd MMM yyyy, hh:mm");
+                    string dateTime = date.ToString("dd MMM yyyy, HH:mm");
                     string message = $"Time was set to {dateTime}";
 
                     MetroMessageBox.Show(

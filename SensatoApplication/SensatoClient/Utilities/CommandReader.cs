@@ -70,6 +70,7 @@ namespace SensatoClient.Utilities
                 this.commandResult.Append((char)@byte);
             }
 
+            this.port.Close();
             return this.commandResult.ToString();
         }
     }

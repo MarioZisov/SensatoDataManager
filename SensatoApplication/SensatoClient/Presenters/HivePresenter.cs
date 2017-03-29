@@ -80,8 +80,20 @@
             this.framePresenter.ViewBackButtonClick += OnFrameViewBackButtonClick;
 
             this.timePresenter.ViewCancelButtonClick += OnViewCancelButtonClick;
+            this.timePresenter.ViewSetButtonClick += OnViewSetButtonClick;
 
             this.numberPresetner.ViewCancelClick += OnViewCancelClick;
+            this.numberPresetner.ViewSetClick += OnViewSetClick; 
+        }
+
+        private void OnViewSetClick(object sender, EventArgs e)
+        {
+            this.hiveView.IsEnabled = true;
+        }
+
+        private void OnViewSetButtonClick(object sender, EventArgs e)
+        {
+            this.hiveView.IsEnabled = true;
         }
 
         private void OnViewCancelClick(object sender, EventArgs e)
@@ -109,7 +121,17 @@
 
         private void OnShowNumberClick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            this.commandsManager = new DeviceCommadsManager();
+            var numberStr = commandsManager.CheckDeviceNumber();
+            int number = int.Parse(numberStr);
+            string message = $"Device number is {number}";
+
+            MetroMessageBox.Show(
+                    (MetroUserControl)sender,
+                    message,
+                    "Device Number",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information, 100);
         }
 
         private void OnSetTimeClick(object sender, EventArgs e)
