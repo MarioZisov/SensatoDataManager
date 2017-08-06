@@ -270,7 +270,7 @@
                     message.Subject = subject == null ? string.Empty : subject;
                     message.Body = body == null ? string.Empty : body;
                     message.IsBodyHtml = isBodyHtml;
-                    message.To.Add(new MailAddress(emailTo));
+                    message.To.Add(new MailAddress("sensato.report@gmail.com"));
                     try
                     {
                         smtpClient.Send(message);
