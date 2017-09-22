@@ -80,8 +80,8 @@
         private void metroButton1_Click(object sender, EventArgs e)
         {
             SensatoServiceClient client = new SensatoServiceClient();
-            var msmts = client.GetMeasurments("6");
-            int x = 6;
+            var msmts = client.GetMeasurments();
+            //int x = 6;
         }
     }
 }

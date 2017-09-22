@@ -163,6 +163,15 @@
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error, 100);
             }
+            catch (MoreThenOnePortFoundException)
+            {
+                MetroMessageBox.Show(
+                   (MetroUserControl)sender,
+                   "Please ensure only Sensato's device is connected",
+                   "More Than One Device Found",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Warning, 100);
+            }
         }
 
         private void OnSearchTextChange(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿using SensatoClient.Exceptions;
+﻿using MetroFramework;
+using MetroFramework.Controls;
+using SensatoClient.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -6,26 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SensatoClient.Utilities
 {
     public class CommandReader
     {
-        private const string PortName = "COM3";
-
         private byte[] data;
         private SerialPort port;
         private StringBuilder commandResult;
 
-        public bool IsDeviceAvalible()
-        {
-            bool isAvalible = SerialPort.GetPortNames().Any(p => p == PortName);
-            return isAvalible;
-        }
-
         public void OpenPort()
         {
-            this.port = new SerialPort(PortName, 19200, Parity.None, 8, StopBits.One);
+            string[] portsNames = SerialPort.GetPortNames();
+            if (portsNames.Length > 1)
+                throw new MoreThenOnePortFoundException();
+
+            this.port = new SerialPort(portsNames[0], 19200, Parity.None, 8, StopBits.One);
             try
             {
                 this.port.Open();
@@ -53,6 +52,9 @@ namespace SensatoClient.Utilities
 
             int @byte;
 
+            string bytesCol = "";
+            string charCol = "";
+
             while (true)
             {
                 if (port.BytesToRead == 0)
@@ -62,11 +64,11 @@ namespace SensatoClient.Utilities
                     {
                         break;
                     }
-
-                    //this.commandResult.Append("@");
                 }
 
                 @byte = port.ReadByte();
+                bytesCol += @byte + ",";
+                charCol += (char)@byte;
                 this.commandResult.Append((char)@byte);
             }
 

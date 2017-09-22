@@ -22,8 +22,7 @@
         public string CheckTime()
         {
             string date = this.commandReader.ReadCommand(CheckTimeCommand).Trim();
-            return date;
-
+            return date.Split('\n')[1];
         }
 
         public string SetTime(DateTime date)
@@ -81,17 +80,6 @@
             string deviceNumber = this.commandReader.ReadCommand(CheckNumberCommand);
 
             return deviceNumber;
-        }
-
-        public bool InitilizePort()
-        {
-            if (this.commandReader.IsDeviceAvalible())
-            {
-                this.commandReader.OpenPort();
-                return true;
-            }
-
-            return false;
         }
     }
 }

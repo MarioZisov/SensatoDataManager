@@ -68,6 +68,7 @@
     <Compile Include="Contracts\INameView.cs" />
     <Compile Include="Contracts\IReportView.cs" />
     <Compile Include="Contracts\IView.cs" />
+    <Compile Include="Exceptions\MoreThenOnePortFoundException.cs" />
     <Compile Include="Exceptions\NoPortFoundException.cs" />
     <Compile Include="HashUtilities.cs" />
     <Compile Include="IO\FileInputReader.cs" />

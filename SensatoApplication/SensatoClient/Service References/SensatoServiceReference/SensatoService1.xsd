@@ -166,11 +166,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMeasurments">
+  <xs:element name="GetLastEntryDate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="strHiveId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hiveName" nillable="true" type="xs:string" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLastEntryDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLastEntryDateResult" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMeasurments">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetMeasurmentsResponse">
@@ -191,6 +204,32 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="TestRenameHiveResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMeasurments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="measurmentsData" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMeasurmentsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PostTest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="model" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PostTestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PostTestResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

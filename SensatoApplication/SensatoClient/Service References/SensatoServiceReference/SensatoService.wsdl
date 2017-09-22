@@ -87,6 +87,12 @@
   <wsdl:message name="ISensatoService_SendEmail_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendEmailResponse" />
   </wsdl:message>
+  <wsdl:message name="ISensatoService_GetLastEntryDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastEntryDate" />
+  </wsdl:message>
+  <wsdl:message name="ISensatoService_GetLastEntryDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastEntryDateResponse" />
+  </wsdl:message>
   <wsdl:message name="ISensatoService_GetMeasurments_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMeasurments" />
   </wsdl:message>
@@ -98,6 +104,18 @@
   </wsdl:message>
   <wsdl:message name="IHardwareCommunication_TestRenameHive_OutputMessage">
     <wsdl:part name="parameters" element="tns:TestRenameHiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHardwareCommunication_SetMeasurments_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetMeasurments" />
+  </wsdl:message>
+  <wsdl:message name="IHardwareCommunication_SetMeasurments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetMeasurmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHardwareCommunication_PostTest_InputMessage">
+    <wsdl:part name="parameters" element="tns:PostTest" />
+  </wsdl:message>
+  <wsdl:message name="IHardwareCommunication_PostTest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PostTestResponse" />
   </wsdl:message>
   <wsdl:portType name="ISensatoService">
     <wsdl:operation name="CheckUserExists">
@@ -148,6 +166,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/SendEmail" message="tns:ISensatoService_SendEmail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/SendEmailResponse" message="tns:ISensatoService_SendEmail_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetLastEntryDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetLastEntryDate" message="tns:ISensatoService_GetLastEntryDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetLastEntryDateResponse" message="tns:ISensatoService_GetLastEntryDate_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetMeasurments">
       <wsdl:input wsaw:Action="http://tempuri.org/ISensatoService/GetMeasurments" message="tns:ISensatoService_GetMeasurments_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISensatoService/GetMeasurmentsResponse" message="tns:ISensatoService_GetMeasurments_OutputMessage" />
@@ -157,6 +179,14 @@
     <wsdl:operation name="TestRenameHive">
       <wsdl:input wsaw:Action="http://tempuri.org/IHardwareCommunication/TestRenameHive" message="tns:IHardwareCommunication_TestRenameHive_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHardwareCommunication/TestRenameHiveResponse" message="tns:IHardwareCommunication_TestRenameHive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetMeasurments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHardwareCommunication/SetMeasurments" message="tns:IHardwareCommunication_SetMeasurments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHardwareCommunication/SetMeasurmentsResponse" message="tns:IHardwareCommunication_SetMeasurments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PostTest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHardwareCommunication/PostTest" message="tns:IHardwareCommunication_PostTest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHardwareCommunication/PostTestResponse" message="tns:IHardwareCommunication_PostTest_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISensatoService" type="tns:ISensatoService">
@@ -265,6 +295,15 @@
     </wsdl:operation>
     <wsdl:operation name="SendEmail">
       <soap:operation soapAction="http://tempuri.org/ISensatoService/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastEntryDate">
+      <soap:operation soapAction="http://tempuri.org/ISensatoService/GetLastEntryDate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
